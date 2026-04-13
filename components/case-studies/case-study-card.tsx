@@ -1,0 +1,57 @@
+import Image from "next/image";
+import Link from "next/link";
+import type { CaseStudyItem } from "@/components/digital-services-landing/digital-services-landing-content";
+import { BD_CARD, R_CARD, SHADOW_SURFACE, SHADOW_SURFACE_HOVER, TEXT_INK } from "@/lib/home-ui";
+
+type Props = {
+  study: Pick<CaseStudyItem, "href" | "imageSrc" | "category" | "title" | "excerpt">;
+  /** Premières cartes visibles : améliore le LCP sur les grilles cas clients */
+  imagePriority?: boolean;
+};
+
+export function CaseStudyCard({ study, imagePriority = false }: Props) {
+  return (
+    <div
+      role="listitem"
+      className={`flex h-full flex-col bg-white p-4 sm:p-5 ${R_CARD} ${BD_CARD} ${SHADOW_SURFACE} ${SHADOW_SURFACE_HOVER} transition-shadow duration-300`}
+    >
+      <Link
+        href={study.href}
+        className={`group flex h-full min-h-0 max-w-full flex-col justify-start no-underline ${TEXT_INK}`}
+      >
+        <div className="w-full overflow-hidden">
+          <Image
+            src={study.imageSrc}
+            alt={study.title}
+            width={800}
+            height={533}
+            priority={imagePriority}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className={`aspect-[3/2] h-auto w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02] ${R_CARD}`}
+          />
+        </div>
+        <div className="flex flex-1 flex-col justify-between p-4 sm:p-6">
+          <div>
+            <div className="mb-3">
+              <span className="inline-block rounded-full bg-emerald-100 px-3 py-0.5 font-display text-sm font-semibold text-emerald-800">
+                {study.category}
+              </span>
+            </div>
+            <h3 className={`mb-3 font-display text-xl font-semibold leading-snug sm:text-2xl ${TEXT_INK}`}>
+              {study.title}
+            </h3>
+            <p className={`text-base font-normal leading-relaxed ${TEXT_INK} opacity-[0.88]`}>{study.excerpt}</p>
+          </div>
+          <div
+            className={`mt-8 text-left text-base font-semibold transition-opacity group-hover:opacity-80 ${TEXT_INK}`}
+          >
+            <span aria-hidden className="mr-1.5">
+              →
+            </span>
+            Lire plus
+          </div>
+        </div>
+      </Link>
+    </div>
+  );
+}

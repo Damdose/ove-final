@@ -1,3 +1,5 @@
+@layer base, component;
+
 @import "tailwindcss";
 
 :root {
@@ -8,7 +10,11 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  /** Encre marque homepage / pages pôle (#0D0B4A) — voir lib/home-ui.ts `INK` */
+  --color-brand-ink: #0d0b4a;
+  --font-sans: var(--font-inter);
+  /* Figtree : titres / accroches (section suivante si tu valides) */
+  --font-display: var(--font-figtree);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -19,8 +25,90 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    color-scheme: light dark;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-inter), system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Encre marque (#0d0b4a, --color-brand-ink) + fond indigo léger */
+  ::selection {
+    background-color: #e0e7ff;
+    color: #0d0b4a;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    ::selection {
+      background-color: #312e81;
+      color: #e0e7ff;
+    }
+  }
+
+  :where(a, button, input, textarea, select, summary):focus-visible {
+    outline: 2px solid #0d0b4a;
+    outline-offset: 2px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :where(a, button, input, textarea, select, summary):focus-visible {
+      outline-color: #a5b4fc;
+    }
+  }
+}
+
+@layer component {
+  /** Bandeau logos (extrait Webflow) : translate -100 % sur la piste dupliquée. */
+  @keyframes scroll {
+    0% {
+      transform: translate(0);
+    }
+    to {
+      transform: translate(-100%);
+    }
+  }
+
+  /** Défilement horizontal infini (piste = 2 × même série de logos, translate -50 %). */
+  @keyframes logo-marquee {
+    0% {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .logo-marquee-outer {
+    overflow: hidden;
+  }
+
+  .logo-marquee-track {
+    display: flex;
+    width: max-content;
+    flex-wrap: nowrap;
+    align-items: center;
+    animation: logo-marquee 45s linear infinite;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-marquee-track {
+      animation: none;
+    }
+
+    .logo-marquee-outer {
+      overflow-x: auto;
+    }
+  }
 }
