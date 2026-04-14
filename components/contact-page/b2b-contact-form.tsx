@@ -6,10 +6,10 @@ import { POLE_ORDER, POLE_THEMES } from "@/lib/brand-design-system";
 import { useCallback, useId, useState, type FormEvent } from "react";
 
 const INPUT =
-  "max-sm:w-60 align-middle w-full block mb-2.5 px-3 py-2 border-stone-300 text-indigo-950 [border-style:#000] h-14 text-base font-light rounded-2xl border bg-slate-800/5 placeholder:text-indigo-950 focus:outline-0 focus:border-blue-500";
+  "block w-full max-w-60 align-middle border border-stone-300 bg-slate-800/5 px-3 py-2 text-[15px] font-light text-indigo-950 [border-style:#000] placeholder:text-indigo-950 focus:border-blue-500 focus:outline-0 sm:max-w-none sm:h-12 sm:text-base h-11 mb-1.5 rounded-xl";
 const TEXTAREA =
-  "max-sm:w-60 align-middle w-full block mb-2.5 pb-2 px-3 border-stone-300 text-indigo-950 [border-style:#000] text-base font-light rounded-2xl border bg-slate-800/5 placeholder:text-indigo-950 focus:outline-0 focus:border-blue-500 h-36 pt-4";
-const LABEL = "mb-1 block font-sans text-xs font-medium text-indigo-950";
+  "block w-full max-w-60 align-middle border border-stone-300 bg-slate-800/5 px-3 pb-2 pt-3 text-[15px] font-light text-indigo-950 [border-style:#000] placeholder:text-indigo-950 focus:border-blue-500 focus:outline-0 sm:max-w-none sm:h-32 sm:text-base min-h-[6.5rem] h-28 mb-1.5 rounded-xl";
+const LABEL = "mb-0.5 block font-sans text-xs font-medium text-indigo-950";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -59,7 +59,8 @@ const TIMELINE_LABELS: Record<string, string> = {
 };
 
 export interface B2bContactFieldErrors {
-  fullName?: string;
+  firstName?: string;
+  lastName?: string;
   company?: string;
   jobTitle?: string;
   email?: string;
@@ -83,7 +84,8 @@ export function B2bContactForm() {
   const uid = useId();
   const formName = `b2b-contact-${uid}`;
 
-  const [fullName, setFullName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [company, setCompany] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [email, setEmail] = useState("");
@@ -101,7 +103,8 @@ export function B2bContactForm() {
 
   const validate = useCallback((): B2bContactFieldErrors => {
     const e: B2bContactFieldErrors = {};
-    if (fullName.trim().length < 2) e.fullName = "Indiquez prénom et nom.";
+    if (firstName.trim().length < 2) e.firstName = "Indiquez votre prénom.";
+    if (lastName.trim().length < 2) e.lastName = "Indiquez votre nom.";
     if (company.trim().length < 2) e.company = "Indiquez la raison sociale ou le nom légal.";
     if (jobTitle.trim().length < 2) e.jobTitle = "Indiquez votre fonction.";
     if (!email.trim()) e.email = "L’adresse e-mail est obligatoire.";
@@ -112,7 +115,7 @@ export function B2bContactForm() {
     if (!message.trim()) e.message = "Décrivez votre besoin.";
     else if (message.trim().length < 20) e.message = "Merci d’apporter un peu plus de contexte (20 caractères min.).";
     return e;
-  }, [fullName, company, jobTitle, email, phone, pole, reason, message]);
+  }, [firstName, lastName, company, jobTitle, email, phone, pole, reason, message]);
 
   const errors = submitted ? validate() : {};
   const showErr = (k: keyof B2bContactFieldErrors) => Boolean(errors[k] && (touched[k as string] || submitted));
@@ -126,7 +129,8 @@ export function B2bContactForm() {
       if (Object.keys(e).length > 0) {
         setSuccess(false);
         const order: (keyof B2bContactFieldErrors)[] = [
-          "fullName",
+          "firstName",
+          "lastName",
           "company",
           "jobTitle",
           "email",
@@ -138,7 +142,8 @@ export function B2bContactForm() {
         const first = order.find((k) => e[k]);
         requestAnimationFrame(() => {
           const map: Record<string, string> = {
-            fullName: `${uid}-fullName`,
+            firstName: `${uid}-firstName`,
+            lastName: `${uid}-lastName`,
             company: `${uid}-company`,
             jobTitle: `${uid}-jobTitle`,
             email: `${uid}-email`,
@@ -154,7 +159,7 @@ export function B2bContactForm() {
       }
       const subject = encodeURIComponent(`Contact B2B site — ${company.trim()} — ${poleLabel(String(pole))}`);
       const lines = [
-        `Identité : ${fullName.trim()}`,
+        `Identité : ${firstName.trim()} ${lastName.trim()}`,
         `Société : ${company.trim()}`,
         `Fonction : ${jobTitle.trim()}`,
         `E-mail : ${email.trim()}`,
@@ -172,11 +177,11 @@ export function B2bContactForm() {
       setSuccess(true);
       window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`;
     },
-    [validate, honeypot, uid, fullName, company, jobTitle, email, phone, pole, reason, companySize, timeline, productScope, message],
+    [validate, honeypot, uid, firstName, lastName, company, jobTitle, email, phone, pole, reason, companySize, timeline, productScope, message],
   );
 
   return (
-    <div className="w-full max-w-xl max-sm:max-w-none bg-white p-8 rounded-3xl">
+    <div className="w-full max-w-none rounded-2xl bg-white p-5 shadow-sm shadow-black/5 sm:max-w-xl sm:rounded-3xl sm:p-6 lg:p-7">
       <div className="flex-col items-stretch">
         {success ? (
           <div className="text-center mt-4 mb-5" tabIndex={-1} role="region" aria-label="Email Form success">
@@ -192,7 +197,8 @@ export function B2bContactForm() {
                 onClick={() => {
                   setSuccess(false);
                   setSubmitted(false);
-                  setFullName("");
+                  setFirstName("");
+                  setLastName("");
                   setCompany("");
                   setJobTitle("");
                   setEmail("");
@@ -218,37 +224,63 @@ export function B2bContactForm() {
             id={formName}
             name={formName}
             method="get"
-            className="gap-x-4 gap-y-4 grid-rows-[auto_auto] grid-cols-[1fr] auto-cols-[1fr] grid"
+            className="grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto_auto] gap-x-3 gap-y-3 sm:gap-x-4 sm:gap-y-3.5"
             aria-label="Email Form"
             onSubmit={submit}
             noValidate
           >
-            <div className="w-full relative max-sm:row-start-[span_1] max-sm:col-start-[span_1] max-sm:row-end-[span_1] max-sm:col-end-[span_1]">
-              <label htmlFor={`${uid}-fullName`} className={LABEL}>
-                Prénom Nom <span className="text-red-600">*</span>
-              </label>
-              <input
-                id={`${uid}-fullName`}
-                className={INPUT}
-                maxLength={256}
-                name="Nom"
-                placeholder="Prénom Nom *"
-                type="text"
-                required
-                value={fullName}
-                onChange={(ev) => setFullName(ev.target.value)}
-                onBlur={() => setTouched((t) => ({ ...t, fullName: true }))}
-                aria-invalid={showErr("fullName") || undefined}
-                aria-describedby={showErr("fullName") ? `${uid}-err-fullName` : undefined}
-              />
-              {showErr("fullName") ? (
-                <p id={`${uid}-err-fullName`} className="mb-2 text-sm text-red-600" role="alert">
-                  {errors.fullName}
-                </p>
-              ) : null}
+            <div className="grid grid-cols-1 gap-x-3 gap-y-3 md:grid-cols-2 md:gap-x-4">
+              <div className="w-full relative">
+                <label htmlFor={`${uid}-firstName`} className={LABEL}>
+                  Prénom <span className="text-red-600">*</span>
+                </label>
+                <input
+                  id={`${uid}-firstName`}
+                  className={INPUT}
+                  maxLength={256}
+                  name="Prenom"
+                  placeholder="Prénom *"
+                  type="text"
+                  required
+                  value={firstName}
+                  onChange={(ev) => setFirstName(ev.target.value)}
+                  onBlur={() => setTouched((t) => ({ ...t, firstName: true }))}
+                  aria-invalid={showErr("firstName") || undefined}
+                  aria-describedby={showErr("firstName") ? `${uid}-err-firstName` : undefined}
+                />
+                {showErr("firstName") ? (
+                  <p id={`${uid}-err-firstName`} className="mb-2 text-sm text-red-600" role="alert">
+                    {errors.firstName}
+                  </p>
+                ) : null}
+              </div>
+              <div className="w-full relative">
+                <label htmlFor={`${uid}-lastName`} className={LABEL}>
+                  Nom <span className="text-red-600">*</span>
+                </label>
+                <input
+                  id={`${uid}-lastName`}
+                  className={INPUT}
+                  maxLength={256}
+                  name="Nom"
+                  placeholder="Nom *"
+                  type="text"
+                  required
+                  value={lastName}
+                  onChange={(ev) => setLastName(ev.target.value)}
+                  onBlur={() => setTouched((t) => ({ ...t, lastName: true }))}
+                  aria-invalid={showErr("lastName") || undefined}
+                  aria-describedby={showErr("lastName") ? `${uid}-err-lastName` : undefined}
+                />
+                {showErr("lastName") ? (
+                  <p id={`${uid}-err-lastName`} className="mb-2 text-sm text-red-600" role="alert">
+                    {errors.lastName}
+                  </p>
+                ) : null}
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-x-3 gap-y-3 md:grid-cols-2 md:gap-x-4">
               <div className="w-full relative">
                 <label htmlFor={`${uid}-company`} className={LABEL}>
                   Raison sociale <span className="text-red-600">*</span>
@@ -297,7 +329,7 @@ export function B2bContactForm() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-x-3 gap-y-3 md:grid-cols-2 md:gap-x-4">
               <div className="w-full relative">
                 <label htmlFor={`${uid}-email`} className={LABEL}>
                   Adresse e-mail <span className="text-red-600">*</span>
@@ -348,7 +380,7 @@ export function B2bContactForm() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-x-3 gap-y-3 md:grid-cols-2 md:gap-x-4">
               <div className="w-full relative">
                 <label htmlFor={`${uid}-pole`} className={LABEL}>
                   Pôle concerné <span className="text-red-600">*</span>
@@ -409,7 +441,7 @@ export function B2bContactForm() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-x-3 gap-y-3 md:grid-cols-2 md:gap-x-4">
               <div className="w-full relative">
                 <label htmlFor={`${uid}-size`} className={LABEL}>
                   Effectif (optionnel)

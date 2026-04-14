@@ -1,7 +1,7 @@
 import type { PoleId } from "@/lib/brand-design-system";
 import { DigitalTopNavigation } from "@/components/digital-services-landing/digital-top-navigation";
-import { ItPageBanner } from "@/components/it-landing/it-page-banner";
-import { SolutionsPageBanner } from "@/components/technical-solutions-landing/solutions-page-banner";
+import { ItTopNavigation } from "@/components/it-landing/it-top-navigation";
+import { SolutionsTopNavigation } from "@/components/technical-solutions-landing/solutions-top-navigation";
 
 export type PoleTopNavigationProps = {
   pole: PoleId;
@@ -16,8 +16,8 @@ export function PoleTopNavigation({ pole }: PoleTopNavigationProps) {
     case "digital":
       return <DigitalTopNavigation />;
     case "solutions":
-      return <SolutionsPageBanner />;
+      return <SolutionsTopNavigation />;
     case "it":
-      return <ItPageBanner />;
+      return <ItTopNavigation />;
   }
 }

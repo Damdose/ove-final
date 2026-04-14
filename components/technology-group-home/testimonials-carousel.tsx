@@ -170,7 +170,7 @@ export function TestimonialsCarousel() {
               </div>
 
               <div
-                className="relative mt-8 flex justify-center gap-2 sm:mt-10"
+                className="relative mt-8 flex items-center justify-center gap-2 sm:mt-10"
                 role="tablist"
                 aria-label="Choisir un témoignage"
               >

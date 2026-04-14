@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { ConsentPreferencesPanel } from "./consent-preferences-panel";
+import { MobileStickyCta } from "./mobile-sticky-cta";
 import { SiteBanner } from "./site-banner";
 import { SiteFooter } from "./site-footer";
 
@@ -14,6 +15,7 @@ export function MarketingSiteLayout({ children }: { children: ReactNode }) {
       <ConsentPreferencesPanel />
       <main className="flex flex-1 flex-col">{children}</main>
       <SiteFooter />
+      <MobileStickyCta />
     </div>
   );
 }

@@ -1,71 +1,106 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { DigitalServiceDefinition } from "@/lib/digital-services-catalog";
-import { POLE_THEMES } from "@/lib/brand-design-system";
+import { BRAND, POLE_THEMES } from "@/lib/brand-design-system";
 import {
   BD_CARD,
+  BG_INK,
   BTN_PRIMARY_INK,
   PAGE_X,
   R_CARD,
-  SECTION_PAD,
+  RING_SOFT,
   SHADOW_MEDIA,
   SHADOW_SURFACE,
   TEXT_INK,
   TEXT_INK_MUTED,
 } from "@/lib/home-ui";
+import {
+  PARTNER_LOGOS,
+} from "./digital-services-landing-content";
 
 const digital = POLE_THEMES.digital;
 
-const badgeClass = `inline-flex items-center rounded-full px-3 py-1 font-sans text-xs font-semibold uppercase tracking-[0.14em] ${digital.primary.bgClass} ${digital.primary.textOnPrimaryClass}`;
-
 export function DigitalServiceLpHero({ service }: { service: DigitalServiceDefinition }) {
   return (
-    <header className={`relative overflow-hidden ${SECTION_PAD} pb-10 sm:pb-12 lg:pb-14`}>
+    <header className={`relative overflow-x-clip ${BRAND.canvas.bgClass}`}>
       <div className={PAGE_X}>
-        <div className="mx-auto w-full max-w-screen-xl">
-          <Link
-            href="/digital"
-            className={`inline-flex text-sm font-medium ${TEXT_INK_MUTED} underline decoration-emerald-400/45 decoration-2 underline-offset-[6px] transition-colors hover:decoration-emerald-400`}
-          >
-            ← Tous les services Digital
-          </Link>
-
+        <div className="mx-auto w-full max-w-screen-xl pt-4 pb-8 sm:pt-6 sm:pb-10 lg:pt-8 lg:pb-12">
           <div
-            className={`mt-8 overflow-hidden bg-white ${R_CARD} ${BD_CARD} ${SHADOW_SURFACE} ring-1 ring-black/[0.04]`}
+            className={`overflow-hidden bg-emerald-100 ${R_CARD} ${BD_CARD} ${RING_SOFT} ${SHADOW_SURFACE}`}
           >
-            <div className="grid grid-cols-1 items-stretch gap-0 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
-              <div className="flex flex-col justify-center px-6 py-8 sm:px-10 sm:py-10 lg:px-12 lg:py-12">
-                <p className={badgeClass}>{service.lp.eyebrow}</p>
-                <h1
-                  className={`mt-4 font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[2.65rem] lg:leading-[1.08] ${TEXT_INK}`}
+            <div
+              className="grid grid-cols-1 items-center gap-x-10 gap-y-10 px-5 pt-6 pb-5 sm:px-10 sm:pt-8 sm:pb-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-x-14 lg:gap-y-12 lg:px-14 lg:pt-10 lg:pb-8"
+            >
+              <div className="order-2 lg:order-1">
+                <span
+                  className={`inline-flex items-center rounded-full px-3 py-1 font-sans text-xs font-semibold uppercase tracking-[0.14em] ${digital.primary.bgClass} ${digital.primary.textOnPrimaryClass}`}
                 >
-                  {service.title}
+                  Pôle Digital
+                </span>
+                <h1
+                  className={`mt-5 max-w-[26ch] font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl sm:leading-[1.12] lg:mt-6 lg:text-5xl lg:leading-[1.08] ${TEXT_INK}`}
+                >
+                  {service.headline ?? service.title}
                 </h1>
-                <p className={`mt-4 max-w-xl text-lg font-medium leading-relaxed sm:text-xl ${TEXT_INK}`}>
-                  {service.lp.subheadline}
+                <p
+                  className={`mt-5 max-w-xl font-sans text-base font-normal leading-relaxed sm:mt-6 sm:text-lg lg:leading-8 ${TEXT_INK_MUTED}`}
+                >
+                  {service.description}
                 </p>
-                <p className={`mt-4 max-w-xl text-base leading-relaxed ${TEXT_INK_MUTED}`}>{service.description}</p>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+                <div className="mt-8 sm:mt-10">
                   <Link href="/contact" className={BTN_PRIMARY_INK}>
-                    Demander un devis
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className={`inline-flex h-14 min-w-[12rem] items-center justify-center rounded-xl border border-black/[0.1] bg-white px-6 text-lg font-medium text-[#0D0B4A] no-underline transition-colors hover:bg-black/[0.02]`}
-                  >
-                    Parler à un expert
+                    Contacter un expert
                   </Link>
                 </div>
               </div>
-              <div className={`relative h-full min-h-[260px] bg-neutral-100 sm:min-h-[320px] lg:min-h-[22rem] ${SHADOW_MEDIA}`}>
+
+              <div
+                className={`relative order-1 mx-auto w-full max-w-md lg:order-2 lg:mx-0 lg:max-w-none ${R_CARD} ${SHADOW_MEDIA}`}
+              >
                 <Image
-                  src={service.imageSrc}
+                  sizes="(max-width: 1024px) 100vw, 1024px"
                   alt={service.imageAlt}
-                  fill
+                  src={service.imageSrc}
+                  width={1024}
+                  height={1024}
                   priority
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className={`aspect-[16/10] w-full object-cover lg:aspect-square ${R_CARD}`}
                 />
+              </div>
+            </div>
+
+            <div
+              className={`group border-t border-black/[0.08] ${BG_INK} py-4 sm:py-5`}
+              role="region"
+              aria-label="Logos de clients et partenaires"
+            >
+              <div className="logo-marquee-outer">
+                <div className="logo-marquee-track gap-x-14 px-4 group-hover:[animation-play-state:paused] sm:gap-x-20 sm:px-6">
+                  {PARTNER_LOGOS.map((logo, i) => (
+                    <Image
+                      key={`dig-svc-marquee-a-${i}`}
+                      loading="eager"
+                      src={logo.src}
+                      alt=""
+                      width={120}
+                      height={48}
+                      className="max-h-9 w-auto max-w-[7.5rem] shrink-0 object-contain brightness-0 invert sm:max-h-10 sm:max-w-[8.5rem]"
+                      aria-hidden
+                    />
+                  ))}
+                  {PARTNER_LOGOS.map((logo, i) => (
+                    <Image
+                      key={`dig-svc-marquee-b-${i}`}
+                      loading="eager"
+                      src={logo.src}
+                      alt=""
+                      width={120}
+                      height={48}
+                      className="max-h-9 w-auto max-w-[7.5rem] shrink-0 object-contain brightness-0 invert sm:max-h-10 sm:max-w-[8.5rem]"
+                      aria-hidden
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>

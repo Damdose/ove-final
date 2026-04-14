@@ -55,10 +55,10 @@ function ArrowRightIcon({ className }: { className?: string }) {
 }
 
 const navItem =
-  `inline-flex h-11 items-center justify-center rounded-lg px-3 text-sm font-medium no-underline transition-colors ${TEXT_INK} hover:bg-black/[0.05] active:bg-black/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${RING_INK_FOCUS}`;
+  `inline-flex h-11 items-center justify-start rounded-lg px-3 text-sm font-medium no-underline transition-colors ${TEXT_INK} hover:bg-black/[0.05] active:bg-black/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${RING_INK_FOCUS} lg:justify-center`;
 
 const triggerBase =
-  `inline-flex h-11 w-full cursor-pointer items-center justify-center gap-1.5 rounded-lg border-0 bg-transparent px-3 text-left text-sm font-medium transition-colors ${TEXT_INK} hover:bg-black/[0.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${RING_INK_FOCUS} max-lg:justify-between lg:w-auto lg:justify-center`;
+  `inline-flex h-11 w-full cursor-pointer items-center justify-between gap-1.5 rounded-lg border-0 bg-transparent px-3 text-left text-sm font-medium transition-colors ${TEXT_INK} hover:bg-black/[0.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${RING_INK_FOCUS} lg:w-auto lg:justify-center`;
 
 const triggerOpen = "bg-black/[0.06]";
 
@@ -82,12 +82,7 @@ const RESOURCE_LINKS = [
 
 const resourceRowClass = `group flex w-full items-start gap-3 rounded-xl border border-transparent px-3 py-3 text-left no-underline transition-all duration-200 hover:border-black/[0.08] hover:bg-slate-50/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${RING_INK_FOCUS} ${TEXT_INK}`;
 
-export type DigitalTopNavigationProps = {
-  /** À activer uniquement sur `/digital` : `aria-current` sur le logo pôle. */
-  logoAriaCurrent?: boolean;
-};
-
-export function DigitalTopNavigation({ logoAriaCurrent = false }: DigitalTopNavigationProps) {
+export function DigitalTopNavigation() {
   const baseId = useId();
   const servicesToggleId = `w-dropdown-toggle-0-${baseId}`;
   const servicesListId = `w-dropdown-list-0-${baseId}`;
@@ -145,7 +140,7 @@ export function DigitalTopNavigation({ logoAriaCurrent = false }: DigitalTopNavi
 
   const servicesMega = (
     <div
-      className={`border-black/[0.06] bg-white max-lg:mt-2 max-lg:overflow-hidden max-lg:rounded-2xl max-lg:border max-lg:shadow-lg lg:fixed lg:inset-x-0 lg:top-[4.5rem] lg:z-[41] lg:max-h-[min(85vh,calc(100dvh-5rem))] lg:overflow-y-auto lg:border-b lg:shadow-[0_24px_48px_-12px_rgba(13,11,74,0.14)] ${servicesOpen ? "max-lg:block" : "max-lg:hidden"} ${servicesOpen ? "lg:block" : "lg:hidden"}`}
+      className={`border-black/[0.06] bg-white mt-2 overflow-hidden rounded-2xl border shadow-lg lg:fixed lg:inset-x-0 lg:top-[4.5rem] lg:z-[41] lg:mt-0 lg:max-h-[min(85vh,calc(100dvh-5rem))] lg:overflow-y-auto lg:rounded-none lg:border-0 lg:border-b lg:shadow-[0_24px_48px_-12px_rgba(13,11,74,0.14)] ${servicesOpen ? "block" : "hidden"}`}
       id={servicesListId}
       role="navigation"
       aria-labelledby={servicesToggleId}
@@ -292,15 +287,15 @@ export function DigitalTopNavigation({ logoAriaCurrent = false }: DigitalTopNavi
         className={`relative z-50 mx-auto flex min-h-16 w-full max-w-screen-xl items-center justify-between gap-4 sm:min-h-[4.5rem] ${PAGE_X}`}
       >
         <Link
-          href="/digital"
-          {...(logoAriaCurrent ? { "aria-current": "page" as const } : {})}
+          href="/"
           className="relative shrink-0 text-zinc-800 no-underline transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+          aria-label="Ovedex — accueil groupe"
         >
           <Image
             width={182}
             height={48}
             loading="lazy"
-            alt="ovedex"
+            alt=""
             src={DIGITAL_LOGO_SRC}
             className="h-auto w-[148px] sm:w-[182px]"
           />
@@ -311,13 +306,11 @@ export function DigitalTopNavigation({ logoAriaCurrent = false }: DigitalTopNavi
           id="digital-nav-mobile"
           role="navigation"
           aria-label="Principal"
-          className={`max-lg:absolute max-lg:left-0 max-lg:right-0 max-lg:top-full max-lg:z-10 max-lg:max-h-[min(88vh,calc(100dvh-4rem))] max-lg:overflow-y-auto max-lg:border-b max-lg:border-black/[0.06] max-lg:bg-white max-lg:px-[5%] max-lg:pb-10 max-lg:pt-5 max-lg:transition-all max-lg:duration-200 ${
-            mobileOpen ? "max-lg:flex" : "max-lg:hidden"
-          } max-lg:flex-col lg:flex lg:items-center lg:gap-1`}
+          className={`${mobileOpen ? "flex" : "hidden"} absolute left-0 right-0 top-full z-10 max-h-[min(88vh,calc(100dvh-4rem))] flex-col overflow-y-auto border-b border-black/[0.06] bg-white px-[5%] pb-10 pt-5 transition-all duration-200 lg:relative lg:left-auto lg:right-auto lg:top-auto lg:z-auto lg:flex lg:max-h-none lg:flex-row lg:items-center lg:gap-1 lg:overflow-visible lg:border-0 lg:bg-transparent lg:p-0`}
         >
           <div className="flex flex-col gap-1 lg:flex-row lg:items-center lg:gap-1">
-            <Link href="/" className={`${navItem} max-lg:w-full max-lg:px-4`} onClick={closeAll}>
-              ADN
+            <Link href="/" className={`${navItem} w-full px-4 lg:w-auto lg:px-3`} onClick={closeAll}>
+              À propos
             </Link>
 
             <div ref={servicesRootRef} className="relative z-[1] w-full lg:w-auto">
@@ -360,7 +353,7 @@ export function DigitalTopNavigation({ logoAriaCurrent = false }: DigitalTopNavi
                 </span>
               </button>
               <div
-                className={`left-0 right-0 top-full z-[42] max-lg:mt-2 lg:absolute lg:right-0 lg:mt-2 lg:min-w-[min(100vw-2rem,22rem)] lg:max-w-[min(100vw-2rem,26rem)] ${resourcesOpen ? "block" : "hidden"}`}
+                className={`left-0 right-0 top-full z-[42] mt-2 lg:absolute lg:right-0 lg:mt-2 lg:min-w-[min(100vw-2rem,22rem)] lg:max-w-[min(100vw-2rem,26rem)] ${resourcesOpen ? "block" : "hidden"}`}
                 id={resourcesListId}
                 role="navigation"
                 aria-labelledby={resourcesToggleId}
@@ -395,14 +388,14 @@ export function DigitalTopNavigation({ logoAriaCurrent = false }: DigitalTopNavi
 
             <Link
               href="/maintenance-digital"
-              className={`${navItem} max-lg:w-full max-lg:px-4`}
+              className={`${navItem} w-full px-4 lg:w-auto lg:px-3`}
               onClick={closeAll}
             >
               Maintenance
             </Link>
             <Link
               href="/contact"
-              className={`mt-1 flex h-11 items-center justify-center px-5 text-sm font-semibold text-white no-underline transition-opacity hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${RING_INK_FOCUS} ${BG_INK} ${R_BTN} max-lg:mt-3 max-lg:w-full lg:ml-2`}
+              className={`mt-3 flex h-11 w-full items-center justify-center px-5 text-sm font-semibold text-white no-underline transition-opacity hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${RING_INK_FOCUS} ${BG_INK} ${R_BTN} lg:mt-1 lg:ml-2 lg:w-auto`}
               onClick={closeAll}
             >
               Contactez-nous

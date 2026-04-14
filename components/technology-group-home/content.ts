@@ -1,6 +1,6 @@
 import type { PoleId } from "@/lib/brand-design-system";
 import { POLE_THEMES } from "@/lib/brand-design-system";
-import { BLOG_POSTS } from "@/lib/blog-articles";
+import { getHomepageNewsroomPosts } from "@/lib/blog-articles";
 import { extractYoutubeVideoId } from "@/lib/youtube";
 
 export interface LogoSlide {
@@ -153,7 +153,7 @@ export const SOCIAL_PROOF_VIDEO_POSTER_SRC =
  * Remplacez par la vidéo de présentation Ovedex.
  */
 export const SOCIAL_PROOF_VIDEO_HREF: string | undefined =
-  "https://www.youtube.com/watch?v=Tn6-PIBmNUU";
+  "https://www.youtube.com/watch?v=L-BzGeTbnIs";
 
 /**
  * Surcharge : ID seul (11 caractères). Si renseigné, il prime sur l’URL ci-dessus.
@@ -326,7 +326,7 @@ export const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
-export const NEWS_ARTICLES: NewsArticle[] = BLOG_POSTS.map((p) => ({
+export const NEWS_ARTICLES: NewsArticle[] = getHomepageNewsroomPosts().map((p) => ({
   slug: p.slug,
   href: `/actualites/${p.slug}`,
   imageSrc: p.imageSrc,

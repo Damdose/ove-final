@@ -1,6 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Figtree, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
+import { CookieConsent } from "@/components/cookie-consent";
+import { getSiteUrl } from "@/lib/site";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -19,21 +21,53 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
-  title: "Ovedex - Trois expertises, une vision, une croissance partagée.",
+  metadataBase: new URL(getSiteUrl()),
+  title: {
+    default: "Ovedex — Digital, IT & Solutions techniques",
+    template: "%s — Ovedex",
+  },
   description:
-    "Ovedex: Optimisez Votre Expérience avec Des services Exceptionnels. Ensemble, développons votre entreprise avec les technologies d’aujourd’hui et de demain.",
+    "Ovedex regroupe trois pôles d’expertise — Digital, IT et Solutions techniques — pour accompagner les entreprises dans leur croissance et leur transformation numérique.",
+  keywords: [
+    "Ovedex",
+    "agence digitale",
+    "infogérance",
+    "cybersécurité",
+    "solutions techniques",
+    "sûreté",
+    "vidéosurveillance",
+    "contrôle d’accès",
+    "création de site web",
+    "SEO",
+    "réseaux sociaux",
+    "cloud",
+    "maintenance informatique",
+  ],
+  authors: [{ name: "Ovedex" }],
+  creator: "Ovedex",
+  publisher: "Ovedex",
+  robots: { index: true, follow: true },
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Ovedex - Trois expertises, une vision, une croissance partagée.",
+    siteName: "Ovedex",
+    title: "Ovedex — Digital, IT & Solutions techniques",
     description:
-      "Ovedex: Optimisez Votre Expérience avec Des services Exceptionnels. Ensemble, développons votre entreprise avec les technologies d’aujourd’hui et de demain.",
+      "Ovedex regroupe trois pôles d’expertise — Digital, IT et Solutions techniques — pour accompagner les entreprises dans leur croissance et leur transformation numérique.",
     type: "website",
+    locale: "fr_FR",
+    url: "/",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ovedex - Trois expertises, une vision, une croissance partagée.",
+    title: "Ovedex — Digital, IT & Solutions techniques",
     description:
-      "Ovedex: Optimisez Votre Expérience avec Des services Exceptionnels. Ensemble, développons votre entreprise avec les technologies d’aujourd’hui et de demain.",
+      "Ovedex regroupe trois pôles d’expertise — Digital, IT et Solutions techniques — pour accompagner les entreprises dans leur croissance et leur transformation numérique.",
   },
 };
 
@@ -47,7 +81,39 @@ export default function RootLayout({
       lang="fr-FR"
       className={`${inter.variable} ${figtree.variable} ${geistMono.variable} h-full font-sans`}
     >
-      <body className="min-h-full flex flex-col antialiased">{children}</body>
+      <body className="min-h-full flex flex-col antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Ovedex",
+              url: getSiteUrl(),
+              logo: `${getSiteUrl()}/logo.svg`,
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+33651758513",
+                contactType: "customer service",
+                availableLanguage: "French",
+              },
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "32 rue de Paris",
+                addressLocality: "Boulogne-Billancourt",
+                postalCode: "92100",
+                addressCountry: "FR",
+              },
+              sameAs: [
+                "https://fr.linkedin.com/company/opensi-ecommerce",
+                "https://www.instagram.com/ovedex/",
+              ],
+            }).replace(/</g, "\\u003c"),
+          }}
+        />
+        {children}
+        <CookieConsent />
+      </body>
     </html>
   );
 }

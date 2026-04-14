@@ -27,12 +27,12 @@ export function CookieConsent() {
       role="dialog"
       aria-labelledby="cookie-title"
       aria-describedby="cookie-desc"
-      className="fixed inset-x-4 bottom-4 z-[60] max-w-lg rounded-2xl border border-border bg-card p-5 shadow-2xl sm:left-auto sm:right-6"
+      className="fixed bottom-6 left-6 z-[60] hidden max-w-lg rounded-2xl border border-border bg-white p-5 shadow-2xl lg:block"
     >
-      <h2 id="cookie-title" className="text-base font-semibold text-foreground">
+      <h2 id="cookie-title" className="text-base font-semibold text-brand-ink">
         Préférences de consentement
       </h2>
-      <p id="cookie-desc" className="mt-2 text-sm leading-relaxed text-muted">
+      <p id="cookie-desc" className="mt-2 text-sm leading-relaxed text-brand-ink/70">
         Nous utilisons des cookies essentiels au fonctionnement du site. Vous
         pouvez accepter l&apos;ensemble des catégories ou conserver uniquement
         l&apos;essentiel.
@@ -40,7 +40,7 @@ export function CookieConsent() {
       <div className="mt-4 flex flex-wrap gap-2">
         <button
           type="button"
-          className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-zinc-50"
+          className="rounded-lg border border-brand-ink/20 px-4 py-2 text-sm font-medium text-brand-ink hover:bg-brand-ink/5"
           onClick={() => {
             setConsent("essential");
             try {
@@ -54,7 +54,7 @@ export function CookieConsent() {
         </button>
         <button
           type="button"
-          className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white hover:opacity-90"
+          className="rounded-lg bg-brand-ink px-4 py-2 text-sm font-medium text-white hover:opacity-90"
           onClick={() => {
             setConsent("all");
             try {

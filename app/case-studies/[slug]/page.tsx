@@ -1,25 +1,54 @@
 import { DigitalPolePageShell } from "@/components/digital-services-landing/digital-pole-page-shell";
-import type { CaseStudyItem } from "@/components/digital-services-landing/digital-services-landing-content";
-import { getDigitalCaseStudyBySlug, getDigitalCaseStudySlugs } from "@/lib/case-studies-digital";
+import { ItPolePageShell } from "@/components/it-landing/it-pole-page-shell";
+import { SolutionsPolePageShell } from "@/components/technical-solutions-landing/solutions-pole-page-shell";
+import type { CaseStudyRecord } from "@/lib/case-studies-builders";
+import { getAllCaseStudySlugs, getCaseStudyRecordBySlug } from "@/lib/case-studies-catalog";
+import type { PoleId } from "@/lib/brand-design-system";
 import { BG_INK, PAGE_X, R_BTN, R_CARD, TEXT_INK, TEXT_INK_MUTED } from "@/lib/home-ui";
 import { absoluteUrl, getSiteUrl } from "@/lib/site";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { ReactNode } from "react";
 
-function caseStudyStructuredData(study: CaseStudyItem, slug: string) {
+function casClientsIndex(pole: PoleId): string {
+  if (pole === "it") return "/it/cas-clients";
+  if (pole === "solutions") return "/solutions/cas-clients";
+  return "/digital/cas-clients";
+}
+
+const CATEGORY_CLASS: Record<PoleId, string> = {
+  digital: "text-emerald-600",
+  solutions: "text-blue-600",
+  it: "text-purple-600",
+};
+
+const OUTCOME_DOT: Record<PoleId, string> = {
+  digital: "before:bg-emerald-500",
+  solutions: "before:bg-blue-500",
+  it: "before:bg-purple-500",
+};
+
+const BACK_LINK_DECO: Record<PoleId, string> = {
+  digital: "decoration-emerald-400/50 hover:decoration-emerald-500",
+  solutions: "decoration-blue-400/50 hover:decoration-blue-500",
+  it: "decoration-purple-400/50 hover:decoration-purple-500",
+};
+
+function caseStudyStructuredData(study: CaseStudyRecord, slug: string) {
   const pageUrl = absoluteUrl(`/case-studies/${slug}`);
+  const { pole: _p, ...article } = study;
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Article",
-        headline: study.title,
-        description: study.intro,
-        image: [study.imageSrc],
+        headline: article.title,
+        description: article.intro,
+        image: [article.imageSrc],
         url: pageUrl,
-        articleSection: study.category,
+        articleSection: article.category,
         inLanguage: "fr-FR",
         publisher: {
           "@type": "Organization",
@@ -40,12 +69,12 @@ function caseStudyStructuredData(study: CaseStudyItem, slug: string) {
             "@type": "ListItem",
             position: 2,
             name: "Cas clients",
-            item: absoluteUrl("/digital/cas-clients"),
+            item: absoluteUrl(casClientsIndex(study.pole)),
           },
           {
             "@type": "ListItem",
             position: 3,
-            name: study.title,
+            name: article.title,
             item: pageUrl,
           },
         ],
@@ -57,24 +86,28 @@ function caseStudyStructuredData(study: CaseStudyItem, slug: string) {
 type Props = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return getDigitalCaseStudySlugs().map((slug) => ({ slug }));
+  return getAllCaseStudySlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const study = getDigitalCaseStudyBySlug(slug);
+  const study = getCaseStudyRecordBySlug(slug);
   if (!study) return { title: "Cas client introuvable — Ovedex" };
   const canonical = absoluteUrl(`/case-studies/${slug}`);
   return {
     title: `${study.title} — Cas clients Ovedex`,
     description: study.intro,
+    authors: [{ name: "Ovedex", url: getSiteUrl() }],
+    robots: { index: true, follow: true },
     alternates: { canonical },
+    keywords: ["cas client", "Ovedex", study.category, study.title],
     openGraph: {
       title: study.title,
       description: study.intro,
       type: "article",
       url: canonical,
       locale: "fr_FR",
+      siteName: "Ovedex",
       images: [{ url: study.imageSrc, width: 1200, height: 800, alt: study.title }],
     },
     twitter: {
@@ -86,23 +119,34 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+function ShellForPole({ pole, children }: { pole: PoleId; children: ReactNode }) {
+  if (pole === "it") return <ItPolePageShell>{children}</ItPolePageShell>;
+  if (pole === "solutions") return <SolutionsPolePageShell>{children}</SolutionsPolePageShell>;
+  return <DigitalPolePageShell>{children}</DigitalPolePageShell>;
+}
+
 export default async function CaseStudyDetailPage({ params }: Props) {
   const { slug } = await params;
-  const study = getDigitalCaseStudyBySlug(slug);
+  const study = getCaseStudyRecordBySlug(slug);
   if (!study) notFound();
 
   const structuredData = caseStudyStructuredData(study, slug);
+  const pole = study.pole;
+  const dot = OUTCOME_DOT[pole];
+  const backDeco = BACK_LINK_DECO[pole];
 
   return (
-    <DigitalPolePageShell>
+    <ShellForPole pole={pole}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
       />
       <article>
         <div className={PAGE_X}>
           <div className="mx-auto max-w-3xl pb-16 pt-8 sm:pb-20 sm:pt-10 lg:pb-24">
-            <p className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-emerald-600">
+            <p className={`font-sans text-xs font-semibold uppercase tracking-[0.14em] ${CATEGORY_CLASS[pole]}`}>
               {study.category}
             </p>
             <h1 className="mt-3 font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[2.5rem] lg:leading-[1.12]">
@@ -138,7 +182,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
                     {study.outcomes.items.map((item) => (
                       <li
                         key={item}
-                        className="relative pl-7 text-base leading-relaxed before:absolute before:left-0 before:top-[0.35em] before:h-2 before:w-2 before:rounded-full before:bg-emerald-500"
+                        className={`relative pl-7 text-base leading-relaxed before:absolute before:left-0 before:top-[0.35em] before:h-2 before:w-2 before:rounded-full ${dot}`}
                       >
                         {item}
                       </li>
@@ -149,8 +193,8 @@ export default async function CaseStudyDetailPage({ params }: Props) {
 
               <div className="mt-12 flex flex-col gap-4 border-t border-black/[0.06] pt-10 sm:flex-row sm:items-center sm:justify-between">
                 <Link
-                  href="/digital/cas-clients"
-                  className={`text-sm font-semibold underline decoration-emerald-400/50 decoration-2 underline-offset-4 transition hover:decoration-emerald-500 ${TEXT_INK}`}
+                  href={casClientsIndex(pole)}
+                  className={`text-sm font-semibold underline decoration-2 underline-offset-4 transition ${backDeco} ${TEXT_INK}`}
                 >
                   Voir tous les cas clients
                 </Link>
@@ -165,6 +209,6 @@ export default async function CaseStudyDetailPage({ params }: Props) {
           </div>
         </div>
       </article>
-    </DigitalPolePageShell>
+    </ShellForPole>
   );
 }

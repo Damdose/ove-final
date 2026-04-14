@@ -109,7 +109,7 @@ export function SolutionsOfferingSection() {
                   className={`inline-flex h-14 min-w-[12rem] items-center justify-center ${R_BTN} px-6 text-lg font-medium text-white no-underline transition-opacity hover:opacity-92 active:outline-none`}
                   style={{ backgroundColor: INK }}
                 >
-                  Découvrir le service
+                  Découvrir nos services Solutions
                 </Link>
               </div>
             </div>

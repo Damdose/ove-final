@@ -1,78 +1,36 @@
-import Image from "next/image";
 import Link from "next/link";
+import { CaseStudyCard } from "@/components/case-studies/case-study-card";
+import { BRAND, POLE_THEMES } from "@/lib/brand-design-system";
+import { BTN_PRIMARY_INK, PAGE_X, SECTION_PAD, TEXT_INK } from "@/lib/home-ui";
 import { CASE_STUDIES } from "./data";
+
+const solutions = POLE_THEMES.solutions;
+const badge = `inline-flex items-center justify-center rounded-full px-3 py-1 font-sans text-xs font-semibold uppercase tracking-[0.14em] ${solutions.primary.bgClass} ${solutions.primary.textOnPrimaryClass}`;
 
 export function SolutionsCaseStudiesSection() {
   return (
-    <section className="bg-gray-50">
-      <div className="max-sm:px-[3%] px-[5%]">
-        <div className="max-sm:max-w-full w-full max-w-screen-xl mx-auto">
-          <div className="max-lg:py-24 max-md:py-16 py-32">
-            <div className="flex-col items-center [transform-style:preserve-3d]">
-              <div className="overflow-x-hidden overflow-y-hidden">
-                <div className="text-center justify-center items-center flex">
-                  <div className="w-full max-w-screen-md">
-                    <div>
-                      <div className="justify-center items-center inline-block text-white tracking-[1px] uppercase font-sans text-xs font-medium leading-4 px-3 py-1 rounded-[100px] bg-blue-400">
-                        Cas clients
-                      </div>
-                    </div>
-                    <div>
-                      <h2 className="mt-5 max-lg:text-5xl max-md:text-4xl max-sm:text-3xl text-brand-ink font-display text-5xl font-bold leading-tight mb-16">
-                        Études de cas clients
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div>
-                  <div
-                    role="list"
-                    className="max-sm:grid-cols-[1fr] gap-x-4 gap-y-4 grid-rows-[auto] grid-cols-[1fr_1fr_1fr] auto-cols-[1fr] grid"
-                  >
-                    {CASE_STUDIES.map((item) => (
-                      <div key={item.href} role="listitem">
-                        <div className="bg-white flex-col items-stretch h-full min-h-[auto] flex p-5 rounded-[30px] border">
-                          <Link
-                            href={item.href}
-                            className="text-purple-200 cursor-pointer font-light max-w-full flex-col justify-start h-full no-underline flex active:outline-0 hover:outline-0"
-                          >
-                            <div className="w-full overflow-x-hidden overflow-y-hidden">
-                              <Image
-                                src={item.imageSrc}
-                                loading="lazy"
-                                alt=""
-                                width={960}
-                                height={640}
-                                className="inline-block aspect-[3/2] object-cover w-full h-full rounded-[30px]"
-                              />
-                            </div>
-                            <div className="max-sm:px-5 flex-col flex-1 justify-between flex p-6">
-                              <div>
-                                <div className="flex mb-2">
-                                  <div className="text-base leading-6 mb-2.5 font-display font-medium px-4 py-0.5 rounded-[100px] text-blue-400 bg-blue-200">
-                                    Solutions
-                                  </div>
-                                </div>
-                                <div className="mb-2">
-                                  <h3 className="mt-5 max-md:text-xl text-brand-ink font-display text-2xl font-semibold leading-snug mb-8">
-                                    {item.title}
-                                  </h3>
-                                </div>
-                                <div className="text-brand-ink text-base font-light leading-6">{item.excerpt}</div>
-                              </div>
-                              <div className="text-brand-ink text-left text-base font-medium mt-10">
-                                -&gt; &nbsp;Lire plus
-                              </div>
-                            </div>
-                          </Link>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+    <section className={BRAND.canvas.bgClass}>
+      <div className={PAGE_X}>
+        <div className="mx-auto w-full max-w-screen-xl">
+          <div className={SECTION_PAD}>
+            <div className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
+              <div className={badge}>Cas clients</div>
+              <h2 className={`mt-5 font-display text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl ${TEXT_INK}`}>
+                Études de cas clients
+              </h2>
+              <p className={`mx-auto mt-4 max-w-2xl text-base leading-relaxed opacity-90 sm:text-lg ${TEXT_INK}`}>
+                Installations courants faibles, sûreté et supervision : retours d’expérience sur des contextes exigeants.
+              </p>
+            </div>
+            <div role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+              {CASE_STUDIES.map((study, index) => (
+                <CaseStudyCard key={study.href} study={study} imagePriority={index < 3} poleAccent="solutions" />
+              ))}
+            </div>
+            <div className="mt-10 flex justify-center sm:mt-12">
+              <Link href="/solutions/cas-clients" className={BTN_PRIMARY_INK}>
+                Voir la page cas clients
+              </Link>
             </div>
           </div>
         </div>

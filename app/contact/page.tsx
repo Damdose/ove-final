@@ -3,9 +3,17 @@ import { MarketingSiteLayout } from "@/components/technology-group-home/marketin
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contactez-nous — Ovedex",
+  title: "Contactez-nous",
   description:
     "Téléphone, e-mail, WhatsApp et formulaire : contactez l’équipe Ovedex pour vos projets Digital, Solutions et IT.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contactez-nous — Ovedex",
+    description:
+      "Téléphone, e-mail, WhatsApp et formulaire : contactez l’équipe Ovedex pour vos projets Digital, Solutions et IT.",
+    type: "website",
+    url: "/contact",
+  },
 };
 
 export default function ContactPage() {

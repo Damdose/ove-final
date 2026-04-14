@@ -1,81 +1,105 @@
 import Image from "next/image";
 import Link from "next/link";
-import { RING_SOFT, SHADOW_SURFACE } from "@/lib/home-ui";
-
-const HERO_ICON_SRC =
-  "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/692c7570006b6004ba728e21_Icon%20(27).svg";
-const HERO_IMAGE_SRC =
-  "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/692e4617ef4052eb32f30eeb_unnamed%20(14).jpg";
-const BLUR_GRADIENT_SRC =
-  "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/691e5a2f4ad9018806391cc3_Blur%20Gradient%20(2).svg";
+import { BRAND } from "@/lib/brand-design-system";
+import {
+  BD_CARD,
+  BG_INK,
+  BTN_PRIMARY_INK,
+  PAGE_X,
+  R_CARD,
+  RING_SOFT,
+  SHADOW_MEDIA,
+  SHADOW_SURFACE,
+  TEXT_INK,
+  TEXT_INK_MUTED,
+} from "@/lib/home-ui";
+import { PARTNER_LOGOS, SOLUTIONS_HERO_ICON_SRC, SOLUTIONS_HERO_IMAGE_SRC } from "./technical-solutions-landing-content";
 
 export function SolutionsHero() {
   return (
-    <header className="max-sm:overflow-x-hidden max-sm:overflow-y-hidden max-sm:pt-0 relative pt-5">
-      <div className="max-sm:px-[3%] px-[5%]">
-        <div
-          className={`mx-auto w-full max-w-screen-xl max-sm:max-w-full max-sm:px-0 rounded-3xl bg-blue-200 px-16 ${RING_SOFT} ${SHADOW_SURFACE}`}
-        >
-          <div className="max-sm:pt-4 max-sm:px-5 pt-20 pb-28">
-            <div>
-              <div className="max-lg:min-h-[auto] grid grid-rows-[auto] auto-cols-[1fr] items-center max-sm:flex-col max-sm:flex gap-x-8 gap-y-8 grid-cols-[1.25fr_1fr]">
-                <div>
-                  <div>
-                    <Image
-                      src={HERO_ICON_SRC}
-                      loading="lazy"
-                      alt=""
-                      width={48}
-                      height={48}
-                      className="inline-block"
-                    />
-                    <h1 className="text-brand-ink mt-5 mb-2.5 max-lg:text-6xl max-lg:leading-[72px] max-md:text-4xl max-md:leading-10 max-sm:text-4xl max-sm:leading-10 max-sm:mt-6 max-sm:mb-8 font-display text-5xl font-bold leading-[65px]">
-                      Solutions techniques pour PME, ETI et sites sensibles
-                    </h1>
-                  </div>
-                  <p className="text-brand-ink font-sans text-lg font-light leading-7 mb-10 max-sm:pr-0 pr-10">
-                    Conception, intégration et ingénierie en courants faibles : Ovedex Solutions accompagne les
-                    entreprises, collectivités et structures exigeantes dans la mise en place de systèmes techniques
-                    sûrs, fiables et pérennes.
-                  </p>
-                  <div>
-                    <div className="gap-x-3 gap-y-3 flex-wrap items-center flex mt-6">
-                      <Link
-                        href="/contact"
-                        className="cursor-pointer py-2.5 justify-center items-center h-16 text-lg no-underline flex px-5 rounded-2xl active:outline-0 hover:outline-0 text-brand-ink bg-white"
-                      >
-                        Contacter un expert
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  id="w-node-ac8b4c9c-b2a0-a996-e77e-11a78010f431-214350f8"
-                  className="max-sm:order-first"
+    <header className={`relative overflow-x-clip ${BRAND.canvas.bgClass}`}>
+      <div className={PAGE_X}>
+        <div className="mx-auto w-full max-w-screen-xl pt-4 pb-8 sm:pt-6 sm:pb-10 lg:pt-8 lg:pb-12">
+          <div className={`overflow-hidden bg-blue-200 ${R_CARD} ${BD_CARD} ${RING_SOFT} ${SHADOW_SURFACE}`}>
+            <div
+              className={`grid grid-cols-1 items-center gap-x-10 gap-y-10 px-5 pt-6 pb-5 sm:px-10 sm:pt-8 sm:pb-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-x-14 lg:gap-y-12 lg:px-14 lg:pt-10 lg:pb-8`}
+            >
+              <div className="order-2 lg:order-1">
+                <Image
+                  src={SOLUTIONS_HERO_ICON_SRC}
+                  width={64}
+                  height={64}
+                  loading="lazy"
+                  alt=""
+                  className="inline-block rounded-[200px]"
+                />
+                <h1
+                  className={`mt-5 max-w-[24ch] font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl sm:leading-[1.12] lg:mt-6 lg:text-5xl lg:leading-[1.08] ${TEXT_INK}`}
                 >
-                  <Image
-                    sizes="(max-width: 1024px) 100vw, 1024px"
-                    src={HERO_IMAGE_SRC}
-                    alt=""
-                    width={1024}
-                    height={1024}
-                    loading="lazy"
-                    className="inline-block aspect-[1] object-cover w-full h-full rounded-3xl max-sm:hidden"
-                  />
+                  Solutions techniques pour PME, ETI et sites sensibles
+                </h1>
+                <p
+                  className={`mt-5 max-w-xl font-sans text-base font-normal leading-relaxed sm:mt-6 sm:text-lg lg:leading-8 ${TEXT_INK_MUTED}`}
+                >
+                  Conception, intégration et ingénierie en courants faibles : Ovedex Solutions accompagne les entreprises,
+                  collectivités et structures exigeantes dans la mise en place de systèmes techniques sûrs, fiables et
+                  pérennes.
+                </p>
+                <div className="mt-8 sm:mt-10">
+                  <Link href="/contact" className={BTN_PRIMARY_INK}>
+                    Contacter un expert
+                  </Link>
+                </div>
+              </div>
+
+              <div
+                className={`relative order-1 mx-auto w-full max-w-md lg:order-2 lg:mx-0 lg:max-w-none ${R_CARD} ${SHADOW_MEDIA}`}
+              >
+                <Image
+                  sizes="(max-width: 1024px) 100vw, 1024px"
+                  alt=""
+                  src={SOLUTIONS_HERO_IMAGE_SRC}
+                  width={1024}
+                  height={1024}
+                  loading="lazy"
+                  className={`aspect-[16/10] w-full object-cover lg:aspect-square ${R_CARD}`}
+                />
+              </div>
+            </div>
+
+            <div className={`group border-t border-black/[0.08] ${BG_INK} py-4 sm:py-5`} role="region" aria-label="Logos de clients et partenaires">
+              <div className="logo-marquee-outer">
+                <div className="logo-marquee-track gap-x-14 px-4 group-hover:[animation-play-state:paused] sm:gap-x-20 sm:px-6">
+                  {PARTNER_LOGOS.map((logo, i) => (
+                    <Image
+                      key={`sol-hero-marquee-a-${i}`}
+                      loading="eager"
+                      src={logo.src}
+                      alt=""
+                      width={logo.width}
+                      height={logo.height}
+                      className="max-h-9 w-auto max-w-[7.5rem] shrink-0 object-contain brightness-0 invert sm:max-h-10 sm:max-w-[8.5rem]"
+                      aria-hidden
+                    />
+                  ))}
+                  {PARTNER_LOGOS.map((logo, i) => (
+                    <Image
+                      key={`sol-hero-marquee-b-${i}`}
+                      loading="eager"
+                      src={logo.src}
+                      alt=""
+                      width={logo.width}
+                      height={logo.height}
+                      className="max-h-9 w-auto max-w-[7.5rem] shrink-0 object-contain brightness-0 invert sm:max-h-10 sm:max-w-[8.5rem]"
+                      aria-hidden
+                    />
+                  ))}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Image
-        src={BLUR_GRADIENT_SRC}
-        loading="lazy"
-        alt=""
-        width={800}
-        height={400}
-        className="inline-block max-sm:overflow-x-hidden max-sm:overflow-y-hidden max-sm:left-auto max-sm:top-[0%] z-[-1] absolute left-[12%] top-[-13%] h-auto w-[min(80vw,720px)]"
-      />
     </header>
   );
 }

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { POLE_ORDER, POLE_THEMES, type PoleId } from "@/lib/brand-design-system";
 import { INK, R_BTN, STICKY_POLE_NAV } from "@/lib/home-ui";
 import { useCallback, useState } from "react";
-import { IT_LOGO_SRC } from "./it-landing-content";
+import { IT_LOGO_SRC } from "./it-landing-data";
 
 function poleHref(p: PoleId): string {
   return `/${p}`;
@@ -57,7 +57,7 @@ export function ItPageBanner() {
             href="/"
             className={`flex h-10 items-center justify-center border border-black/10 bg-neutral-50 px-4 text-sm font-medium text-brand-ink no-underline transition hover:bg-neutral-100 ${R_BTN}`}
           >
-            ADN
+            À propos
           </Link>
           <Link
             href="/contact"
@@ -113,7 +113,7 @@ export function ItPageBanner() {
                 className={`flex h-12 items-center justify-center border border-black/10 bg-neutral-50 text-sm font-medium text-brand-ink no-underline ${R_BTN}`}
                 onClick={closeMenu}
               >
-                ADN
+                À propos
               </Link>
               <Link
                 href="/contact"

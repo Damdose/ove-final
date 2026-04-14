@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { BENEFIT_CARDS, PARTNER_LOGOS } from "./technical-solutions-landing-content";
 
-function LogoRow() {
+function LogoSet() {
   return (
-    <div className="gap-x-20 gap-y-20 flex-none items-center animate-[scroll_30s_linear_infinite] flex pl-20 group-hover:[animation-play-state:paused]">
+    <>
       {PARTNER_LOGOS.map((logo) => (
         <Image
           key={logo.src}
@@ -12,16 +12,16 @@ function LogoRow() {
           alt={logo.alt}
           width={logo.width}
           height={logo.height}
-          className="inline-block brightness-[0%] max-w-24"
+          className="inline-block brightness-[0%] max-w-24 flex-shrink-0"
         />
       ))}
-    </div>
+    </>
   );
 }
 
 function SolutionsBenefitsGrid() {
   return (
-    <div className="max-md:gap-y-12 max-md:grid-cols-[1fr] max-sm:gap-x-6 max-sm:gap-y-6 gap-x-8 gap-y-8 grid-rows-[auto] grid-cols-[1fr_1fr_1fr] auto-cols-[1fr] [align-items:start] justify-items-center grid">
+    <div className="grid auto-cols-[1fr] grid-cols-1 grid-rows-[auto] gap-x-6 gap-y-12 [align-items:start] justify-items-center md:grid-cols-3 md:gap-x-8 md:gap-y-8">
       {BENEFIT_CARDS.map((card) => (
         <div
           key={card.title + (card.titleLine2 ?? "")}
@@ -63,26 +63,23 @@ function SolutionsBenefitsGrid() {
 export function SolutionsPartnersMarquee() {
   return (
     <section className="bg-white">
-      <div className="max-sm:px-[3%] px-[5%]">
-        <div className="max-sm:max-w-full w-full max-w-screen-xl mx-auto">
-          <div className="2xl:pb-32 pt-20 pb-28">
-            <div className="max-sm:-mt-40 bg-brand-ink relative -mt-28 py-8 rounded-[30px] max-sm:mx-5 mb-20 mx-16">
-              <div className="overflow-x-hidden overflow-y-hidden">
-                <div className="flex relative group">
-                  <LogoRow />
-                  <LogoRow />
-                  <div className="before:content-[&quot;_&quot;] before:row-start-1 before:col-start-1 before:row-end-2 before:col-end-2 before:table after:content-[&quot;_&quot;] after:row-start-1 after:col-start-1 after:row-end-2 after:col-end-2 after:table after:clear-both" />
-                  <div className="bg-[linear-gradient(to_right,#0e0c1500)] w-20 absolute left-[0%] inset-y-[0%]" />
-                  <div className="bg-[linear-gradient(to_right,#0e0c1500)] w-20 absolute rotate-180 right-[0%] inset-y-[0%]" />
+      <div className="px-[3%] sm:px-[5%]">
+        <div className="mx-auto w-full max-w-screen-xl">
+          <div className="pb-28 pt-20 2xl:pb-32">
+            <div className="relative -mt-40 mx-5 mb-20 rounded-[30px] bg-brand-ink py-8 sm:-mt-28 sm:mx-16">
+              <div className="logo-marquee-outer relative group">
+                <div className="logo-marquee-track gap-x-20" style={{ animationDuration: "30s" }}>
+                  <LogoSet />
+                  <LogoSet />
                 </div>
               </div>
             </div>
             <div>
               <div className="overflow-x-hidden overflow-y-hidden">
                 <div className="text-center justify-center items-center flex">
-                  <div className="w-full max-sm:mb-8 max-w-4xl mb-12 [transform-style:preserve-3d]">
+                  <div className="mb-8 w-full max-w-4xl [transform-style:preserve-3d] sm:mb-12">
                     <div>
-                      <h2 className="mt-5 max-lg:text-5xl max-md:text-4xl max-sm:text-3xl max-sm:mb-0 text-brand-ink font-display text-5xl font-bold leading-tight mb-8">
+                      <h2 className="mt-5 mb-0 font-display text-3xl font-bold leading-tight text-brand-ink sm:mb-8 md:text-4xl lg:text-5xl">
                         Pourquoi choisir Ovedex Solutions ?
                       </h2>
                     </div>

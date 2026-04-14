@@ -4,8 +4,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Mentions légales — Ovedex",
+  title: "Mentions légales",
   description: "Informations sur l’éditeur du site, l’hébergement et la propriété intellectuelle.",
+  robots: { index: false, follow: true },
+  alternates: { canonical: "/mentions-legales" },
 };
 
 export default function MentionsLegalesPage() {

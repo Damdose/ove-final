@@ -2,64 +2,72 @@ import Image from "next/image";
 import Link from "next/link";
 import { GTB_BULLETS, GTB_IMAGE_SRC } from "./technical-solutions-landing-content";
 
+const GTB_BG =
+  "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/692c58203f71462c74b79fbd/_Rectangle%205959%20/(7/').avif";
+
 export function SolutionsGtbSection() {
   return (
-    <section className="max-sm:bg-[0_0] bg-[100%] bg-no-repeat max-sm:bg-none max-sm:bg-repeat bg-[url('https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/692c58203f71462c74b79fbd/_Rectangle%205959%20/(7/').avif')]">
-      <div className="max-sm:px-[3%] px-[5%]">
-        <div className="max-sm:max-w-full w-full max-w-screen-xl mx-auto">
-          <div className="max-lg:py-24 max-md:py-16 py-32">
+    <section className="relative bg-gray-50">
+      <div
+        className="pointer-events-none absolute inset-0 hidden bg-[length:100%] bg-[position:0_0] bg-no-repeat sm:block"
+        style={{ backgroundImage: `url('${GTB_BG}')` }}
+        aria-hidden
+      />
+      <div className="relative z-10 px-[3%] sm:px-[5%]">
+        <div className="mx-auto w-full max-w-screen-xl">
+          <div className="py-16 md:py-24 lg:py-32">
             <div>
-              <div className="max-lg:gap-x-12 max-lg:min-h-[auto] max-md:gap-y-12 max-md:grid-cols-[1fr] gap-x-32 gap-y-16 grid-rows-[auto] grid-cols-[1fr_1fr] auto-cols-[1fr] items-center justify-items-stretch grid">
+              <div className="grid auto-cols-[1fr] grid-cols-1 grid-rows-[auto] items-center justify-items-stretch gap-y-12 md:grid-cols-2 md:gap-x-12 lg:gap-x-32 lg:gap-y-16">
                 <div>
                   <div>
-                    <div className="justify-center items-center inline-block text-white tracking-[1px] uppercase font-sans text-xs font-medium leading-4 px-3 py-1 rounded-[100px] bg-blue-400">
+                    <div className="inline-block rounded-[100px] bg-blue-400 px-3 py-1 font-sans text-xs font-medium uppercase leading-4 tracking-[1px] text-white">
                       Solutions
                     </div>
                   </div>
                   <div>
-                    <h2 className="mt-5 max-lg:text-5xl max-md:text-4xl max-sm:text-3xl max-sm:mb-0 text-brand-ink font-display text-5xl font-bold leading-tight mb-8">
+                    <h2 className="mt-5 mb-0 font-display text-3xl font-bold leading-tight text-brand-ink sm:mb-8 md:text-4xl lg:text-5xl">
                       GTB, audiovisuel & solutions techniques avancées
                     </h2>
                   </div>
                   <div>
-                    <p className="max-md:text-base text-brand-ink font-sans text-base font-light leading-7 mb-5">
+                    <p className="mb-5 font-sans text-base font-light leading-7 text-brand-ink lg:text-lg">
                       Nous intégrons des systèmes intelligents pour optimiser le confort, la gestion
                       énergétique et les opérations : GTB/GTC, salles de réunion, affichage dynamique,
                       sonorisation et automatisation.
                     </p>
                   </div>
-                  <div className="gap-x-4 gap-y-4 grid-rows-[auto] grid-cols-[1fr] auto-cols-[1fr] font-display text-lg font-bold leading-6 flex mt-5 mb-16 py-2 flex-col">
+                  <div className="mt-5 flex flex-col gap-x-4 gap-y-4 py-2 font-display text-lg font-bold leading-6">
                     {GTB_BULLETS.map((item, index) => (
                       <div
                         key={item.text}
                         id={item.id}
                         className={
                           index === 1
-                            ? "gap-x-4 gap-y-4 justify-start items-center w-full flex"
-                            : "gap-x-4 gap-y-4 justify-start items-center w-full flex [align-self:start]"
+                            ? "flex w-full items-center justify-start gap-x-4 gap-y-4"
+                            : "flex w-full [align-self:start] items-center justify-start gap-x-4 gap-y-4"
                         }
                       >
-                        <div className="flex gap-x-5 gap-y-5 justify-start items-center">
+                        <div className="flex items-center justify-start gap-x-5 gap-y-5">
                           <Image
                             src={item.iconSrc}
                             loading="lazy"
                             alt=""
                             width={40}
                             height={40}
-                            className="inline-block bg-brand-ink [border-style:#fff] p-2 rounded-[40px] border"
+                            className="inline-block rounded-[40px] border bg-brand-ink p-2 [border-style:#fff]"
                           />
                         </div>
-                        <div className="justify-start items-center flex">
-                          <p className="font-sans dark:text-brand-ink dark:font-medium">{item.text}</p>
+                        <div className="flex items-center justify-start">
+                          <p className="font-sans dark:font-medium dark:text-brand-ink">{item.text}</p>
                         </div>
                       </div>
                     ))}
                   </div>
                   <div>
-                    <div className="gap-x-3 gap-y-3 flex-wrap items-center flex mt-6">
+                    <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-3">
                       <Link
                         href="/contact"
-                        className="text-white cursor-pointer py-2.5 bg-brand-ink justify-center items-center h-16 text-lg no-underline flex px-5 rounded-2xl active:outline-0 hover:outline-0"
+                        className="flex h-16 cursor-pointer items-center justify-center rounded-2xl bg-brand-ink px-5 py-2.5 text-lg text-white no-underline active:outline-0 hover:outline-0"
                       >
                         Contacter un expert
                       </Link>
@@ -68,7 +76,7 @@ export function SolutionsGtbSection() {
                 </div>
                 <div
                   id="w-node-_90dd0f8d-75ce-61fb-9036-2a84053824a1-214350f8"
-                  className="max-sm:order-first [transform-style:preserve-3d]"
+                  className="order-first [transform-style:preserve-3d] lg:order-none"
                 >
                   <Image
                     sizes="(max-width: 1024px) 100vw, 1024px"
@@ -77,7 +85,7 @@ export function SolutionsGtbSection() {
                     width={1024}
                     height={1024}
                     loading="lazy"
-                    className="inline-block aspect-[1] object-cover w-full h-full rounded-3xl"
+                    className="inline-block aspect-[1] h-full w-full rounded-3xl object-cover"
                   />
                 </div>
               </div>

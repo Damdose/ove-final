@@ -51,10 +51,10 @@ export function SiteBanner() {
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <nav className="hidden items-center gap-3 lg:flex" aria-label="Actions">
             <Link
-              href="/adn"
+              href="/a-propos"
               className={`flex h-10 items-center justify-center ${R_BTN} border border-black/10 bg-neutral-50 px-4 text-sm font-medium text-[#0D0B4A] no-underline transition hover:bg-neutral-100`}
             >
-              ADN
+              À propos
             </Link>
             <Link
               href="/contact"
@@ -97,12 +97,31 @@ export function SiteBanner() {
             className={`absolute left-0 right-0 top-full z-50 border-b border-black/[0.06] bg-white px-[5%] py-5 ${SHADOW_POP} lg:hidden`}
           >
             <nav className="mx-auto flex max-w-screen-xl flex-col gap-3" aria-label="Menu mobile">
+              <p className="px-1 text-xs font-semibold uppercase tracking-widest text-black/40">
+                Nos pôles
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {POLE_ORDER.map((poleId) => {
+                  const theme = POLE_THEMES[poleId];
+                  return (
+                    <Link
+                      key={poleId}
+                      href={`/${poleId}`}
+                      className={theme.navPillClass}
+                      onClick={closeMenu}
+                    >
+                      {theme.label}
+                    </Link>
+                  );
+                })}
+              </div>
+              <div className="my-1 border-t border-black/[0.06]" />
               <Link
-                href="/adn"
+                href="/a-propos"
                 className={`flex h-12 items-center justify-center ${R_BTN} border border-black/10 bg-neutral-50 text-sm font-medium text-[#0D0B4A] no-underline`}
                 onClick={closeMenu}
               >
-                ADN
+                À propos
               </Link>
               <Link
                 href="/contact"

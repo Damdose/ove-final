@@ -2,7 +2,7 @@ import { CaseStudyCard } from "@/components/case-studies/case-study-card";
 import { BRAND } from "@/lib/brand-design-system";
 import { BTN_PRIMARY_INK, PAGE_X, SECTION_PAD, TEXT_INK } from "@/lib/home-ui";
 import Link from "next/link";
-import { CASE_STUDIES } from "./digital-services-landing-content";
+import { CASE_STUDIES_LANDING } from "./digital-services-landing-content";
 
 export function DigitalLandingCaseStudiesSection() {
   return (
@@ -22,7 +22,7 @@ export function DigitalLandingCaseStudiesSection() {
               </p>
             </div>
             <div role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-              {CASE_STUDIES.map((study, index) => (
+              {CASE_STUDIES_LANDING.map((study, index) => (
                 <CaseStudyCard key={study.slug} study={study} imagePriority={index < 3} />
               ))}
             </div>

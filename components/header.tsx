@@ -18,7 +18,7 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link
           href="#accueil"
-          className="text-sm font-semibold tracking-[0.2em] text-foreground"
+          className="text-base sm:text-sm font-semibold tracking-[0.2em] text-foreground"
           onClick={() => setOpen(false)}
         >
           OVEDEX

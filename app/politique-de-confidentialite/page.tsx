@@ -4,8 +4,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Politique de confidentialité — Ovedex",
+  title: "Politique de confidentialité",
   description: "Modalités de collecte et de traitement des données personnelles sur le site Ovedex.",
+  robots: { index: false, follow: true },
+  alternates: { canonical: "/politique-de-confidentialite" },
 };
 
 export default function PolitiqueConfidentialitePage() {

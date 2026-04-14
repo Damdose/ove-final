@@ -1,15 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { CaseStudyItem } from "@/components/digital-services-landing/digital-services-landing-content";
+import type { CaseStudyItem } from "@/lib/case-study-item";
 import { BD_CARD, R_CARD, SHADOW_SURFACE, SHADOW_SURFACE_HOVER, TEXT_INK } from "@/lib/home-ui";
 
+export type CaseStudyCardStudy = Pick<CaseStudyItem, "href" | "imageSrc" | "category" | "title" | "excerpt">;
+
 type Props = {
-  study: Pick<CaseStudyItem, "href" | "imageSrc" | "category" | "title" | "excerpt">;
+  study: CaseStudyCardStudy;
   /** Premières cartes visibles : améliore le LCP sur les grilles cas clients */
   imagePriority?: boolean;
+  /** Pastille catégorie : couleur pôle Digital (défaut), Solutions ou IT. */
+  poleAccent?: "digital" | "solutions" | "it";
 };
 
-export function CaseStudyCard({ study, imagePriority = false }: Props) {
+const CATEGORY_PILL: Record<NonNullable<Props["poleAccent"]>, string> = {
+  digital: "bg-emerald-100 text-emerald-800",
+  solutions: "bg-blue-200 text-blue-800",
+  it: "bg-purple-200 text-purple-900",
+};
+
+export function CaseStudyCard({ study, imagePriority = false, poleAccent = "digital" }: Props) {
   return (
     <div
       role="listitem"
@@ -33,7 +43,9 @@ export function CaseStudyCard({ study, imagePriority = false }: Props) {
         <div className="flex flex-1 flex-col justify-between p-4 sm:p-6">
           <div>
             <div className="mb-3">
-              <span className="inline-block rounded-full bg-emerald-100 px-3 py-0.5 font-display text-sm font-semibold text-emerald-800">
+              <span
+                className={`inline-block rounded-full px-3 py-0.5 font-display text-sm font-semibold ${CATEGORY_PILL[poleAccent]}`}
+              >
                 {study.category}
               </span>
             </div>

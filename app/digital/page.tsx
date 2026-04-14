@@ -2,20 +2,22 @@ import { DigitalServicesLandingPage } from "@/components/digital-services-landin
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Digital",
+  title: "Pôle Digital — Création web, SEO & réseaux sociaux",
   description:
-    "Ovedex: Optimisez Votre Expérience avec Des services Exceptionnels. Ensemble, développons votre entreprise avec les technologies d’aujourd’hui et de demain.",
+    "Ovedex Digital : création de sites web, SEO, gestion des réseaux sociaux, Google Ads, Meta Ads et création de contenus pour accélérer votre croissance en ligne.",
+  alternates: { canonical: "/digital" },
   openGraph: {
-    title: "Digital",
+    title: "Pôle Digital — Création web, SEO & réseaux sociaux",
     description:
-      "Ovedex: Optimisez Votre Expérience avec Des services Exceptionnels. Ensemble, développons votre entreprise avec les technologies d’aujourd’hui et de demain.",
+      "Ovedex Digital : création de sites web, SEO, gestion des réseaux sociaux, Google Ads, Meta Ads et création de contenus pour accélérer votre croissance en ligne.",
     type: "website",
+    url: "/digital",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Digital",
+    title: "Pôle Digital — Création web, SEO & réseaux sociaux",
     description:
-      "Ovedex: Optimisez Votre Expérience avec Des services Exceptionnels. Ensemble, développons votre entreprise avec les technologies d’aujourd’hui et de demain.",
+      "Ovedex Digital : création de sites web, SEO, gestion des réseaux sociaux, Google Ads, Meta Ads et création de contenus pour accélérer votre croissance en ligne.",
   },
 };
 

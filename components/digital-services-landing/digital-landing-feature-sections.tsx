@@ -42,7 +42,7 @@ export function DigitalLandingFeatureSections() {
           <div className="mx-auto w-full max-w-screen-xl">
             <div className={SECTION_PAD}>
               <div className="grid grid-cols-1 items-center gap-x-12 gap-y-12 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-16">
-                <div className="max-sm:order-2">
+                <div className="order-2 lg:order-1">
                   <div
                     className={`inline-flex items-center rounded-lg px-3 py-1.5 font-sans text-xs font-semibold uppercase tracking-[0.16em] ${digital.primary.bgClass} ${digital.primary.textOnPrimaryClass}`}
                   >
@@ -72,7 +72,7 @@ export function DigitalLandingFeatureSections() {
                 </div>
                 <div
                   id="w-node-c4b2b98c-d316-2557-8fdf-9dd2b92c7aa5-6e0b5dcc"
-                  className="relative max-sm:order-1 isolate min-h-[260px] sm:min-h-[320px] lg:min-h-0"
+                  className="relative order-1 lg:order-2 isolate min-h-[260px] sm:min-h-[320px] lg:min-h-0"
                 >
                   <div
                     aria-hidden
@@ -104,7 +104,7 @@ export function DigitalLandingFeatureSections() {
             <div className={SECTION_PAD}>
               <div className="grid grid-cols-1 items-center gap-x-12 gap-y-12 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-16">
                 <div
-                  className="relative max-sm:order-1 isolate min-h-[260px] sm:min-h-[320px] lg:min-h-0"
+                  className="relative order-1 isolate min-h-[260px] sm:min-h-[320px] lg:min-h-0"
                   id="digital-feature-visuel-media"
                 >
                   <div
@@ -125,7 +125,7 @@ export function DigitalLandingFeatureSections() {
                     />
                   </div>
                 </div>
-                <div className="max-sm:order-2">
+                <div className="order-2 lg:order-2">
                   <div
                     className={`inline-flex items-center rounded-full px-3 py-1 font-sans text-xs font-semibold uppercase tracking-[0.14em] ${VIDEO_TEAL} text-white`}
                   >
@@ -158,7 +158,7 @@ export function DigitalLandingFeatureSections() {
           <div className="mx-auto w-full max-w-screen-xl">
             <div className={SECTION_PAD}>
               <div className="grid grid-cols-1 items-center gap-x-12 gap-y-12 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-16">
-                <div className="max-sm:order-2">
+                <div className="order-2 lg:order-1">
                   <div className="inline-flex items-center rounded-lg bg-[#58c4b6] px-3 py-1.5 font-sans text-xs font-bold uppercase tracking-[0.16em] text-white">
                     Digital
                   </div>
@@ -191,7 +191,7 @@ export function DigitalLandingFeatureSections() {
                 </div>
                 <div
                   id="w-node-_90dd0f8d-75ce-61fb-9036-2a84053824a1-6e0b5dcc"
-                  className="relative max-sm:order-1 isolate min-h-[260px] sm:min-h-[320px] lg:min-h-0"
+                  className="relative order-1 lg:order-2 isolate min-h-[260px] sm:min-h-[320px] lg:min-h-0"
                 >
                   <div
                     aria-hidden

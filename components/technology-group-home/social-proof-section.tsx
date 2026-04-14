@@ -40,7 +40,7 @@ export function SocialProofSection() {
     <section className="bg-[#f4f5f7]">
       <div className={`mx-auto w-full max-w-screen-xl ${PAGE_X}`}>
         <div className={SECTION_PAD}>
-            <h2 className="mx-auto mb-10 max-w-4xl text-center font-display text-[1.35rem] font-bold leading-snug tracking-tight text-[#0D0B4A] sm:mb-14 sm:text-4xl sm:leading-[1.2] lg:mb-16 lg:text-[2.35rem] lg:leading-tight">
+            <h2 className="mx-auto mb-10 hidden max-w-4xl text-center font-display text-[1.35rem] font-bold leading-snug tracking-tight text-[#0D0B4A] sm:mb-14 sm:block sm:text-4xl sm:leading-[1.2] lg:mb-16 lg:text-[2.35rem] lg:leading-tight">
               Des solutions techniques de pointe, guidées par le savoir-être, la collaboration
               et la passion du service.
             </h2>

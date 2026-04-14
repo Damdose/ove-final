@@ -1,46 +1,40 @@
+import { ClosingCtaSection } from "@/components/technology-group-home/closing-cta-section";
 import { ConsentPreferencesPanel } from "@/components/technology-group-home/consent-preferences-panel";
+import { MobileStickyCta } from "@/components/technology-group-home/mobile-sticky-cta";
+import { SiteFooter } from "@/components/technology-group-home/site-footer";
+import { TestimonialsCarousel } from "@/components/technology-group-home/testimonials-carousel";
+import { BRAND } from "@/lib/brand-design-system";
 import { SolutionsCaseStudiesSection } from "./solutions-case-studies-section";
-import { SolutionsDiscoveryCtaSection } from "./solutions-discovery-cta-section";
-import { SolutionsFaqSection } from "./solutions-faq-section";
-import { SolutionsFeatureColumns } from "./solutions-feature-columns";
 import { SolutionsHero } from "./solutions-hero";
-import { SolutionsLogoMarquee } from "./solutions-logo-marquee";
-import { SolutionsMarketingFooter } from "./solutions-marketing-footer";
-import { SolutionsPageBanner } from "./solutions-page-banner";
-import { SolutionsPageTestimonials } from "./solutions-page-testimonials";
-import { SolutionsSectorsSection } from "./solutions-sectors-section";
-import { SolutionsServicesCarousel } from "./solutions-services-carousel";
-import { SolutionsWhySection } from "./solutions-why-section";
+import { SolutionsLandingFaqSection } from "./solutions-landing-faq-section";
+import { SolutionsLandingFeatureSections } from "./solutions-landing-feature-sections";
+import { SolutionsLandingPartnersWhy } from "./solutions-landing-partners-why";
+import { SolutionsLandingSectors } from "./solutions-landing-sectors";
+import { SolutionsLandingServicesCarousel } from "./solutions-landing-services-carousel";
+import { SolutionsTopNavigation } from "./solutions-top-navigation";
 
-/**
- * Page « solutions techniques » alignée sur le gabarit Webflow /solutions (fond clair).
- */
+/** Landing pôle Solutions — même parcours UX que `/digital`, couleurs et contenus Solutions. */
 export function TechnicalSolutionsLandingPage() {
   return (
-    <div className="min-h-full bg-white font-sans text-base font-light leading-relaxed text-brand-ink antialiased">
-      <SolutionsPageBanner />
+    <div className={`min-h-full font-sans text-base leading-relaxed text-[#0D0B4A] antialiased ${BRAND.canvas.bgClass}`}>
+      <SolutionsTopNavigation />
       <ConsentPreferencesPanel />
-      <main>
+      <main className="flex flex-1 flex-col">
         <SolutionsHero />
-        <section className="bg-white">
-          <div className="max-sm:px-[3%] px-[5%]">
-            <div className="max-sm:max-w-full w-full max-w-screen-xl mx-auto">
-              <div className="2xl:pb-32 pt-20 pb-28">
-                <SolutionsLogoMarquee />
-                <SolutionsWhySection />
-              </div>
-            </div>
-          </div>
-        </section>
-        <SolutionsFeatureColumns />
-        <SolutionsServicesCarousel />
-        <SolutionsSectorsSection />
-        <SolutionsPageTestimonials />
+        <SolutionsLandingPartnersWhy />
+        <SolutionsLandingFeatureSections />
+        <SolutionsLandingServicesCarousel />
+        <SolutionsLandingSectors />
+        <TestimonialsCarousel />
         <SolutionsCaseStudiesSection />
-        <SolutionsFaqSection />
-        <SolutionsDiscoveryCtaSection />
+        <SolutionsLandingFaqSection />
+        <ClosingCtaSection
+          heading="Un projet technique ou multi-sites ?"
+          body="Parlons contraintes, normes et planning — les coordonnées complètes figurent sur la page contact."
+        />
       </main>
-      <SolutionsMarketingFooter />
+      <SiteFooter pole="solutions" />
+      <MobileStickyCta />
     </div>
   );
 }

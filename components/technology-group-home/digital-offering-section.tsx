@@ -58,7 +58,7 @@ export function DigitalOfferingSection() {
                   className={`inline-flex h-14 min-w-[12rem] items-center justify-center ${R_BTN} bg-white px-6 text-lg font-medium no-underline transition-opacity hover:opacity-95 active:outline-none`}
                   style={{ color: INK }}
                 >
-                  Découvrir le service
+                  Découvrir nos services Digital
                 </Link>
               </div>
 

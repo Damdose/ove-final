@@ -1,4 +1,6 @@
 import type { ReactNode } from "react";
+import { buildSolutionsServiceSlides } from "@/lib/solutions-services-carousel-catalog";
+import { caseStudiesForPoleLanding, getSolutionsCaseStudyCards } from "@/lib/case-studies-catalog";
 
 export interface ServiceLink {
   href: string;
@@ -14,9 +16,12 @@ export interface ServiceMegaTab {
 }
 
 export interface ServiceCarouselCard {
+  slug: string;
   href: string;
   title: string;
   description: string;
+  imageSrc: string;
+  imageAlt: string;
 }
 
 export interface ServiceCarouselSlide {
@@ -25,11 +30,10 @@ export interface ServiceCarouselSlide {
 }
 
 export interface SectorCard {
-  src: string;
-  srcSet: string;
-  sizes: string;
-  width: number;
-  height: number;
+  id: string;
+  imageSrc: string;
+  imageAlt: string;
+  imageSizes: string;
   badge: string;
 }
 
@@ -40,13 +44,6 @@ export interface TestimonialSlide {
   avatarSizes?: string;
   name: string;
   role: string;
-}
-
-export interface CaseStudyItem {
-  href: string;
-  imageSrc: string;
-  title: string;
-  excerpt: string;
 }
 
 export interface FaqItem {
@@ -178,158 +175,99 @@ export const SERVICE_MEGA_TABS: ServiceMegaTab[] = [
   },
 ];
 
-const GROUP_ILLUSTRATION_SRC =
-  "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/69272caefd35e7d609f260fe_Group%20427319225%20(2).avif";
-const GROUP_ILLUSTRATION_SRCSET =
-  "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/69272caefd35e7d609f260fe_Group%20427319225%20(2)-p-500.avif 500w, https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/69272caefd35e7d609f260fe_Group%20427319225%20(2).avif 972w";
+/** Onglets mega-menu nav pôle Solutions (mêmes liens que `SERVICE_MEGA_TABS`, libellés sur deux lignes). */
+const SOLUTIONS_NAV_TAB_LABELS: Record<string, [string, string]> = {
+  surete: ["Sûreté", "intrusion & accès"],
+  infra: ["Infrastructure", "réseau & télécoms"],
+  audio: ["Audiovisuel", "salles connectées"],
+  divers: ["Systèmes", "métier & spécifiques"],
+};
 
-export const SERVICE_CAROUSEL_SLIDES: ServiceCarouselSlide[] = [
-  {
-    label: "1 of 4",
-    cards: [
-      {
-        href: "/services-solution/affichage-dynamique",
-        title: "Affichage dynamique",
-        description: "Diffusion de contenus digitaux sur écrans professionnels",
-      },
-      {
-        href: "/services-solution/alarme-anti-intrusion",
-        title: "Alarme anti-intrusion",
-        description: "Solutions de détection et d’alerte contre les intrusions",
-      },
-      {
-        href: "/services-solution/antenne-gsm-4g-5g",
-        title: "Antenne GSM/4G/5G",
-        description: "Solutions de couverture mobile et télécom en environnement complexe",
-      },
-    ],
-  },
-  {
-    label: "2 of 4",
-    cards: [
-      {
-        href: "/services-solution/audit-de-cablage",
-        title: "Audit de câblage",
-        description: "Analyse et optimisation des infrastructures de câblage existantes",
-      },
-      {
-        href: "/services-solution/boitiers-a-clefs",
-        title: "Boîtiers à clefs",
-        description: "Solutions sécurisées de gestion et de stockage des clés",
-      },
-      {
-        href: "/services-solution/controle-dacces",
-        title: "Contrôle d’accès",
-        description: "Le contrôle d’accès est aujourd’hui un pilier essentiel de la sécurité des entreprises.",
-      },
-    ],
-  },
-  {
-    label: "3 of 4",
-    cards: [
-      {
-        href: "/services-solution/detection-de-vapotage",
-        title: "Détection de vapotage",
-        description: "Systèmes de détection des usages non autorisés en intérieur",
-      },
-      {
-        href: "/services-solution/detection-perimetrique",
-        title: "Détection périmétrique",
-        description: "Systèmes de détection des intrusions en périphérie de site",
-      },
-      {
-        href: "/services-solution/fibre-optique",
-        title: "Fibre optique",
-        description: "Déploiement de réseaux fibre haut débit pour entreprises",
-      },
-    ],
-  },
-  {
-    label: "4 of 4",
-    cards: [
-      {
-        href: "/services-solution/gestion-de-stationnement",
-        title: "Gestion de stationnement",
-        description: "Solutions intelligentes de gestion des parkings et accès",
-      },
-      {
-        href: "/services-solution/gestion-des-visiteurs",
-        title: "Gestion des visiteurs",
-        description: "Solutions d’accueil et de gestion des flux visiteurs",
-      },
-      {
-        href: "/services-solution/inpt",
-        title: "INPT",
-        description: "Infrastructures numériques pour bâtiments tertiaires et industriels",
-      },
-    ],
-  },
-];
+export interface SolutionsServiceNavTab {
+  id: string;
+  labelLines: [string, string];
+  links: ServiceLink[];
+}
 
-export const SERVICE_CAROUSEL_IMAGE = {
-  src: GROUP_ILLUSTRATION_SRC,
-  srcSet: GROUP_ILLUSTRATION_SRCSET,
-  sizes: "(max-width: 972px) 100vw, 972px",
-} as const;
+export const SOLUTIONS_SERVICE_NAV_TABS: SolutionsServiceNavTab[] = SERVICE_MEGA_TABS.map((tab) => ({
+  id: tab.paneId,
+  labelLines: SOLUTIONS_NAV_TAB_LABELS[tab.id] ?? ["Services", "Solutions"],
+  links: tab.links,
+}));
+
+export const SOLUTIONS_LOGO_SRC =
+  "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/692c76c50366b1991a7c9aa9_logovedex%201%20(1).svg";
+
+export const SERVICE_CAROUSEL_SLIDES: ServiceCarouselSlide[] = buildSolutionsServiceSlides();
 
 /** Visuels secteurs (Unsplash) — licence : https://unsplash.com/license */
-function unsplashSectorCard(photoPath: string): Pick<SectorCard, "src" | "srcSet" | "sizes" | "width" | "height"> {
-  const params = "auto=format&fit=crop&q=82";
-  const src = `https://images.unsplash.com/${photoPath}?${params}&w=1086&h=720`;
-  const srcSet = [500, 800, 1080, 1086]
-    .map(
-      (w) =>
-        `https://images.unsplash.com/${photoPath}?${params}&w=${w}&h=${Math.round((w * 720) / 1086)} ${w}w`,
-    )
-    .join(", ");
-  return {
-    src,
-    srcSet,
-    sizes: "(max-width: 1086px) 100vw, 1086px",
-    width: 1086,
-    height: 720,
-  };
+function sectorStockPhoto(photoId: string): string {
+  return `https://images.unsplash.com/${photoId}?auto=format&fit=crop&w=1600&q=82`;
 }
 
 export const SECTOR_CARDS: SectorCard[] = [
   {
-    src: "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/693063cd7d33227985c07981_Card%20(9).png",
-    srcSet:
-      "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/693063cd7d33227985c07981_Card%20(9)-p-500.png 500w, https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/693063cd7d33227985c07981_Card%20(9)-p-800.png 800w, https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/693063cd7d33227985c07981_Card%20(9)-p-1080.png 1080w, https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/693063cd7d33227985c07981_Card%20(9).png 1086w",
-    sizes: "(max-width: 1086px) 100vw, 1086px",
-    width: 1086,
-    height: 720,
+    id: "sol-secteur-industrie",
+    imageSrc: sectorStockPhoto("photo-1581092918056-0c4c3acd3789"),
+    imageAlt: "Ingénierie et production industrielle, contexte manufacturier",
+    imageSizes: "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
     badge: "Industrie",
   },
   {
-    src: "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/693063cdeef4b9310681709b_Card%20(8).png",
-    srcSet:
-      "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/693063cdeef4b9310681709b_Card%20(8)-p-500.png 500w, https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/693063cdeef4b9310681709b_Card%20(8)-p-800.png 800w, https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/693063cdeef4b9310681709b_Card%20(8)-p-1080.png 1080w, https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/693063cdeef4b9310681709b_Card%20(8).png 1086w",
-    sizes: "(max-width: 1086px) 100vw, 1086px",
-    width: 1086,
-    height: 720,
+    id: "sol-secteur-tertiaire",
+    imageSrc: sectorStockPhoto("photo-1497366216548-37526070297c"),
+    imageAlt: "Espaces de travail et bureaux modernes pour le secteur tertiaire",
+    imageSizes: "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
     badge: "Tertiaire",
   },
   {
-    src: "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/693063cd6940e6425bd2eb7d_Group%20427319222%20(2).png",
-    srcSet:
-      "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/693063cd6940e6425bd2eb7d_Group%20427319222%20(2)-p-500.png 500w, https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/693063cd6940e6425bd2eb7d_Group%20427319222%20(2)-p-800.png 800w, https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/693063cd6940e6425bd2eb7d_Group%20427319222%20(2)-p-1080.png 1080w, https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/693063cd6940e6425bd2eb7d_Group%20427319222%20(2).png 1086w",
-    sizes: "(max-width: 1086px) 100vw, 1086px",
-    width: 1086,
-    height: 720,
+    id: "sol-secteur-logistique",
+    imageSrc: sectorStockPhoto("photo-1578575437130-527eed3abbec"),
+    imageAlt: "Chaîne logistique, entrepôt et flux de marchandises",
+    imageSizes: "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
     badge: "Logistique",
   },
   {
-    ...unsplashSectorCard("photo-1576091160399-112ba8d25d1d"),
+    id: "sol-secteur-sante",
+    imageSrc: sectorStockPhoto("photo-1576091160399-112ba8d25d1d"),
+    imageAlt: "Environnement hospitalier et équipements techniques",
+    imageSizes: "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
     badge: "Santé",
   },
   {
-    ...unsplashSectorCard("photo-1566073771259-6a8506099945"),
+    id: "sol-secteur-hotellerie",
+    imageSrc: sectorStockPhoto("photo-1566073771259-6a8506099945"),
+    imageAlt: "Hôtellerie et espaces d’accueil haut de gamme",
+    imageSizes: "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
     badge: "Hôtellerie",
   },
   {
-    ...unsplashSectorCard("photo-1504307651254-35680f356dfd"),
+    id: "sol-secteur-btp",
+    imageSrc: sectorStockPhoto("photo-1504307651254-35680f356dfd"),
+    imageAlt: "Chantier et équipements techniques BTP",
+    imageSizes: "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
     badge: "BTP & chantiers",
+  },
+  {
+    id: "sol-secteur-finance",
+    imageSrc: sectorStockPhoto("photo-1460925895917-afdab827c52f"),
+    imageAlt: "Sites sensibles finance : contrôle d’accès et vidéosurveillance",
+    imageSizes: "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
+    badge: "Finance & assurance",
+  },
+  {
+    id: "sol-secteur-retail",
+    imageSrc: sectorStockPhoto("photo-1441986300917-64674bd600d8"),
+    imageAlt: "Enseignes retail : sûreté magasins et flux clients",
+    imageSizes: "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
+    badge: "Retail & distribution",
+  },
+  {
+    id: "sol-secteur-public",
+    imageSrc: sectorStockPhoto("photo-1582719478250-c89cae4dc85b"),
+    imageAlt: "Bâtiments publics et équipements de sécurité collective",
+    imageSizes: "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
+    badge: "Public & collectivités",
   },
 ];
 
@@ -363,22 +301,8 @@ export const TESTIMONIAL_SLIDES: TestimonialSlide[] = [
   },
 ];
 
-export const CASE_STUDIES: CaseStudyItem[] = [
-  {
-    href: "/references-opensi/client-10",
-    imageSrc:
-      "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c3f/692c822b448b21e150a0adc9_image5.jpeg",
-    title: "Client J",
-    excerpt: "Un client dans le secteur de la construction.",
-  },
-  {
-    href: "/references-opensi/client-1",
-    imageSrc:
-      "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c3f/692c822b448b21e150a0add0_image14.jpeg",
-    title: "Client A",
-    excerpt: "Un client important dans le secteur technologique.",
-  },
-];
+/** Six références les plus récentes pour la section landing Solutions (grille complète sur `/solutions/cas-clients`). */
+export const CASE_STUDIES = caseStudiesForPoleLanding(getSolutionsCaseStudyCards());
 
 export const FAQ_ITEMS: FaqItem[] = [
   {

@@ -57,7 +57,7 @@ export const BRAND = {
     hex: "#f9fafb",
     bgClass: "bg-gray-50",
   },
-  /** Accent lien / bordure CTA secondaire (ex. bouton ADN) */
+  /** Accent lien / bordure CTA secondaire (ex. bouton Le groupe) */
   accentCoral: {
     hex: "#ff4320",
     borderStyleClass: "[border-style:#ff4320]",

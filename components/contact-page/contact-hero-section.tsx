@@ -7,78 +7,75 @@ const callbackHref = `mailto:${CONTACT.email}?subject=${encodeURIComponent("Dema
 
 export function ContactHeroSection() {
   return (
-    <section className="bg-cover max-sm:pt-0 pt-5">
-      <div className="max-sm:px-[3%] px-[5%]">
-        <div className="w-full max-w-screen-xl mx-auto max-sm:max-w-none max-sm:px-2.5 bg-indigo-950 px-10 rounded-3xl">
-          <div className="max-sm:pb-16 py-12">
-            <div>
-              <div className="max-lg:gap-x-12 max-lg:min-h-[auto] max-md:gap-y-12 max-md:grid-cols-[1fr] gap-x-32 gap-y-16 grid-rows-[auto] grid-cols-[1fr_1fr] auto-cols-[1fr] items-center justify-items-stretch grid">
-                <div className="max-sm:row-start-[span_1] max-sm:col-start-[span_1] max-sm:row-end-[span_1] max-sm:col-end-[span_1]">
+    <section className="w-full bg-[#0D0B4A]">
+      <div className="mx-auto w-full max-w-screen-xl px-4 md:px-5 lg:px-6">
+        <div className="pt-10 pb-14 sm:pt-12 sm:pb-10 md:py-14 lg:py-16">
+          <div>
+            <div className="grid min-h-0 auto-cols-[1fr] grid-cols-1 grid-rows-[auto] items-stretch justify-items-stretch gap-y-10 md:grid-cols-2 md:gap-x-10 lg:gap-x-14 lg:gap-y-12 xl:gap-x-24">
+                <div className="col-span-1 flex min-h-0 flex-col justify-between gap-8 md:h-auto md:justify-start md:gap-10">
                   <div>
-                    <h1 className="mt-5 max-sm:mb-0 font-display font-bold mb-8 max-sm:text-center max-sm:text-4xl text-white text-6xl">
+                    <h1 className="mt-0 mb-0 text-center font-display text-4xl font-bold text-white sm:mb-5 sm:text-left sm:text-5xl lg:text-6xl">
                       Contacter l’équipe Ovedex
                     </h1>
-                  </div>
-                  <div>
-                    <p className="font-sans text-lg font-light leading-7 mb-10 max-sm:text-center text-white">
+                    <p className="mb-8 text-center font-sans text-base font-light leading-relaxed text-white/95 sm:text-left sm:text-lg">
                       Notre équipe commerciale est à votre disposition pour étudier vos besoins et pour vous guider dans
                       l’utilisation des solutions Ovedex.
                     </p>
+                    <div className="mb-0 flex flex-col gap-x-3 gap-y-3 py-1 font-display text-base font-bold leading-6 sm:mb-0 sm:text-lg">
+                      <a
+                        href={`tel:${CONTACT.phoneTel}`}
+                        className="flex flex-col items-center justify-between gap-x-2 gap-y-2 rounded-[48px] bg-white px-5 py-4 no-underline active:outline-0 hover:outline-0 sm:flex-row sm:py-2.5"
+                      >
+                        <div className="flex items-center justify-start gap-x-2.5 gap-y-2.5">
+                          <Image
+                            src={CONTACT_PAGE_IMAGES.iconPhone}
+                            alt=""
+                            width={24}
+                            height={24}
+                            className="inline-block"
+                            loading="lazy"
+                          />
+                          <div className="text-indigo-950">Téléphone</div>
+                        </div>
+                        <div className="text-base font-light font-sans text-slate-800/50 sm:text-lg">{CONTACT.phoneDisplay}</div>
+                      </a>
+                      <a
+                        href={callbackHref}
+                        className="flex flex-col items-center justify-between gap-x-2 gap-y-2 rounded-[48px] bg-white px-5 py-4 no-underline active:outline-0 hover:outline-0 sm:flex-row sm:py-2.5"
+                      >
+                        <div className="flex items-center justify-start gap-x-2.5 gap-y-2.5">
+                          <Image
+                            src={CONTACT_PAGE_IMAGES.iconCallback}
+                            alt=""
+                            width={24}
+                            height={24}
+                            className="inline-block"
+                            loading="lazy"
+                          />
+                          <div className="text-indigo-950">Rappel gratuit</div>
+                        </div>
+                        <div className="text-base font-light font-sans text-slate-800/50 sm:text-lg">Demander à être rappelé</div>
+                      </a>
+                      <a
+                        href={`mailto:${CONTACT.email}`}
+                        className="flex flex-col items-center justify-between gap-x-2 gap-y-2 rounded-[48px] bg-white px-5 py-4 no-underline active:outline-0 hover:outline-0 sm:flex-row sm:py-2.5"
+                      >
+                        <div className="flex items-center justify-start gap-x-2.5 gap-y-2.5">
+                          <Image
+                            src={CONTACT_PAGE_IMAGES.iconEmail}
+                            alt=""
+                            width={24}
+                            height={24}
+                            className="inline-block"
+                            loading="lazy"
+                          />
+                          <div className="text-indigo-950">Email</div>
+                        </div>
+                        <div className="text-base font-light font-sans text-slate-800/50 sm:text-lg">{CONTACT.email}</div>
+                      </a>
+                    </div>
                   </div>
-                  <div className="gap-x-4 gap-y-4 grid-rows-[auto] grid-cols-[1fr] auto-cols-[1fr] font-display text-lg font-bold leading-6 flex mt-5 mb-16 py-2 max-sm:mb-0 flex-col">
-                    <a
-                      href={`tel:${CONTACT.phoneTel}`}
-                      className="max-sm:gap-x-2 max-sm:gap-y-2 max-sm:flex-col max-sm:py-4 bg-white justify-between items-center flex px-5 py-2.5 rounded-[48px] no-underline active:outline-0 hover:outline-0"
-                    >
-                      <div className="gap-x-2.5 gap-y-2.5 justify-start items-center flex">
-                        <Image
-                          src={CONTACT_PAGE_IMAGES.iconPhone}
-                          alt=""
-                          width={24}
-                          height={24}
-                          className="inline-block"
-                          loading="lazy"
-                        />
-                        <div className="text-indigo-950">Téléphone</div>
-                      </div>
-                      <div className="max-sm:text-base font-light font-sans text-slate-800/50">{CONTACT.phoneDisplay}</div>
-                    </a>
-                    <a
-                      href={callbackHref}
-                      className="max-sm:gap-x-2 max-sm:gap-y-2 max-sm:flex-col max-sm:py-4 bg-white justify-between items-center flex px-5 py-2.5 rounded-[48px] no-underline active:outline-0 hover:outline-0"
-                    >
-                      <div className="gap-x-2.5 gap-y-2.5 justify-start items-center flex">
-                        <Image
-                          src={CONTACT_PAGE_IMAGES.iconCallback}
-                          alt=""
-                          width={24}
-                          height={24}
-                          className="inline-block"
-                          loading="lazy"
-                        />
-                        <div className="text-indigo-950">Rappel gratuit</div>
-                      </div>
-                      <div className="max-sm:text-base font-light font-sans text-slate-800/50">Demander à être rappelé</div>
-                    </a>
-                    <a
-                      href={`mailto:${CONTACT.email}`}
-                      className="max-sm:gap-x-2 max-sm:gap-y-2 max-sm:flex-col max-sm:py-4 bg-white justify-between items-center flex px-5 py-2.5 rounded-[48px] no-underline active:outline-0 hover:outline-0"
-                    >
-                      <div className="gap-x-2.5 gap-y-2.5 justify-start items-center flex">
-                        <Image
-                          src={CONTACT_PAGE_IMAGES.iconEmail}
-                          alt=""
-                          width={24}
-                          height={24}
-                          className="inline-block"
-                          loading="lazy"
-                        />
-                        <div className="text-indigo-950">Email</div>
-                      </div>
-                      <div className="max-sm:text-base font-light font-sans text-slate-800/50">{CONTACT.email}</div>
-                    </a>
-                  </div>
-                  <div className="max-md:pt-4 flex-wrap flex py-2 max-sm:flex-col max-sm:grid-rows-[auto_auto] max-sm:grid-cols-[1fr_1fr] max-sm:auto-cols-[1fr] max-sm:hidden gap-x-10 gap-y-10 justify-start items-center">
+                  <div className="mt-auto hidden flex-wrap items-center justify-start gap-x-8 gap-y-6 sm:flex md:mt-8 md:border-t md:border-white/10 md:pt-6">
                     {PARTNER_LOGOS.map((logo) => (
                       <Image
                         key={logo.id}
@@ -87,17 +84,18 @@ export function ContactHeroSection() {
                         src={logo.src}
                         width={logo.width}
                         height={logo.height}
-                        className="inline-block max-md:max-h-12 max-h-14 h-11 max-sm:justify-self-center w-auto"
+                        className="inline-block h-10 w-auto justify-self-center opacity-95 sm:max-h-11 sm:justify-self-auto md:h-12"
                       />
                     ))}
                   </div>
                 </div>
-                <B2bContactForm />
+                <div className="flex min-h-0 w-full items-start justify-center lg:justify-end">
+                  <B2bContactForm />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 }

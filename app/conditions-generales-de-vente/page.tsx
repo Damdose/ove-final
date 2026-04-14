@@ -4,8 +4,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Conditions générales de vente — Ovedex",
+  title: "Conditions générales de vente",
   description: "Conditions applicables aux prestations et services proposés par Ovedex.",
+  robots: { index: false, follow: true },
+  alternates: { canonical: "/conditions-generales-de-vente" },
 };
 
 export default function CgvPage() {

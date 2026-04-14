@@ -4,14 +4,22 @@ import Link from "next/link";
 const RESEAUX_PHOTO_SRC =
   "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/6927308251d553db88a7ad52_photo%20(2).avif";
 
+const RESEAUX_BG =
+  "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/6927305bf82e4c40a8984015/_Rectangle%205959%20/(1/').avif";
+
 export function SolutionsReseauxSection() {
   return (
-    <section className="max-sm:bg-none max-sm:bg-repeat bg-gray-50 bg-[url('https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/6927305bf82e4c40a8984015/_Rectangle%205959%20/(1/').avif)] bg-no-repeat">
-      <div className="max-sm:px-[3%] px-[5%]">
-        <div className="max-sm:max-w-full w-full max-w-screen-xl mx-auto">
-          <div className="max-lg:py-24 max-md:py-16 py-32">
+    <section className="relative bg-gray-50">
+      <div
+        className="pointer-events-none absolute inset-0 hidden bg-no-repeat sm:block"
+        style={{ backgroundImage: `url('${RESEAUX_BG}')` }}
+        aria-hidden
+      />
+      <div className="relative z-10 px-[3%] sm:px-[5%]">
+        <div className="mx-auto w-full max-w-screen-xl">
+          <div className="py-16 md:py-24 lg:py-32">
             <div>
-              <div className="max-lg:gap-x-12 max-lg:min-h-[auto] max-md:gap-y-12 max-md:grid-cols-[1fr] gap-x-32 gap-y-16 grid-rows-[auto] grid-cols-[1fr_1fr] auto-cols-[1fr] items-center justify-items-stretch grid">
+              <div className="grid auto-cols-[1fr] grid-cols-1 grid-rows-[auto] items-center justify-items-stretch gap-y-12 md:grid-cols-2 md:gap-x-12 lg:gap-x-32 lg:gap-y-16">
                 <div className="[transform-style:preserve-3d]">
                   <Image
                     loading="lazy"
@@ -29,12 +37,12 @@ export function SolutionsReseauxSection() {
                     </div>
                   </div>
                   <div>
-                    <h2 className="mt-5 max-lg:text-5xl max-md:text-4xl max-sm:text-3xl max-sm:mb-0 text-brand-ink font-display text-5xl font-bold leading-tight mb-8">
+                    <h2 className="mt-5 mb-0 font-display text-3xl font-bold leading-tight text-brand-ink sm:mb-8 md:text-4xl lg:text-5xl">
                       Réseaux, communication & infrastructures IoT
                     </h2>
                   </div>
                   <div>
-                    <p className="max-md:text-base text-brand-ink font-sans text-base font-light leading-7 mb-5">
+                    <p className="mb-5 font-sans text-base font-light leading-7 text-brand-ink lg:text-lg">
                       Nous concevons des infrastructures réseau performantes : Wi-Fi pro,
                       interphonie, réseaux IP sécurisés, capteurs IoT, supervision et automatisation.
                       Objectif : performance, disponibilité et simplicité d’exploitation.

@@ -40,6 +40,8 @@ export interface DigitalServiceLp {
 export interface DigitalServiceDefinition {
   slug: string;
   title: string;
+  /** Proposition de valeur affichée en H1 sur la page service (fallback: title). */
+  headline?: string;
   description: string;
   imageSrc: string;
   /** Texte court pour l’image (SEO / accessibilité) */
@@ -53,7 +55,8 @@ export const DIGITAL_SERVICES: readonly DigitalServiceDefinition[] = [
   {
     slug: "campagne-video-youtube-tiktok",
     title: "Campagne vidéo (YouTube & TikTok)",
-    description: "Diffusion de campagnes vidéo sur plateformes sociales",
+    headline: "Captez l'attention avec la vidéo sur YouTube & TikTok",
+    description: "Formats courts, ciblage précis et pilotage des performances pour maximiser votre visibilité sur YouTube et TikTok.",
     imageSrc: IMG.video,
     imageAlt: "Production et diffusion de contenus vidéo pour les réseaux sociaux",
     body: [
@@ -75,7 +78,8 @@ export const DIGITAL_SERVICES: readonly DigitalServiceDefinition[] = [
   {
     slug: "charte-graphique",
     title: "Charte graphique",
-    description: "Définition des codes visuels et graphiques d’une marque",
+    headline: "Une identité visuelle forte et cohérente sur tous vos supports",
+    description: "Logo, couleurs, typographies et règles d’usage : un document opérationnel pour garantir la cohérence de votre marque sur tous vos supports.",
     imageSrc: IMG.charte,
     imageAlt: "Identité visuelle et charte graphique pour marques professionnelles",
     body: [
@@ -97,7 +101,8 @@ export const DIGITAL_SERVICES: readonly DigitalServiceDefinition[] = [
   {
     slug: "creation-de-contenus",
     title: "Création de contenus",
-    description: "Production de contenus visuels et éditoriaux digitaux",
+    headline: "Des contenus qui engagent votre audience et génèrent des leads",
+    description: "Articles, visuels, newsletters et posts pensés pour votre audience et optimisés pour chaque canal d'acquisition.",
     imageSrc: IMG.contenus,
     imageAlt: "Création de contenus marketing et visuels pour le digital",
     body: [
@@ -119,7 +124,8 @@ export const DIGITAL_SERVICES: readonly DigitalServiceDefinition[] = [
   {
     slug: "creation-de-logo",
     title: "Création de logo",
-    description: "Conception de logos uniques et cohérents avec l’identité de marque",
+    headline: "Un logo mémorable, pensé pour durer",
+    description: "Plusieurs pistes créatives, tests de lisibilité et déclinaisons prêtes pour le web, les réseaux sociaux et le print.",
     imageSrc: IMG.logo,
     imageAlt: "Conception de logo et identité de marque",
     body: [
@@ -141,7 +147,8 @@ export const DIGITAL_SERVICES: readonly DigitalServiceDefinition[] = [
   {
     slug: "developpement-wordpress-shopify",
     title: "Développement WordPress / Shopify",
-    description: "Développement de sites sur CMS WordPress et Shopify",
+    headline: "Un site rapide, sécurisé et facile à gérer au quotidien",
+    description: "Thèmes et boutiques sur-mesure, intégrations métier (CRM, ERP, paiement) et performances optimisées pour le SEO.",
     imageSrc: IMG.dev,
     imageAlt: "Développement web sur WordPress et Shopify",
     body: [
@@ -163,7 +170,8 @@ export const DIGITAL_SERVICES: readonly DigitalServiceDefinition[] = [
   {
     slug: "gestion-des-reseaux-sociaux",
     title: "Gestion des réseaux sociaux",
-    description: "Animation et gestion quotidienne des comptes sociaux",
+    headline: "Vos réseaux sociaux, animés avec stratégie et régularité",
+    description: "Calendrier éditorial, création de contenus, modération et reporting pour une présence régulière et engageante.",
     imageSrc: IMG.social,
     imageAlt: "Community management et animation des réseaux sociaux",
     body: [
@@ -185,7 +193,8 @@ export const DIGITAL_SERVICES: readonly DigitalServiceDefinition[] = [
   {
     slug: "google-ads",
     title: "Google Ads",
-    description: "Création et pilotage de campagnes publicitaires Google",
+    headline: "Rentabilisez chaque euro investi sur Google Ads",
+    description: "Comptes structurés, conversions fiables et optimisation continue pour un coût par acquisition maîtrisé sur Search, Display et PMax.",
     imageSrc: IMG.ads,
     imageAlt: "Campagnes Google Ads et acquisition search",
     body: [
@@ -207,7 +216,8 @@ export const DIGITAL_SERVICES: readonly DigitalServiceDefinition[] = [
   {
     slug: "landing-page",
     title: "Landing page",
-    description: "Création de pages d’atterrissage optimisées pour la conversion",
+    headline: "Des pages qui transforment vos clics en clients",
+    description: "Message unique, preuves sociales et CTA au-dessus de la ligne de flottaison — conçues pour convertir votre trafic payant.",
     imageSrc: IMG.landing,
     imageAlt: "Landing page orientée conversion",
     body: [
@@ -229,7 +239,8 @@ export const DIGITAL_SERVICES: readonly DigitalServiceDefinition[] = [
   {
     slug: "meta-ads",
     title: "Meta Ads",
-    description: "Gestion et optimisation de campagnes publicitaires sur Meta",
+    headline: "Touchez la bonne audience sur Facebook & Instagram",
+    description: "Audiences, créatives et itérations hebdomadaires pour générer leads, trafic ou ventes sur Facebook et Instagram.",
     imageSrc: IMG.meta,
     imageAlt: "Publicité Meta Ads Facebook Instagram",
     body: [
@@ -251,7 +262,8 @@ export const DIGITAL_SERVICES: readonly DigitalServiceDefinition[] = [
   {
     slug: "refonte-de-sites-existants",
     title: "Refonte de sites existants",
-    description: "Modernisation et optimisation de sites web existants",
+    headline: "Modernisez votre site sans perdre votre référencement",
+    description: "Audit UX, SEO et technique, puis refonte progressive ou bascule maîtrisée avec plan de redirections pour préserver votre trafic.",
     imageSrc: IMG.refonte,
     imageAlt: "Refonte de site web et expérience utilisateur",
     body: [
@@ -273,7 +285,8 @@ export const DIGITAL_SERVICES: readonly DigitalServiceDefinition[] = [
   {
     slug: "reseaux-sociaux-branding",
     title: "Réseaux sociaux (branding)",
-    description: "Création d’identités visuelles adaptées aux réseaux sociaux",
+    headline: "Une image de marque reconnaissable sur chaque réseau",
+    description: "Templates stories, bannières, packs d’icônes et guides d’usage pour une présence reconnaissable sur chaque plateforme.",
     imageSrc: IMG.brandingRs,
     imageAlt: "Branding et identité visuelle pour réseaux sociaux",
     body: [
@@ -295,7 +308,8 @@ export const DIGITAL_SERVICES: readonly DigitalServiceDefinition[] = [
   {
     slug: "site-e-commerce",
     title: "Site e-commerce",
-    description: "Conception de boutiques en ligne performantes et sécurisées",
+    headline: "Une boutique en ligne qui convertit, pas juste qui existe",
+    description: "Parcours d'achat fluide, tunnel optimisé et connexion à vos outils de gestion pour une boutique qui vend vraiment.",
     imageSrc: IMG.ecommerce,
     imageAlt: "Boutique en ligne et expérience d’achat",
     body: [
@@ -317,7 +331,8 @@ export const DIGITAL_SERVICES: readonly DigitalServiceDefinition[] = [
   {
     slug: "sites-vitrine",
     title: "Sites vitrine",
-    description: "Sites vitrine professionnels pour présenter votre activité en ligne",
+    headline: "Un site vitrine qui génère des demandes qualifiées",
+    description: "Structure claire, design aligné sur votre charte et formulaires optimisés pour transformer vos visiteurs en demandes qualifiées.",
     imageSrc: IMG.vitrine,
     imageAlt: "Site vitrine professionnel",
     body: [
@@ -339,7 +354,8 @@ export const DIGITAL_SERVICES: readonly DigitalServiceDefinition[] = [
   {
     slug: "support-print-digital",
     title: "Support print & digital",
-    description: "Supports print et déclinaisons digitales alignés sur votre charte",
+    headline: "Des supports imprimés et digitaux à l'image de votre marque",
+    description: "Brochures, affiches et présentations aux normes d'impression, avec des versions web optimisées et cohérentes avec votre identité.",
     imageSrc: IMG.print,
     imageAlt: "Supports print et déclinaisons digitales",
     body: [
@@ -361,7 +377,8 @@ export const DIGITAL_SERVICES: readonly DigitalServiceDefinition[] = [
   {
     slug: "strategie-social-media",
     title: "Stratégie Social Media",
-    description: "Stratégie éditoriale et présence sociale orientées résultats",
+    headline: "Une stratégie social media alignée sur vos objectifs business",
+    description: "Positionnement, personas et calendrier trimestriel pour relier vos réseaux sociaux à vos objectifs de leads et de notoriété.",
     imageSrc: IMG.strategie,
     imageAlt: "Stratégie social media et plan éditorial",
     body: [

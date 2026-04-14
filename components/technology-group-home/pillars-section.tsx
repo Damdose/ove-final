@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   PAGE_X,
   R_BTN,
@@ -60,6 +61,13 @@ export function PillarsSection() {
                   <p className="mt-3 font-sans text-base font-normal leading-relaxed text-[#0D0B4A]/80 sm:mt-3.5">
                     {card.description}
                   </p>
+                  <Link
+                    href={`/${card.poleId}`}
+                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-[#0D0B4A]/70 no-underline transition-colors hover:text-[#0D0B4A] sm:mt-auto sm:pt-5"
+                  >
+                    Découvrir nos services {card.title}
+                    <span aria-hidden="true">&rarr;</span>
+                  </Link>
                 </article>
               ))}
             </div>

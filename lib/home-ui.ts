@@ -72,3 +72,26 @@ export const SHADOW_POP =
 /** Visuel secondaire dans une carte (relief très léger). */
 export const SHADOW_THUMB =
   "shadow-[0_2px_12px_rgba(13,11,74,0.06)]";
+
+// --- Carrousels « services » (IT / Digital / Solutions) : pilule + suivant ---
+
+/** Ombre des contrôles flottants (pilule à points + bouton rond). */
+export const CAROUSEL_SERVICE_CTRL_SHADOW =
+  "shadow-[0_2px_12px_rgba(13,11,74,0.07)]";
+
+/** Rangée basse : alignement vertical explicite entre pilule et bouton suivant. */
+export const CAROUSEL_SERVICE_NAV_ROW =
+  "absolute bottom-0 left-0 right-0 z-[4] flex items-center justify-end gap-2";
+
+/**
+ * Pilule à points : même hauteur que le bouton rond (44px), sans py asymétrique,
+ * points centrés optiquement.
+ */
+export const CAROUSEL_SERVICE_CTRL_PILL = `flex h-11 shrink-0 items-center justify-center gap-1.5 rounded-full bg-white px-2.5 sm:gap-2 sm:px-3 ${CAROUSEL_SERVICE_CTRL_SHADOW}`;
+
+/** Bouton « suivant » : gabarit identique à la pilule sur l’axe vertical. */
+export const CAROUSEL_SERVICE_CTRL_CIRCLE = `flex h-11 w-11 shrink-0 cursor-pointer select-none items-center justify-center rounded-full bg-white text-[#0D0B4A]/55 transition-colors hover:text-[#0D0B4A] focus:outline-none ${CAROUSEL_SERVICE_CTRL_SHADOW}`;
+
+/** Zone cliquable compacte autour de chaque point (évite une pilule trop longue). */
+export const CAROUSEL_SERVICE_CTRL_DOT_BTN =
+  "flex size-8 shrink-0 cursor-pointer select-none items-center justify-center rounded-full sm:size-9";

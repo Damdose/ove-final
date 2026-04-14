@@ -7,6 +7,7 @@ import { MissionSection } from "./mission-section";
 import { NewsroomSection } from "./newsroom-section";
 import { PillarsSection } from "./pillars-section";
 import { SiteBanner } from "./site-banner";
+import { MobileStickyCta } from "./mobile-sticky-cta";
 import { SiteFooter } from "./site-footer";
 import { SocialProofSection } from "./social-proof-section";
 import { SolutionsOfferingSection } from "./solutions-offering-section";
@@ -32,6 +33,7 @@ export function TechnologyGroupHomePage() {
         <ClosingCtaSection />
       </main>
       <SiteFooter />
+      <MobileStickyCta />
     </div>
   );
 }

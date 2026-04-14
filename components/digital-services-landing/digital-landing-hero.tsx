@@ -14,7 +14,6 @@ import {
   TEXT_INK_MUTED,
 } from "@/lib/home-ui";
 import {
-  DIGITAL_BLUR_GRADIENT_SRC,
   DIGITAL_HERO_ICON_SRC,
   DIGITAL_HERO_IMAGE_SRC,
   PARTNER_LOGOS,
@@ -22,7 +21,7 @@ import {
 
 export function DigitalLandingHero() {
   return (
-    <header className={`relative overflow-x-hidden ${BRAND.canvas.bgClass}`}>
+    <header className={`relative overflow-x-clip ${BRAND.canvas.bgClass}`}>
       <div className={PAGE_X}>
         <div className="mx-auto w-full max-w-screen-xl pt-4 pb-8 sm:pt-6 sm:pb-10 lg:pt-8 lg:pb-12">
           <div
@@ -70,7 +69,7 @@ export function DigitalLandingHero() {
                 width={1024}
                 height={1024}
                 loading="lazy"
-                className={`aspect-square w-full object-cover max-sm:hidden ${R_CARD}`}
+                className={`aspect-[16/10] w-full object-cover lg:aspect-square ${R_CARD}`}
               />
             </div>
             </div>
@@ -112,14 +111,6 @@ export function DigitalLandingHero() {
           </div>
         </div>
       </div>
-      <Image
-        src={DIGITAL_BLUR_GRADIENT_SRC}
-        width={800}
-        height={400}
-        loading="lazy"
-        alt=""
-        className="pointer-events-none absolute left-[8%] top-[-10%] z-0 max-sm:left-auto max-sm:top-0 sm:left-[12%] sm:top-[-13%] h-auto w-[min(72vw,720px)] max-sm:opacity-60"
-      />
     </header>
   );
 }

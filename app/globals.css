@@ -28,6 +28,9 @@
 @layer base {
   html {
     color-scheme: light dark;
+    /* Base typographique lisible sur mobile (mobile-first) */
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
   }
 
   @media (prefers-reduced-motion: no-preference) {

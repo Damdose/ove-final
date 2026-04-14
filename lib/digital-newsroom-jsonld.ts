@@ -1,4 +1,4 @@
-import type { BlogPost } from "@/lib/blog-articles";
+import type { BlogPost } from "@/lib/blog-types";
 import { absoluteUrl } from "@/lib/site";
 
 const ORG_NAME = "Ovedex";
