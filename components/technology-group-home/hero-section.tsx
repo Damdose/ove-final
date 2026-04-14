@@ -9,7 +9,7 @@ export function HeroSection() {
       <div className={PAGE_X}>
         <div className="mx-auto w-full max-w-screen-xl">
           <div className="pb-8 pt-4 sm:pb-10 sm:pt-6 lg:pb-14 lg:pt-10">
-            <div className="grid auto-cols-[1fr] grid-cols-1 items-center gap-x-14 gap-y-6 lg:grid-cols-[1fr_1fr] lg:gap-y-10">
+            <div className="grid auto-cols-[1fr] grid-cols-1 items-center gap-x-14 gap-y-2 lg:grid-cols-[1fr_1fr] lg:gap-y-10">
               <div className="order-2 lg:order-1">
                 <h1
                   className="mb-5 max-w-[22ch] font-display text-[2rem] font-bold leading-[1.15] tracking-tight text-[#0D0B4A] sm:text-5xl sm:leading-[1.12] lg:text-[3.25rem] lg:leading-[1.1]"
