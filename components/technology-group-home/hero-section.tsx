@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { INK, PAGE_X, R_BTN, R_CARD } from "@/lib/home-ui";
 import { LOGO_IMAGES } from "./content";
+import { HeroIllustration } from "./hero-illustration";
 
 export function HeroSection() {
   return (
@@ -39,20 +40,7 @@ export function HeroSection() {
                 </div>
               </div>
               <div className="order-1 lg:order-2">
-                <div
-                  className="relative mx-auto max-w-[36rem] lg:mx-0 lg:ml-auto"
-                  aria-hidden
-                >
-                  <Image
-                    width={640}
-                    height={520}
-                    alt=""
-                    src="https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/691e5d1830c4ac0edbb4d809_illu%20(1).avif"
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="h-auto w-full"
-                  />
-                </div>
+                <HeroIllustration />
               </div>
             </div>
           </div>

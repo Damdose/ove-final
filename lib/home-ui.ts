@@ -37,7 +37,13 @@ export const R_BTN = "rounded-xl";
  * CTA principal encre sur fond clair (pages pôle Digital, FAQ, etc.) —
  * même gabarit partout : 56px de haut, texte blanc, focus anneau encre.
  */
-export const BTN_PRIMARY_INK = `inline-flex h-14 min-w-[12rem] items-center justify-center ${R_BTN} ${BG_INK} px-6 text-lg font-medium text-white no-underline transition-opacity hover:opacity-92 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${RING_INK_FOCUS}`;
+export const BTN_PRIMARY_INK = `inline-flex h-14 min-w-[12rem] items-center justify-center ${R_BTN} ${BG_INK} px-6 text-lg font-medium text-white no-underline shadow-[0_4px_14px_rgba(13,11,74,0.35)] transition-all duration-200 hover:opacity-92 hover:shadow-[0_6px_20px_rgba(13,11,74,0.45)] hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${RING_INK_FOCUS}`;
+
+/**
+ * CTA secondaire outline encre (même gabarit que BTN_PRIMARY_INK) —
+ * utilisé pour « Planifier une démo » et actions secondaires sur fond clair.
+ */
+export const BTN_SECONDARY_INK = `inline-flex h-14 min-w-[12rem] items-center justify-center ${R_BTN} border-2 border-[#0D0B4A]/25 bg-transparent px-6 text-lg font-medium ${TEXT_INK} no-underline transition hover:bg-[#0D0B4A]/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${RING_INK_FOCUS}`;
 
 // --- Bordures & anneaux ---
 

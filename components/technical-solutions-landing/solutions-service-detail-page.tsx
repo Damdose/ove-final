@@ -7,6 +7,7 @@ import {
   BD_CARD,
   BG_INK,
   BTN_PRIMARY_INK,
+  BTN_SECONDARY_INK,
   PAGE_X,
   R_CARD,
   RING_SOFT,
@@ -18,6 +19,7 @@ import {
 import { PARTNER_LOGOS } from "./technical-solutions-landing-content";
 import { getServiceTechnologies } from "@/lib/service-technologies";
 import { ServiceFeatureSections } from "@/components/shared/service-feature-sections";
+import { ServiceStickyCtaBar } from "@/components/shared/service-sticky-cta-bar";
 import { ServiceTechnologiesSection } from "@/components/shared/service-technologies-section";
 import { ClosingCtaSection } from "@/components/technology-group-home/closing-cta-section";
 import { TestimonialsCarousel } from "@/components/technology-group-home/testimonials-carousel";
@@ -26,6 +28,7 @@ import { SolutionsLandingFaqSection } from "./solutions-landing-faq-section";
 import { SolutionsLandingPartnersWhy } from "./solutions-landing-partners-why";
 import { SolutionsLandingSectors } from "./solutions-landing-sectors";
 import { SolutionsLandingServicesCarousel } from "./solutions-landing-services-carousel";
+import { TrustBadges } from "@/components/shared/trust-badges";
 import { SolutionsPolePageShell } from "./solutions-pole-page-shell";
 
 const solTheme = POLE_THEMES.solutions;
@@ -55,11 +58,15 @@ function SolutionsServiceHero({ service }: { service: SolutionsServiceDefinition
                 >
                   {service.description}
                 </p>
-                <div className="mt-8 sm:mt-10">
+                <div className="mt-8 flex flex-wrap items-center gap-4 sm:mt-10">
                   <Link href="/contact" className={BTN_PRIMARY_INK}>
                     Contacter un expert
                   </Link>
+                  <Link href="/contact?raison=demo" className={BTN_SECONDARY_INK}>
+                    Planifier une démo
+                  </Link>
                 </div>
+                <TrustBadges />
               </div>
 
               <div
@@ -136,6 +143,7 @@ export function SolutionsServiceDetailPage({ service }: { service: SolutionsServ
         heading="Un projet technique à lancer ?"
         body="Décrivez votre besoin sur la page contact : un expert Solutions vous recontacte avec une proposition adaptée."
       />
+      <ServiceStickyCtaBar />
     </SolutionsPolePageShell>
   );
 }

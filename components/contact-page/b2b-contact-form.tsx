@@ -3,7 +3,8 @@
 import { CONTACT } from "@/lib/contact";
 import type { PoleId } from "@/lib/brand-design-system";
 import { POLE_ORDER, POLE_THEMES } from "@/lib/brand-design-system";
-import { useCallback, useId, useState, type FormEvent } from "react";
+import { useCallback, useId, useState, useEffect, type FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
 
 const INPUT =
   "block w-full max-w-60 align-middle border border-stone-300 bg-slate-800/5 px-3 py-2 text-[15px] font-light text-indigo-950 [border-style:#000] placeholder:text-indigo-950 focus:border-blue-500 focus:outline-0 sm:max-w-none sm:h-12 sm:text-base h-11 mb-1.5 rounded-xl";
@@ -83,6 +84,7 @@ function reasonLabel(value: string): string {
 export function B2bContactForm() {
   const uid = useId();
   const formName = `b2b-contact-${uid}`;
+  const searchParams = useSearchParams();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -92,6 +94,13 @@ export function B2bContactForm() {
   const [phone, setPhone] = useState("");
   const [pole, setPole] = useState<ContactPoleChoice | "">("");
   const [reason, setReason] = useState<ContactReasonValue | "">("");
+
+  useEffect(() => {
+    const r = searchParams.get("raison");
+    if (r && CONTACT_REASON_VALUES.includes(r as ContactReasonValue)) {
+      setReason(r as ContactReasonValue);
+    }
+  }, [searchParams]);
   const [productScope, setProductScope] = useState("");
   const [companySize, setCompanySize] = useState<(typeof COMPANY_SIZE_VALUES)[number]>("");
   const [timeline, setTimeline] = useState<(typeof TIMELINE_VALUES)[number]>("");

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Suspense } from "react";
 import { B2bContactForm } from "@/components/contact-page/b2b-contact-form";
 import { CONTACT_PAGE_IMAGES, PARTNER_LOGOS } from "@/components/contact-page/contact-page-assets";
 import { CONTACT } from "@/lib/contact";
@@ -90,7 +91,9 @@ export function ContactHeroSection() {
                   </div>
                 </div>
                 <div className="flex min-h-0 w-full items-start justify-center lg:justify-end">
-                  <B2bContactForm />
+                  <Suspense>
+                    <B2bContactForm />
+                  </Suspense>
                 </div>
               </div>
             </div>

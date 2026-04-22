@@ -6,6 +6,7 @@ import {
   BD_CARD,
   BG_INK,
   BTN_PRIMARY_INK,
+  BTN_SECONDARY_INK,
   PAGE_X,
   R_CARD,
   RING_SOFT,
@@ -14,6 +15,7 @@ import {
   TEXT_INK,
   TEXT_INK_MUTED,
 } from "@/lib/home-ui";
+import { TrustBadges } from "@/components/shared/trust-badges";
 import {
   PARTNER_LOGOS,
 } from "./digital-services-landing-content";
@@ -47,11 +49,15 @@ export function DigitalServiceLpHero({ service }: { service: DigitalServiceDefin
                 >
                   {service.description}
                 </p>
-                <div className="mt-8 sm:mt-10">
+                <div className="mt-8 flex flex-wrap items-center gap-4 sm:mt-10">
                   <Link href="/contact" className={BTN_PRIMARY_INK}>
                     Contacter un expert
                   </Link>
+                  <Link href="/contact?raison=demo" className={BTN_SECONDARY_INK}>
+                    Planifier une démo
+                  </Link>
                 </div>
+                <TrustBadges />
               </div>
 
               <div

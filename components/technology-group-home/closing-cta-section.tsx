@@ -34,6 +34,12 @@ export function ClosingCtaSection({
               >
                 Nous contacter
               </Link>
+              <Link
+                href="/contact?raison=demo"
+                className={`inline-flex h-11 items-center justify-center ${R_BTN} border border-white/35 bg-white/10 px-5 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/15 sm:h-12 sm:px-6 sm:text-base`}
+              >
+                Planifier une démo
+              </Link>
               <a
                 href={CONTACT.whatsappHref}
                 target="_blank"

@@ -178,7 +178,7 @@ const AUDIO: SolutionsServiceDefinition[] = [
   svc(
     "reservation-salle-de-reunion",
     "Réservation salle de réunion",
-    "Solutions de réservation et d'affichage pour optimiser l'usage de vos salles de réunion.",
+    "Tablettes murales, intégration calendrier et capteurs d'occupation pour éliminer les salles fantômes et optimiser vos espaces.",
     stockPhoto("photo-1497366216548-37526070297c"),
     "Tablette de réservation de salle de réunion en entrée de salle",
     [
@@ -190,7 +190,7 @@ const AUDIO: SolutionsServiceDefinition[] = [
   svc(
     "musique-dambiance",
     "Musique d'ambiance",
-    "Sonorisation d'ambiance pour commerces, hôtels, restaurants et espaces d'accueil.",
+    "Zonage, programmation horaire et matériel professionnel pour créer l'atmosphère sonore adaptée à votre activité et vos espaces.",
     stockPhoto("photo-1511671782779-c97d3d27a1d4"),
     "Haut-parleurs encastrés dans un espace commercial",
     [
@@ -202,7 +202,7 @@ const AUDIO: SolutionsServiceDefinition[] = [
   svc(
     "ecrans-interactifs",
     "Écrans interactifs",
-    "Écrans tactiles et interactifs pour salles de réunion, showrooms et espaces collaboratifs.",
+    "Annotation, partage d'écran et visioconférence intégrée, compatibles Teams, Zoom et Google Meet pour une collaboration sans friction.",
     stockPhoto("photo-1550751827-4bd374c3f58b"),
     "Écran interactif tactile dans une salle de réunion",
     [
@@ -218,7 +218,7 @@ const AUDIO: SolutionsServiceDefinition[] = [
   svc(
     "sonorisation-despaces",
     "Sonorisation d'espaces",
-    "Sonorisation professionnelle pour auditoriums, salles de conférence et espaces événementiels.",
+    "Étude acoustique, amplification et traitement du signal pour une intelligibilité optimale dans chaque configuration d'espace.",
     stockPhoto("photo-1470229722913-7c0e2dbbafd3"),
     "Système de sonorisation dans un auditorium",
     [
@@ -230,7 +230,7 @@ const AUDIO: SolutionsServiceDefinition[] = [
   svc(
     "installation-de-videoprojecteurs-et-ecrans-de-projection",
     "Vidéoprojecteurs & écrans de projection",
-    "Installation de vidéoprojecteurs et écrans de projection pour salles de réunion et espaces de formation.",
+    "Courte focale, laser ou lampe, écrans motorisés ou fixes — dimensionnés pour votre salle et intégrés à votre installation AV existante.",
     stockPhoto("photo-1517502884422-41eaead166d4"),
     "Vidéoprojecteur installé au plafond dans une salle de réunion",
     [
@@ -242,7 +242,7 @@ const AUDIO: SolutionsServiceDefinition[] = [
   svc(
     "integration-de-salles-de-reunion-connectees",
     "Salles de réunion connectées",
-    "Intégration complète de salles de réunion équipées pour la visioconférence et la collaboration.",
+    "Caméra, micro, écran et partage sans fil intégrés — certifiés Teams Rooms et Zoom Rooms pour une expérience fluide dès la première seconde.",
     stockPhoto("photo-1497366811353-6870744d04b2"),
     "Salle de réunion équipée visioconférence et écran interactif",
     [
@@ -254,7 +254,7 @@ const AUDIO: SolutionsServiceDefinition[] = [
   svc(
     "systeme-de-visioconference",
     "Système de visioconférence",
-    "Solutions de visioconférence professionnelles pour salles de réunion et espaces de direction.",
+    "Caméras PTZ, barres de son et DSP intégrés à Teams, Zoom ou Webex pour des réunions hybrides de qualité professionnelle.",
     stockPhoto("photo-1516321318423-f06f85e504b3"),
     "Système de visioconférence professionnel avec caméra PTZ",
     [
@@ -266,7 +266,7 @@ const AUDIO: SolutionsServiceDefinition[] = [
   svc(
     "mur-decrans-led-walls",
     "Mur d'écrans & LED Walls",
-    "Murs d'images LED et écrans grand format pour halls d'accueil, centres de supervision et événements.",
+    "Murs LED ou LCD calibrés pour halls, centres de supervision et retail, avec gestion de contenu centralisée et maintenance préventive.",
     stockPhoto("photo-1517457373958-b7bdd4587205"),
     "Mur d'écrans LED dans un hall d'accueil professionnel",
     [
@@ -283,7 +283,7 @@ const DIVERS: SolutionsServiceDefinition[] = [
   svc(
     "systeme-dappel-durgence",
     "Système d'appel d'urgence",
-    "Systèmes d'appel d'urgence et de mise en sécurité pour établissements recevant du public.",
+    "Boutons-poussoirs, tirettes et signalisation conformes aux normes ERP, intégrés à votre supervision pour une remontée d'alertes centralisée.",
     stockPhoto("photo-1576091160399-112ba8d25d1d"),
     "Bouton d'appel d'urgence dans un couloir d'hôpital",
     [
@@ -295,7 +295,7 @@ const DIVERS: SolutionsServiceDefinition[] = [
   svc(
     "interphonie-eas",
     "Interphonie EAS",
-    "Systèmes d'interphonie et d'évacuation sonore pour bâtiments tertiaires et ERP.",
+    "Interphonie de sécurité et évacuation sonore (EAS/SSS) conformes à la réglementation incendie, avec études acoustiques et certification.",
     stockPhoto("photo-1558002038-1055907df827"),
     "Poste d'interphonie et haut-parleur d'évacuation en bâtiment",
     [
@@ -311,7 +311,7 @@ const DIVERS: SolutionsServiceDefinition[] = [
   svc(
     "systeme-dappel-malade",
     "Système d'appel malade",
-    "Solutions d'appel malade et de communication patient pour établissements de santé et EHPAD.",
+    "Boutons d'appel, afficheurs couloir et médaillons IP/radio pour une couverture complète, même dans les bâtiments anciens.",
     stockPhoto("photo-1519494026892-80bbd2d6fd0d"),
     "Bouton d'appel patient et afficheur dans une chambre d'hôpital",
     [
@@ -323,7 +323,7 @@ const DIVERS: SolutionsServiceDefinition[] = [
   svc(
     "systeme-de-demence",
     "Système de démence",
-    "Solutions anti-errance et de sécurisation pour les résidents atteints de troubles cognitifs.",
+    "Bracelets, détecteurs de passage et verrouillage conditionnel des issues pour protéger les résidents vulnérables en toute discrétion.",
     stockPhoto("photo-1576765608535-5f04d1e3f289"),
     "Bracelet de géolocalisation et système anti-errance en EHPAD",
     [
@@ -335,7 +335,7 @@ const DIVERS: SolutionsServiceDefinition[] = [
   svc(
     "systeme-de-ronde",
     "Système de ronde",
-    "Solutions de contrôle de ronde pour agents de sécurité et gardiennage.",
+    "Points NFC/RFID, application mobile et rapports automatisés pour une traçabilité complète des rondes et alertes de non-passage.",
     stockPhoto("photo-1489515217757-5fd1be406fef"),
     "Agent de sécurité effectuant une ronde avec badge NFC",
     [

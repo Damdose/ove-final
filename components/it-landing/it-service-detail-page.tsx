@@ -7,6 +7,7 @@ import {
   BD_CARD,
   BG_INK,
   BTN_PRIMARY_INK,
+  BTN_SECONDARY_INK,
   PAGE_X,
   R_CARD,
   RING_SOFT,
@@ -26,6 +27,8 @@ import { ItLandingFaqSection } from "./it-landing-faq-section";
 import { ItLandingPartnersWhy } from "./it-landing-partners-why";
 import { ItLandingSectors } from "./it-landing-sectors";
 import { ItLandingServicesCarousel } from "./it-landing-services-carousel";
+import { ServiceStickyCtaBar } from "@/components/shared/service-sticky-cta-bar";
+import { TrustBadges } from "@/components/shared/trust-badges";
 import { ItPolePageShell } from "./it-pole-page-shell";
 
 const itTheme = POLE_THEMES.it;
@@ -55,11 +58,15 @@ function ItServiceHero({ service }: { service: ItServicePageDefinition }) {
                 >
                   {service.description}
                 </p>
-                <div className="mt-8 sm:mt-10">
+                <div className="mt-8 flex flex-wrap items-center gap-4 sm:mt-10">
                   <Link href="/contact" className={BTN_PRIMARY_INK}>
                     Contacter un expert
                   </Link>
+                  <Link href="/contact?raison=demo" className={BTN_SECONDARY_INK}>
+                    Planifier une démo
+                  </Link>
                 </div>
+                <TrustBadges />
               </div>
 
               <div
@@ -135,6 +142,7 @@ export function ItServiceDetailPage({ service }: { service: ItServicePageDefinit
         heading="Besoin d'aller plus loin sur ce sujet ?"
         body="Décrivez votre contexte technique sur la page contact : un expert IT vous recontacte."
       />
+      <ServiceStickyCtaBar />
     </ItPolePageShell>
   );
 }

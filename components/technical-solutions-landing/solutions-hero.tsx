@@ -5,6 +5,7 @@ import {
   BD_CARD,
   BG_INK,
   BTN_PRIMARY_INK,
+  BTN_SECONDARY_INK,
   PAGE_X,
   R_CARD,
   RING_SOFT,
@@ -45,9 +46,12 @@ export function SolutionsHero() {
                   collectivités et structures exigeantes dans la mise en place de systèmes techniques sûrs, fiables et
                   pérennes.
                 </p>
-                <div className="mt-8 sm:mt-10">
+                <div className="mt-8 flex flex-wrap items-center gap-4 sm:mt-10">
                   <Link href="/contact" className={BTN_PRIMARY_INK}>
                     Contacter un expert
+                  </Link>
+                  <Link href="/contact?raison=demo" className={BTN_SECONDARY_INK}>
+                    Planifier une démo
                   </Link>
                 </div>
               </div>

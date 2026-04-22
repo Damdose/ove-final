@@ -11,6 +11,7 @@ import { DigitalLandingFaqSection } from "./digital-landing-faq-section";
 import { DigitalLandingPartnersWhy } from "./digital-landing-partners-why";
 import { DigitalLandingSectors } from "./digital-landing-sectors";
 import { DigitalLandingServicesCarousel } from "./digital-landing-services-carousel";
+import { ServiceStickyCtaBar } from "@/components/shared/service-sticky-cta-bar";
 import { DigitalPolePageShell } from "./digital-pole-page-shell";
 import { DigitalServiceLpHero } from "./digital-service-lp-hero";
 
@@ -41,6 +42,7 @@ export function DigitalServiceAcquisitionPage({ service }: { service: DigitalSer
         heading="Un projet Digital à lancer ou à accélérer ?"
         body="Décrivez votre contexte (objectif, budget indicatif, délais) : nous revenons vers vous avec une proposition structurée."
       />
+      <ServiceStickyCtaBar />
     </DigitalPolePageShell>
   );
 }

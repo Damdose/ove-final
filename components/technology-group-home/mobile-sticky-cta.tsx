@@ -13,7 +13,7 @@ export function MobileStickyCta() {
         href={CONTACT.whatsappHref}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-4 right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg transition-transform active:scale-[0.97] sm:hidden"
+        className="fixed bottom-[4.5rem] right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg transition-transform active:scale-[0.97] sm:hidden"
         aria-label="Contacter sur WhatsApp"
       >
         <Image
@@ -30,7 +30,7 @@ export function MobileStickyCta() {
         href={CONTACT.whatsappHref}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-4 right-6 z-40 hidden h-16 w-16 items-center justify-center rounded-full bg-[#25D366] shadow-lg transition-transform hover:scale-105 active:scale-[0.97] sm:flex"
+        className="fixed bottom-[5.5rem] right-6 z-40 hidden h-16 w-16 items-center justify-center rounded-full bg-[#25D366] shadow-lg transition-transform hover:scale-105 active:scale-[0.97] sm:flex"
         aria-label="Contacter sur WhatsApp"
       >
         <Image
