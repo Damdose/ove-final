@@ -9,7 +9,7 @@ const eyebrowSecteurs = `inline-flex items-center rounded-full px-3 py-1 font-sa
 
 const sectorPill = `inline-flex max-w-[min(100%,11rem)] items-center justify-center text-balance rounded-full px-3 py-1.5 text-center font-sans text-[0.65rem] font-semibold uppercase leading-snug tracking-[0.1em] shadow-[0_6px_18px_rgba(13,11,74,0.18)] ring-1 ring-white/40 sm:text-xs ${solutions.primary.bgClass} ${solutions.primary.textOnPrimaryClass}`;
 
-export function SolutionsLandingSectors() {
+export function SolutionsLandingSectors({ heading, subtitle }: { heading?: string; subtitle?: string } = {}) {
   return (
     <section id="secteurs" className={BRAND.canvas.bgClass}>
       <div className={PAGE_X}>
@@ -18,13 +18,12 @@ export function SolutionsLandingSectors() {
             <div className="mx-auto mb-12 max-w-3xl text-center sm:mb-14">
               <div className={eyebrowSecteurs}>Secteurs</div>
               <h2 className={`mt-5 font-display text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl ${TEXT_INK}`}>
-                Nos secteurs d&apos;activité
+                {heading ?? "Nos secteurs d\u2019activité"}
               </h2>
               <p
                 className={`mx-auto mt-4 max-w-2xl text-pretty font-sans text-base leading-relaxed sm:text-lg ${TEXT_INK_MUTED}`}
               >
-                Une approche technique adaptée aux contraintes de chaque vertical — sûreté, réseaux et environnements
-                sensibles.
+                {subtitle ?? "Une approche technique adaptée aux contraintes de chaque vertical — sûreté, réseaux et environnements sensibles."}
               </p>
             </div>
             <div className="mx-auto grid max-w-3xl grid-cols-1 gap-4 sm:max-w-4xl sm:grid-cols-2 sm:gap-4 lg:max-w-5xl lg:grid-cols-3">

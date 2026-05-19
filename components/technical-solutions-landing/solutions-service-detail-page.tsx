@@ -130,11 +130,11 @@ export function SolutionsServiceDetailPage({ service }: { service: SolutionsServ
     <SolutionsPolePageShell>
       <SolutionsServiceHero service={service} />
       {features && (
-        <ServiceFeatureSections features={features} pole="solutions" badgeLabel="Solutions" />
+        <ServiceFeatureSections features={features} pole="solutions" badgeLabel="Solutions" presentation={service.presentation} />
       )}
       <SolutionsLandingServicesCarousel />
-      <SolutionsLandingPartnersWhy />
-      <SolutionsLandingSectors />
+      <SolutionsLandingPartnersWhy heading={service.whyHeading} />
+      <SolutionsLandingSectors heading={service.sectorsHeading} subtitle={service.sectorsSubtitle} />
       {technologies && <ServiceTechnologiesSection technologies={technologies} />}
       <TestimonialsCarousel />
       <SolutionsCaseStudiesSection />

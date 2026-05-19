@@ -35,7 +35,7 @@ function WhyIcon() {
   );
 }
 
-export function SolutionsLandingPartnersWhy() {
+export function SolutionsLandingPartnersWhy({ heading }: { heading?: string } = {}) {
   return (
     <section className={BRAND.surfaceMuted.bgClass}>
       <div className={PAGE_X}>
@@ -44,7 +44,7 @@ export function SolutionsLandingPartnersWhy() {
             <div className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
               <p className={whyEyebrowClass}>Pourquoi nous</p>
               <h2 className={`mt-4 font-display text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl ${TEXT_INK}`}>
-                Pourquoi choisir Ovedex Solutions ?
+                {heading ?? "Pourquoi choisir Ovedex Solutions ?"}
               </h2>
             </div>
 

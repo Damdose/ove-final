@@ -32,11 +32,19 @@ export interface ServiceFeatureBlock {
   imageAlt: string;
 }
 
+export interface ServiceAdvantageCard {
+  icon: "shield-check" | "zap" | "target" | "lock" | "eye" | "clock" | "settings" | "bar-chart" | "globe" | "layers" | "cpu" | "wifi";
+  title: string;
+  text: string;
+}
+
 export interface ServiceHeroStats {
   /** Proposition de valeur affichée sous le hero */
   tagline: string;
   /** 3 chiffres clés */
   stats: ServiceFeatureStatRow[];
+  /** 3 cards avantages spécifiques au service */
+  advantages?: ServiceAdvantageCard[];
 }
 
 export interface ServiceFeaturesData {
@@ -61,44 +69,92 @@ const BTN_WHITE_ON_NAVY = `inline-flex h-14 min-w-[12rem] items-center justify-c
 
 const BTN_INK = `inline-flex h-14 min-w-[12rem] items-center justify-center ${R_BTN} ${BG_INK} px-6 text-lg font-medium text-white no-underline transition-opacity hover:opacity-92 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${RING_INK_FOCUS}`;
 
+const ADVANTAGE_ICONS: Record<string, React.ReactElement> = {
+  "shield-check": <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="size-6"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
+  zap: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="size-6"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>,
+  target: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="size-6"><circle cx={12} cy={12} r={10} /><circle cx={12} cy={12} r={6} /><circle cx={12} cy={12} r={2} /></svg>,
+  lock: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="size-6"><rect x={3} y={11} width={18} height={11} rx={2} ry={2} /><path d="M7 11V7a5 5 0 0110 0v4" /></svg>,
+  eye: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="size-6"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx={12} cy={12} r={3} /></svg>,
+  clock: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="size-6"><circle cx={12} cy={12} r={10} /><polyline points="12 6 12 12 16 14" /></svg>,
+  settings: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="size-6"><circle cx={12} cy={12} r={3} /><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" /></svg>,
+  "bar-chart": <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="size-6"><line x1={18} y1={20} x2={18} y2={10} /><line x1={12} y1={20} x2={12} y2={4} /><line x1={6} y1={20} x2={6} y2={14} /></svg>,
+  globe: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="size-6"><circle cx={12} cy={12} r={10} /><line x1={2} y1={12} x2={22} y2={12} /><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" /></svg>,
+  layers: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="size-6"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg>,
+  cpu: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="size-6"><rect x={4} y={4} width={16} height={16} rx={2} ry={2} /><rect x={9} y={9} width={6} height={6} /><line x1={9} y1={1} x2={9} y2={4} /><line x1={15} y1={1} x2={15} y2={4} /><line x1={9} y1={20} x2={9} y2={23} /><line x1={15} y1={20} x2={15} y2={23} /><line x1={20} y1={9} x2={23} y2={9} /><line x1={20} y1={14} x2={23} y2={14} /><line x1={1} y1={9} x2={4} y2={9} /><line x1={1} y1={14} x2={4} y2={14} /></svg>,
+  wifi: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="size-6"><path d="M5 12.55a11 11 0 0114.08 0" /><path d="M1.42 9a16 16 0 0121.16 0" /><path d="M8.53 16.11a6 6 0 016.95 0" /><line x1={12} y1={20} x2={12.01} y2={20} /></svg>,
+};
+
+function AdvantageIcon({ name }: { name: string }) {
+  return ADVANTAGE_ICONS[name] ?? ADVANTAGE_ICONS["shield-check"];
+}
+
 export function ServiceFeatureSections({
   features,
   pole,
   badgeLabel,
+  presentation,
 }: {
   features: ServiceFeaturesData;
   pole: PoleId;
   badgeLabel: string;
+  presentation?: string;
 }) {
   const theme = POLE_THEMES[pole];
   const { heroStats, section1, section2, section3 } = features;
 
   return (
     <>
-      {/* ── Proposition de valeur + chiffres clés ── */}
+      {/* ── Proposition de valeur + avantages + chiffres clés ── */}
       <section className="bg-[#f4f5f7]">
         <div className={`mx-auto w-full max-w-screen-xl ${PAGE_X}`}>
           <div className={SECTION_PAD}>
             <h2
-              className="mx-auto mb-10 max-w-4xl text-center font-display text-2xl font-bold leading-snug tracking-tight text-[#0D0B4A] sm:mb-14 sm:text-3xl sm:leading-[1.2] lg:mb-16 lg:text-[2.35rem] lg:leading-tight"
+              className="mx-auto max-w-4xl text-center font-display text-2xl font-bold leading-snug tracking-tight text-[#0D0B4A] sm:text-3xl sm:leading-[1.2] lg:text-[2.35rem] lg:leading-tight"
             >
               {heroStats.tagline}
             </h2>
-            <div className="mx-auto grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-5 lg:max-w-none lg:gap-8">
-              {heroStats.stats.map((row, i) => (
-                <div
-                  key={i}
-                  className="relative overflow-hidden rounded-2xl border border-black/[0.06] bg-white px-6 py-8 text-center shadow-[0_2px_12px_rgba(13,11,74,0.05)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(13,11,74,0.1)] sm:px-5 sm:py-9 lg:px-8 lg:py-10"
-                >
-                  <div className={`absolute inset-x-0 top-0 h-1 ${theme.primary.bgClass}`} aria-hidden />
-                  <p className="font-display text-4xl font-bold leading-none text-[#0D0B4A] sm:text-5xl lg:text-6xl lg:leading-[1.05]">
-                    <AnimatedCounter value={row.value} />
-                  </p>
-                  <p className="mt-4 font-sans text-sm font-semibold leading-snug text-[#0D0B4A]/75 sm:text-base">
-                    {row.label}
-                  </p>
-                </div>
-              ))}
+            {presentation && (
+              <p className="mx-auto mt-5 max-w-3xl text-center font-sans text-base font-normal leading-relaxed text-[#0D0B4A]/65 sm:mt-6 sm:text-lg sm:leading-relaxed">
+                {presentation}
+              </p>
+            )}
+
+            {/* ── 3 Advantage cards ── */}
+            {heroStats.advantages && (
+              <div className="mt-10 grid grid-cols-1 gap-5 sm:mt-12 md:grid-cols-3 lg:gap-6">
+                {heroStats.advantages.map((card, i) => (
+                  <div
+                    key={i}
+                    className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-[0_2px_12px_rgba(13,11,74,0.04)] lg:p-8"
+                  >
+                    <div className={`flex size-12 items-center justify-center rounded-xl ${BG_INK} text-white`}>
+                      <AdvantageIcon name={card.icon} />
+                    </div>
+                    <h3 className="mt-5 font-display text-lg font-bold leading-snug text-[#0D0B4A] sm:text-xl">
+                      {card.title}
+                    </h3>
+                    <p className="mt-2 font-sans text-sm font-normal leading-relaxed text-[#0D0B4A]/65 sm:text-base">
+                      {card.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* ── Chiffres clés — encadré navy ── */}
+            <div className={`mt-8 overflow-hidden rounded-2xl ${BG_INK} sm:mt-10`}>
+              <div className="grid grid-cols-1 divide-y divide-white/10 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+                {heroStats.stats.map((row, i) => (
+                  <div key={i} className="flex items-center justify-center gap-3 px-6 py-5 text-center sm:py-6">
+                    <p className="font-display text-2xl font-bold leading-none text-white sm:text-3xl">
+                      <AnimatedCounter value={row.value} />
+                    </p>
+                    <p className="font-sans text-sm font-medium leading-snug text-white/70">
+                      {row.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -7,12 +7,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   /* ──────── Sûreté ──────── */
   "surete-de-chantier": {
     heroStats: {
-      tagline: "Sécurisez vos chantiers avec des systèmes modulaires et connectés",
+      tagline: "Des dispositifs autonomes qui s'adaptent à chaque phase de votre projet",
       stats: [
         { value: "+300", label: "chantiers sécurisés" },
         { value: "24/7", label: "surveillance temps réel" },
         { value: "48h", label: "déploiement sur site" },
       ],
+          advantages: [{"icon":"zap","title":"Déploiement en 48h sur site","text":"Systèmes autonomes installés rapidement, alimentés par panneau solaire ou groupe électrogène — opérationnels même sans réseau filaire."},{"icon":"eye","title":"Alerte vidéo en direct sur smartphone","text":"Dès qu'un mouvement suspect est détecté, vous recevez la vidéo en temps réel pour décider d'intervenir immédiatement."},{"icon":"settings","title":"Reconfigurable à chaque phase","text":"Le dispositif se déplace et s'adapte au fil de l'avancement du chantier, sans câblage lourd ni reprise d'installation."}],
     },
     section1: {
       heading: "Sécurisation temporaire de vos chantiers",
@@ -45,12 +46,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "detection-perimetrique": {
     heroStats: {
-      tagline: "Une protection périmétrique sans angle mort pour vos sites sensibles",
+      tagline: "Identifiez les menaces avant qu'elles n'atteignent vos bâtiments",
       stats: [
         { value: "100%", label: "du périmètre couvert" },
         { value: "<3s", label: "temps de détection" },
         { value: "0", label: "fausse alarme après calibration" },
       ],
+          advantages: [{"icon":"target","title":"Détection avant l'intrusion","text":"Le périmètre est sécurisé en amont de vos bâtiments — la menace est identifiée avant d'atteindre vos installations."},{"icon":"eye","title":"Levée de doute vidéo instantanée","text":"Chaque alerte est corrélée à vos caméras pour confirmer ou écarter la menace en quelques secondes."},{"icon":"globe","title":"Fiabilité par tous les temps","text":"Couverture de plusieurs kilomètres avec une précision constante, quelles que soient les conditions météo."}],
     },
     section1: {
       heading: "Protection périmétrique de vos sites",
@@ -83,12 +85,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "boitiers-a-clefs": {
     heroStats: {
-      tagline: "Centralisez, tracez et sécurisez la gestion de toutes vos clés",
+      tagline: "Chaque retrait horodaté, chaque anomalie signalée en temps réel",
       stats: [
         { value: "100%", label: "des mouvements tracés" },
         { value: "0", label: "clé perdue" },
         { value: "Badge", label: "attribution et restitution" },
       ],
+          advantages: [{"icon":"lock","title":"Chaque clé tracée par badge","text":"Retrait et restitution horodatés automatiquement — vous savez qui détient quelle clé à chaque instant."},{"icon":"zap","title":"Alertes en cas d'anomalie","text":"Clé non restituée, ouverture hors horaires ou tentative non autorisée : notification immédiate."},{"icon":"bar-chart","title":"Historique complet et opposable","text":"Traçabilité complète consultable en temps réel, exploitable en cas d'audit ou d'incident."}],
     },
     section1: {
       heading: "Gestion sécurisée de vos clés",
@@ -121,12 +124,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "portail-portique-barriere": {
     heroStats: {
-      tagline: "Des accès véhicules et piétons automatisés et sécurisés",
+      tagline: "Filtrez les flux sans ralentir l'activité de vos sites",
       stats: [
         { value: "+500", label: "accès automatisés" },
         { value: "100%", label: "intégration contrôle d'accès" },
         { value: "24/7", label: "fonctionnement continu" },
       ],
+          advantages: [{"icon":"lock","title":"Accès par badge, plaque ou code","text":"Seuls les utilisateurs autorisés passent — toute tentative non reconnue est bloquée et enregistrée."},{"icon":"settings","title":"Règles paramétrables","text":"Horaires, niveaux d'autorisation et sens de circulation définis selon vos besoins opérationnels."},{"icon":"layers","title":"Intégré à votre écosystème","text":"Connecté à votre contrôle d'accès, interphonie et vidéosurveillance pour un pilotage cohérent."}],
     },
     section1: {
       heading: "Accès véhicules & piétons automatisés",
@@ -159,12 +163,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "videophonie": {
     heroStats: {
-      tagline: "Des interphones vidéo connectés pour simplifier l'accès à vos bâtiments",
+      tagline: "Voyez, parlez et ouvrez depuis n'importe où",
       stats: [
         { value: "IP", label: "technologie full IP" },
         { value: "100%", label: "compatible contrôle d'accès" },
         { value: "Mobile", label: "déverrouillage smartphone" },
       ],
+          advantages: [{"icon":"eye","title":"Contrôle visuel de chaque visiteur","text":"Image HD de la platine de rue, conversation audio et déverrouillage à distance en un seul geste."},{"icon":"globe","title":"Gestion multi-sites centralisée","text":"Pilotez tous vos accès depuis une seule application mobile, où que vous soyez."},{"icon":"layers","title":"Compatible contrôle d'accès existant","text":"S'intègre à vos systèmes en place pour un parcours visiteur fluide et sécurisé."}],
     },
     section1: {
       heading: "Vidéophonie IP pour vos bâtiments",
@@ -197,12 +202,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "videosurveillance": {
     heroStats: {
-      tagline: "Des systèmes vidéo IP fiables, conformes et évolutifs",
+      tagline: "Des caméras qui analysent, alertent et s'adaptent à vos besoins",
       stats: [
         { value: "+300", label: "systèmes déployés" },
         { value: "96%", label: "de satisfaction client" },
         { value: "RGPD", label: "conformité CNIL intégrée" },
       ],
+          advantages: [{"icon":"cpu","title":"Vidéo-analyse IA embarquée","text":"Détection de franchissement, comptage, reconnaissance de plaques — vos caméras deviennent des capteurs intelligents."},{"icon":"zap","title":"Alerte instantanée, pas de replay","text":"Vous êtes prévenu en temps réel au lieu de découvrir l'incident en épluchant des heures de vidéo."},{"icon":"shield-check","title":"Conforme RGPD, évolutif sans limite","text":"Ajout de caméras, extension multi-sites ou intégration supervision — le système grandit avec vous."}],
     },
     section1: {
       heading: "Vidéosurveillance IP professionnelle",
@@ -235,12 +241,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "supervision-unifiee": {
     heroStats: {
-      tagline: "Tous vos systèmes de sécurité pilotés depuis une interface unique",
+      tagline: "Fini les logiciels éparpillés — une vision complète en un coup d'œil",
       stats: [
         { value: "1", label: "interface pour tous les systèmes" },
         { value: "<10s", label: "corrélation des événements" },
         { value: "Multi", label: "sites supervisés" },
       ],
+          advantages: [{"icon":"layers","title":"Tous vos systèmes sur un seul écran","text":"Vidéo, intrusion, accès et GTB centralisés dans un tableau de bord unique avec plans interactifs."},{"icon":"zap","title":"Corrélation automatique des événements","text":"Le système détecte les scénarios complexes et déclenche les procédures adaptées sans intervention manuelle."},{"icon":"bar-chart","title":"Rapports et tableaux de bord","text":"Données fiables pour piloter votre sûreté, générées automatiquement et personnalisables."}],
     },
     section1: {
       heading: "Pilotage centralisé de tous vos systèmes",
@@ -273,12 +280,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "controle-dacces": {
     heroStats: {
-      tagline: "Un contrôle d'accès sur mesure pour chaque zone de vos sites",
+      tagline: "Traçabilité complète et gestion centralisée, même multi-sites",
       stats: [
         { value: "+500", label: "points d'accès gérés" },
         { value: "100%", label: "des droits audités" },
         { value: "Bio", label: "multi-technologies" },
       ],
+          advantages: [{"icon":"lock","title":"Droits gérés depuis une console unique","text":"Création, modification et révocation instantanées des accès, même sur plusieurs sites simultanément."},{"icon":"eye","title":"Corrélation vidéo de chaque accès","text":"Chaque tentative d'accès est associée aux images pour une levée de doute immédiate."},{"icon":"bar-chart","title":"Traçabilité complète des mouvements","text":"Historique détaillé de qui a accédé où et quand, exploitable en cas d'incident ou d'audit."}],
     },
     section1: {
       heading: "Contrôle d'accès sur mesure",
@@ -311,12 +319,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "alarme-anti-intrusion": {
     heroStats: {
-      tagline: "Détection d'intrusion fiable avec télésurveillance et levée de doute",
+      tagline: "Une protection active connectée à des professionnels, 24h/24",
       stats: [
         { value: "+300", label: "systèmes installés" },
         { value: "<30s", label: "alerte et levée de doute" },
         { value: "NF", label: "conformité normes" },
       ],
+          advantages: [{"icon":"shield-check","title":"Télésurveillance professionnelle 24h/24","text":"Chaque alerte est traitée par des opérateurs avec levée de doute vidéo et possibilité d'intervention."},{"icon":"zap","title":"Réaction en quelques secondes","text":"Alerte sonore, notification instantanée et levée de doute vidéo déclenchées simultanément."},{"icon":"settings","title":"Dimensionné et maintenu pour votre site","text":"Chaque composant est testé, paramétré et maintenu pour garantir une fiabilité maximale."}],
     },
     section1: {
       heading: "Détection d'intrusion fiable et réactive",
@@ -351,12 +360,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   /* ──────── Infrastructure réseau ──────── */
   "inpt": {
     heroStats: {
-      tagline: "Des infrastructures numériques dimensionnées pour aujourd'hui et demain",
+      tagline: "Le socle certifié sur lequel reposent tous vos systèmes connectés",
       stats: [
         { value: "+50", label: "bâtiments équipés" },
         { value: "100%", label: "conformité normes" },
         { value: "25 ans", label: "durée de vie" },
       ],
+          advantages: [{"icon":"layers","title":"Socle de tous vos systèmes","text":"Téléphonie, wifi, vidéosurveillance, GTB — tout repose sur une infrastructure numérique bien conçue."},{"icon":"shield-check","title":"Certifié et documenté","text":"Chaque lien est certifié selon les normes NF C 15-100 et EN 50173, avec documentation complète."},{"icon":"settings","title":"Dimensionné pour évoluer","text":"Montée en débit, ajout de postes, convergence IP — votre infrastructure anticipe vos besoins futurs."}],
     },
     section1: {
       heading: "Infrastructures numériques pour bâtiments",
@@ -389,12 +399,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "wifi": {
     heroStats: {
-      tagline: "Un wifi professionnel haute performance pour tous vos bâtiments",
+      tagline: "Conçu pour la haute densité, le roaming et la supervision proactive",
       stats: [
         { value: "100%", label: "couverture garantie" },
         { value: "Wi-Fi 6", label: "dernière génération" },
         { value: "BYOD", label: "segmentation sécurisée" },
       ],
+          advantages: [{"icon":"wifi","title":"Roaming transparent entre zones","text":"Vos utilisateurs passent d'une zone à l'autre sans coupure ni reconnexion."},{"icon":"target","title":"Site survey et positionnement optimisé","text":"Cartographie terrain des zones d'ombre et interférences pour un placement précis des bornes."},{"icon":"eye","title":"Supervision proactive","text":"Les anomalies sont détectées et traitées avant que vos utilisateurs ne les remarquent."}],
     },
     section1: {
       heading: "Wifi professionnel haute performance",
@@ -427,12 +438,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "antenne-gsm-4g-5g": {
     heroStats: {
-      tagline: "Une couverture mobile garantie dans tous vos espaces intérieurs",
+      tagline: "Fini les zones blanches, même en sous-sol et béton armé",
       stats: [
         { value: "100%", label: "de couverture intérieure" },
         { value: "4G/5G", label: "technologies supportées" },
         { value: "ERP", label: "conformité opérateurs" },
       ],
+          advantages: [{"icon":"wifi","title":"Signal restauré partout","text":"Sous-sols, parkings, béton armé — le signal 4G/5G est rétabli dans les zones les plus contraintes."},{"icon":"shield-check","title":"Conforme aux exigences opérateurs","text":"Installation DAS validée par les opérateurs, sans risque de non-conformité."},{"icon":"target","title":"Dimensionné au juste besoin","text":"Étude de couverture préalable pour une solution adaptée, sans sur-investissement."}],
     },
     section1: {
       heading: "Couverture mobile intérieure garantie",
@@ -465,12 +477,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "reseau-vdi": {
     heroStats: {
-      tagline: "Un câblage structuré certifié pour des réseaux fiables et évolutifs",
+      tagline: "Une infrastructure documentée, prête pour les 20 prochaines années",
       stats: [
         { value: "Cat.6a", label: "cuivre haute performance" },
         { value: "100%", label: "des liens certifiés" },
         { value: "25 ans", label: "garantie constructeur" },
       ],
+          advantages: [{"icon":"layers","title":"Infrastructure propre et étiquetée","text":"Câblage structuré, certifié et documenté — pas un plat de spaghettis dans une armoire."},{"icon":"settings","title":"Évolutif vers 10 Gbit/s","text":"Compatible vidéosurveillance IP, GTB et wifi sans reprendre le câblage existant."},{"icon":"clock","title":"Rentabilisé sur 15 à 20 ans","text":"Un investissement structurant qui supporte toutes vos évolutions technologiques futures."}],
     },
     section1: {
       heading: "Câblage VDI structuré et certifié",
@@ -503,12 +516,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "audit-de-cablage": {
     heroStats: {
-      tagline: "Un état des lieux complet de vos infrastructures câblées",
+      tagline: "Mesurez, diagnostiquez et priorisez avant d'investir",
       stats: [
         { value: "100%", label: "des liens mesurés" },
         { value: "48h", label: "rapport avec recommandations" },
         { value: "Plan", label: "cartographie livrée" },
       ],
+          advantages: [{"icon":"target","title":"Mesures certifiées sur chaque lien","text":"Atténuation, diaphonie, catégorie réelle — chaque point faible est identifié avec précision."},{"icon":"bar-chart","title":"Rapport clair et priorisé","text":"Recommandations classées par criticité et budget pour investir là où ça compte."},{"icon":"shield-check","title":"Indispensable avant toute évolution","text":"Extension, migration ou déménagement : ne construisez pas sur des fondations fragiles."}],
     },
     section1: {
       heading: "Audit complet de vos infrastructures câblées",
@@ -541,12 +555,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "fibre-optique": {
     heroStats: {
-      tagline: "Des liaisons fibre optique performantes et pérennes",
+      tagline: "Débit maximal, latence minimale et immunité aux interférences",
       stats: [
         { value: "10 Gbps+", label: "bande passante" },
         { value: "100%", label: "soudures mesurées OTDR" },
         { value: "25 ans", label: "durée de vie" },
       ],
+          advantages: [{"icon":"zap","title":"Débit élevé, latence minimale","text":"La seule technologie qui garantit des performances constantes sur de longues distances."},{"icon":"shield-check","title":"Chaque lien certifié avant livraison","text":"Soudures contrôlées par mesures OTDR pour des liaisons fiables et pérennes."},{"icon":"settings","title":"Toute la chaîne maîtrisée","text":"Étude de tracé, tirage, soudure, raccordement et certification — un seul prestataire."}],
     },
     section1: {
       heading: "Déploiement fibre optique professionnel",
@@ -581,12 +596,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   /* ──────── Audiovisuel ──────── */
   "reservation-salle-de-reunion": {
     heroStats: {
-      tagline: "Optimisez l'utilisation de vos salles de réunion en temps réel",
+      tagline: "Réservation en un geste, libération automatique, données exploitables",
       stats: [
         { value: "+30%", label: "d'utilisation effective" },
         { value: "0", label: "conflit de réservation" },
         { value: "M365", label: "intégration Microsoft & Google" },
       ],
+          advantages: [{"icon":"clock","title":"Libération automatique des salles vides","text":"Les capteurs de présence détectent les no-shows et libèrent le créneau en temps réel."},{"icon":"layers","title":"Synchronisé avec votre calendrier","text":"Connecté à Microsoft 365 et Google Workspace pour une gestion sans double saisie."},{"icon":"bar-chart","title":"Données d'occupation exploitables","text":"Identifiez les salles sous-utilisées et les créneaux de pointe pour optimiser vos espaces."}],
     },
     section1: {
       heading: "Optimisez l'usage de vos salles",
@@ -619,12 +635,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "musique-dambiance": {
     heroStats: {
-      tagline: "L'ambiance sonore adaptée à votre activité et vos espaces",
+      tagline: "Chaque espace a sa propre atmosphère, pilotée à distance",
       stats: [
         { value: "100%", label: "couverture uniforme" },
         { value: "Multi", label: "zones programmables" },
         { value: "SACEM", label: "compatibilité droits" },
       ],
+          advantages: [{"icon":"settings","title":"Zonage et programmation automatique","text":"Chaque espace a sa propre ambiance, pilotée à distance sans intervention manuelle."},{"icon":"eye","title":"Matériel invisible et esthétique","text":"Enceintes encastrées et amplificateurs réseau qui se fondent dans votre décor."},{"icon":"shield-check","title":"Maintenance incluse","text":"Rendu sonore constant dans la durée, sans dégradation ni intervention de votre part."}],
     },
     section1: {
       heading: "Ambiance sonore professionnelle",
@@ -657,12 +674,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "ecrans-interactifs": {
     heroStats: {
-      tagline: "Des écrans tactiles pour collaborer, présenter et former",
+      tagline: "Un seul écran qui remplace vidéoprojecteur, tableau blanc et barre de visio",
       stats: [
         { value: "4K", label: "résolution parfaite" },
         { value: "20+", label: "points de contact" },
         { value: "Teams", label: "compatible Teams & Zoom" },
       ],
+          advantages: [{"icon":"layers","title":"Tout-en-un : annotation, partage et visio","text":"Un seul écran tactile qui remplace vidéoprojecteur, tableau blanc et barre de visioconférence."},{"icon":"globe","title":"Compatible Teams, Zoom et Meet","text":"Intégré à votre IT existant pour une adoption immédiate par vos équipes."},{"icon":"zap","title":"Productif dès le premier jour","text":"Dimensionné pour votre salle et vos usages — pas besoin de formation."}],
     },
     section1: {
       heading: "Collaboration tactile et interactive",
@@ -695,12 +713,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "affichage-dynamique": {
     heroStats: {
-      tagline: "Diffusez vos messages en temps réel sur tous vos écrans",
+      tagline: "Remplacez l'affichage statique par un canal vivant et réactif",
       stats: [
         { value: "Multi", label: "sites pilotés" },
         { value: "24/7", label: "diffusion continue" },
         { value: "Flux", label: "météo, KPI, actualités" },
       ],
+          advantages: [{"icon":"globe","title":"Pilotage multi-sites centralisé","text":"Mettez à jour tous vos écrans en quelques clics depuis une seule plateforme."},{"icon":"clock","title":"Programmation horaire et flux dynamiques","text":"Météo, KPI, actualités — le contenu s'adapte au contexte et au moment de la journée."},{"icon":"shield-check","title":"Écrans professionnels 24/7","text":"Luminosité et durabilité conçues pour un fonctionnement continu, pas du matériel grand public."}],
     },
     section1: {
       heading: "Communication visuelle digitale",
@@ -733,12 +752,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "sonorisation-despaces": {
     heroStats: {
-      tagline: "Une sonorisation professionnelle pour chaque configuration d'espace",
+      tagline: "Chaque mot entendu clairement, du premier au dernier rang",
       stats: [
         { value: "100%", label: "d'intelligibilité" },
         { value: "EVAC", label: "conforme sécurité incendie" },
         { value: "DSP", label: "traitement numérique" },
       ],
+          advantages: [{"icon":"target","title":"Étude acoustique sur site","text":"Volume, matériaux, réverbération — chaque paramètre est mesuré pour un résultat optimal."},{"icon":"shield-check","title":"Conforme EVAC/SSS si nécessaire","text":"Intégration de l'évacuation sonore incendie dans la même installation, une seule certification."},{"icon":"settings","title":"Calibration sur mesure","text":"Positionnement des enceintes et traitement du signal adaptés à votre configuration exacte."}],
     },
     section1: {
       heading: "Sonorisation professionnelle",
@@ -771,12 +791,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "installation-de-videoprojecteurs-et-ecrans-de-projection": {
     heroStats: {
-      tagline: "La vidéoprojection adaptée à vos salles et à vos usages",
+      tagline: "La technologie guidée par vos contraintes, pas par un catalogue",
       stats: [
         { value: "4K", label: "présentations nettes" },
         { value: "Laser", label: "sans lampe à remplacer" },
         { value: "100%", label: "intégration AV" },
       ],
+          advantages: [{"icon":"target","title":"Technologie adaptée à votre salle","text":"Laser, courte focale ou lampe — le choix est guidé par la luminosité, la distance et votre budget."},{"icon":"layers","title":"Intégration AV complète","text":"Câblage, support, paramétrage colorimétrique et connexion à vos systèmes existants inclus."},{"icon":"eye","title":"Image nette et lumineuse garantie","text":"Chaque installation est calibrée pour offrir le meilleur rendu dans votre configuration."}],
     },
     section1: {
       heading: "Vidéoprojection professionnelle",
@@ -809,12 +830,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "integration-de-salles-de-reunion-connectees": {
     heroStats: {
-      tagline: "Des salles de réunion clé en main pour le travail hybride",
+      tagline: "Un seul bouton, zéro galère technique, compatibilité certifiée",
       stats: [
         { value: "1 clic", label: "pour lancer une réunion" },
         { value: "Teams", label: "certifié Teams & Zoom Rooms" },
         { value: "0", label: "câble à brancher" },
       ],
+          advantages: [{"icon":"zap","title":"Opérationnel au premier clic","text":"Un seul bouton pour rejoindre la réunion — cadrage auto, micros sans écho, partage sans fil."},{"icon":"shield-check","title":"Certifié Teams Rooms / Zoom Rooms","text":"Compatibilité garantie, zéro problème d'interopérabilité entre les plateformes."},{"icon":"settings","title":"Zéro intervention IT salle par salle","text":"Supervision centralisée de tous les systèmes déployés pour vos équipes techniques."}],
     },
     section1: {
       heading: "Salles de réunion clé en main",
@@ -847,12 +869,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "systeme-de-visioconference": {
     heroStats: {
-      tagline: "Une visioconférence professionnelle pour chaque type de salle",
+      tagline: "Qualité broadcast de la huddle room à la salle de direction",
       stats: [
         { value: "4K", label: "qualité vidéo" },
         { value: "PTZ", label: "suivi automatique" },
         { value: "Multi", label: "Teams, Zoom, Webex" },
       ],
+          advantages: [{"icon":"eye","title":"Cadrage automatique de l'orateur","text":"Les caméras PTZ suivent l'orateur actif pour une expérience naturelle et immersive."},{"icon":"zap","title":"Audio crystal clear","text":"Annulation d'écho, suppression de bruit et beamforming pour une intelligibilité parfaite."},{"icon":"settings","title":"Pilotage par panneau tactile unique","text":"Rejoindre, partager et ajuster le volume en un geste, sans formation nécessaire."}],
     },
     section1: {
       heading: "Visioconférence professionnelle",
@@ -885,12 +908,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "mur-decrans-led-walls": {
     heroStats: {
-      tagline: "Un impact visuel maximal pour vos espaces de communication",
+      tagline: "Conception sur mesure, calibration professionnelle, fiabilité 24/7",
       stats: [
         { value: "∞", label: "taille sur mesure" },
         { value: "24/7", label: "fonctionnement continu" },
         { value: "HDR", label: "haute luminosité" },
       ],
+          advantages: [{"icon":"eye","title":"Impact visuel hors norme","text":"Luminosité, contraste et taille d'image qu'aucun écran unitaire ne peut égaler."},{"icon":"settings","title":"Conception 100% sur mesure","text":"Choix du pitch, calibration colorimétrique et gestion thermique adaptés à votre espace."},{"icon":"shield-check","title":"Fiabilité 24/7 garantie","text":"Alimentation redondante et maintenance préventive pour un fonctionnement continu sans dégradation."}],
     },
     section1: {
       heading: "Murs d'images LED grand format",
@@ -925,12 +949,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   /* ──────── Divers ──────── */
   "systeme-dappel-durgence": {
     heroStats: {
-      tagline: "Des dispositifs d'alerte conformes pour protéger vos occupants",
+      tagline: "Chaque alerte localisée, corrélée et transmise sans délai",
       stats: [
         { value: "100%", label: "conformité ERP" },
         { value: "<3s", label: "transmission de l'alerte" },
         { value: "Multi", label: "zones couvertes" },
       ],
+          advantages: [{"icon":"zap","title":"Alerte instantanée avec localisation","text":"L'appel remonte sur votre supervision avec l'emplacement exact du dispositif activé."},{"icon":"eye","title":"Corrélation vidéo automatique","text":"Chaque alerte est associée à l'image de la caméra la plus proche pour identifier la situation."},{"icon":"shield-check","title":"Conforme aux normes ERP","text":"Positionnement, signalétique et retour de confirmation selon les règles d'accessibilité."}],
     },
     section1: {
       heading: "Appel d'urgence pour ERP et santé",
@@ -963,12 +988,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "interphonie-eas": {
     heroStats: {
-      tagline: "Interphonie de sécurité et évacuation sonore conformes",
+      tagline: "Intelligibilité garantie dans chaque zone, conformité certifiée",
       stats: [
         { value: "EAS", label: "conforme incendie" },
         { value: "100%", label: "couverture des espaces" },
         { value: "SSS", label: "sécurité sonore intégrée" },
       ],
+          advantages: [{"icon":"target","title":"Intelligibilité garantie partout","text":"Étude acoustique et zonage pour que chaque message soit compris, même dans les espaces bruyants."},{"icon":"layers","title":"Un seul système, deux fonctions","text":"Interphonie de sécurité et évacuation sonore combinées dans une installation unique."},{"icon":"shield-check","title":"Certification commission de sécurité","text":"Installation documentée et certifiée pour satisfaire les exigences réglementaires."}],
     },
     section1: {
       heading: "Interphonie & évacuation sonore",
@@ -1001,12 +1027,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "gestion-des-visiteurs": {
     heroStats: {
-      tagline: "Un accueil digitalisé, fluide et conforme RGPD",
+      tagline: "De l'enregistrement au badge en moins de 30 secondes",
       stats: [
         { value: "-50%", label: "de temps d'accueil" },
         { value: "100%", label: "visites tracées RGPD" },
         { value: "Badge", label: "impression automatique" },
       ],
+          advantages: [{"icon":"clock","title":"Accueil en moins de 30 secondes","text":"Pré-enregistrement, borne tactile, badge photo et notification de l'hôte — sans file d'attente."},{"icon":"lock","title":"Badges intégrés au contrôle d'accès","text":"Chaque visiteur n'accède qu'aux zones autorisées, avec traçabilité complète de sa visite."},{"icon":"shield-check","title":"Conforme RGPD","text":"Purge automatique des données personnelles selon les délais définis par votre politique."}],
     },
     section1: {
       heading: "Accueil digitalisé et sécurisé",
@@ -1039,12 +1066,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "systeme-dappel-malade": {
     heroStats: {
-      tagline: "Une communication patient fiable pour les établissements de soins",
+      tagline: "Du bouton au soignant en quelques secondes, avec escalade automatique",
       stats: [
         { value: "<5s", label: "transmission de l'appel" },
         { value: "100%", label: "des espaces couverts" },
         { value: "IP", label: "technologie flexible" },
       ],
+          advantages: [{"icon":"zap","title":"Escalade automatique","text":"Si l'appel n'est pas pris en charge dans le délai défini, il remonte au poste de garde."},{"icon":"wifi","title":"Couverture IP et radio","text":"Fonctionne même dans les bâtiments anciens sans câblage dédié grâce aux technologies radio."},{"icon":"layers","title":"Intégration logiciels hospitaliers","text":"Connecté à vos GAP et DPI pour enrichir le suivi patient et simplifier le reporting."}],
     },
     section1: {
       heading: "Communication patient pour la santé",
@@ -1077,12 +1105,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "systeme-de-demence": {
     heroStats: {
-      tagline: "Protéger les résidents vulnérables tout en préservant leur confort",
+      tagline: "Sécurité sans contrainte, dignité préservée",
       stats: [
         { value: "0", label: "fugue grâce à la détection" },
         { value: "24/7", label: "surveillance discrète" },
         { value: "Confort", label: "préservé pour les résidents" },
       ],
+          advantages: [{"icon":"lock","title":"Verrouillage conditionnel discret","text":"Les issues se verrouillent uniquement à l'approche d'un résident équipé — pas de contrainte pour les autres."},{"icon":"zap","title":"Alerte sans alarme anxiogène","text":"Le personnel est notifié en temps réel sans déclencher de sirène qui perturberait les résidents."},{"icon":"layers","title":"Centralisé avec l'appel malade","text":"Toutes les alertes remontent sur une seule interface pour une gestion simplifiée."}],
     },
     section1: {
       heading: "Protection des résidents vulnérables",
@@ -1115,12 +1144,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "systeme-de-ronde": {
     heroStats: {
-      tagline: "Une traçabilité complète des rondes de sécurité",
+      tagline: "Chaque passage prouvé, chaque retard signalé, chaque rapport automatisé",
       stats: [
         { value: "100%", label: "des passages horodatés" },
         { value: "0", label: "ronde manquée sans alerte" },
         { value: "PDF", label: "rapports automatiques" },
       ],
+          advantages: [{"icon":"target","title":"Chaque passage géolocalisé et horodaté","text":"Points NFC/RFID scannés par smartphone au fil du parcours pour une preuve irréfutable."},{"icon":"zap","title":"Alerte immédiate en cas de retard","text":"Le poste de commandement est prévenu dès qu'un point de contrôle n'est pas scanné à temps."},{"icon":"bar-chart","title":"Rapports générés automatiquement","text":"Disponibles en temps réel pour vos clients, donneurs d'ordres et auditeurs."}],
     },
     section1: {
       heading: "Contrôle de ronde digitalisé",
@@ -1153,12 +1183,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "gestion-de-stationnement": {
     heroStats: {
-      tagline: "Des parkings fluides et bien gérés grâce à l'automatisation",
+      tagline: "Identification, guidage et traçabilité de chaque véhicule",
       stats: [
         { value: "+20%", label: "de rotation des places" },
         { value: "LAPI", label: "lecture automatique plaques" },
         { value: "Temps réel", label: "supervision occupation" },
       ],
+          advantages: [{"icon":"eye","title":"Lecture de plaques à l'entrée","text":"Chaque véhicule est identifié automatiquement, orienté et tracé jusqu'à sa sortie."},{"icon":"target","title":"Guidage dynamique à la place","text":"Les conducteurs sont dirigés vers les emplacements disponibles pour fluidifier la circulation."},{"icon":"layers","title":"Intégré au contrôle d'accès bâtiment","text":"Parkings réservés, visiteurs et livraisons gérés dans un seul système cohérent."}],
     },
     section1: {
       heading: "Gestion intelligente de vos parkings",
@@ -1191,12 +1222,13 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
   },
   "detection-de-vapotage": {
     heroStats: {
-      tagline: "Détectez le vapotage dans vos espaces clos sans caméra ni micro",
+      tagline: "Analyse de l'air en continu, alertes instantanées, vie privée respectée",
       stats: [
         { value: "100%", label: "des zones sensibles couvertes" },
         { value: "<10s", label: "détection et alerte" },
         { value: "0", label: "caméra nécessaire" },
       ],
+          advantages: [{"icon":"cpu","title":"Analyse chimique en continu","text":"Les capteurs identifient les signatures du vapotage et du THC sans caméra ni micro."},{"icon":"zap","title":"Alertes temps réel au personnel","text":"Notification instantanée dès qu'un événement est détecté, avec historique des zones récurrentes."},{"icon":"layers","title":"Double usage sécurité / confort","text":"Mesure aussi la qualité de l'air (CO2, COV) dans le même dispositif."}],
     },
     section1: {
       heading: "Détection discrète du vapotage",
@@ -1226,5 +1258,5 @@ export const SOLUTIONS_SERVICE_FEATURES: Record<string, ServiceFeaturesData> = {
         { label: "Intégration supervision existante" },
       ],
     },
-  },
+    },
 };
