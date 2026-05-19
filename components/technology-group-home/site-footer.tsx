@@ -51,7 +51,7 @@ export async function SiteFooter({ pole }: SiteFooterProps = {}) {
                 height={72}
                 loading="lazy"
                 alt=""
-                src="https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/692c76c50366b1991a7c9aa9_logovedex%201%20(1).svg"
+                src="/logo-ovedex.svg"
                 className="h-auto w-[200px] max-w-full sm:w-[220px]"
               />
             </Link>
@@ -204,7 +204,7 @@ export async function SiteFooter({ pole }: SiteFooterProps = {}) {
       </div>
 
       <Image
-        src="https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/69273c7887620f90d015c069_logovedex%201.svg"
+        src="/logo-ovedex.svg"
         loading="lazy"
         alt=""
         width={1}

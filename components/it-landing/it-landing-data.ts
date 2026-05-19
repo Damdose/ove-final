@@ -16,7 +16,7 @@ export interface ItServiceNavTab {
 }
 
 export const IT_LOGO_SRC =
-  "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/692c76c50366b1991a7c9aa9_logovedex%201%20(1).svg";
+  "/logo-ovedex.svg";
 
 export const IT_SERVICE_NAV_TABS: ItServiceNavTab[] = [
   {

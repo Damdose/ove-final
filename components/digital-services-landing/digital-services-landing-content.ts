@@ -79,13 +79,13 @@ export interface ServiceNavTab {
 }
 
 export const DIGITAL_LOGO_SRC =
-  "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/692c76c50366b1991a7c9aa9_logovedex%201%20(1).svg";
+  "/logo-ovedex.svg";
 
 export const DIGITAL_HERO_ICON_SRC =
   "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/692c7430878b06826a1f85f5_Icon%20(26).svg";
 
 export const DIGITAL_HERO_IMAGE_SRC =
-  "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/692e4617ef4052eb32f30eeb_unnamed%20(14).jpg";
+  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=82";
 
 export const DIGITAL_BLUR_GRADIENT_SRC =
   "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/691e5a2f4ad9018806391cc3_Blur%20Gradient%20(2).svg";

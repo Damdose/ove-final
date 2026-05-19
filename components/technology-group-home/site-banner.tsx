@@ -43,7 +43,7 @@ export function SiteBanner() {
             height={48}
             loading="lazy"
             alt=""
-            src="https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/693acc5ed127f3ac25749d17_logovedex%202.svg"
+            src="/logo-ovedex.svg"
             className="h-10 w-auto sm:h-11 lg:h-12"
           />
         </Link>
