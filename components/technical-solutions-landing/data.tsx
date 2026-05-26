@@ -91,6 +91,10 @@ export const SERVICE_MEGA_TABS: ServiceMegaTab[] = [
       </>
     ),
     links: [
+      { href: "/services-solution/controle-dacces", label: "Contrôle d’accès" },
+      { href: "/services-solution/videosurveillance", label: "Vidéosurveillance" },
+      { href: "/services-solution/alarme-anti-intrusion", label: "Alarme anti-intrusion" },
+      { href: "/services-solution/videophonie", label: "Vidéophonie" },
       { href: "/services-solution/surete-de-chantier", label: "Sûreté de chantier" },
       { href: "/services-solution/detection-perimetrique", label: "Détection périmétrique" },
       { href: "/services-solution/boitiers-a-clefs", label: "Boîtiers à clefs" },
@@ -98,11 +102,7 @@ export const SERVICE_MEGA_TABS: ServiceMegaTab[] = [
         href: "/services-solution/portail-portique-barriere",
         label: "Portail, portique & barrière",
       },
-      { href: "/services-solution/videophonie", label: "Vidéophonie" },
-      { href: "/services-solution/videosurveillance", label: "Vidéosurveillance" },
       { href: "/services-solution/supervision-unifiee", label: "Supervision unifiée" },
-      { href: "/services-solution/controle-dacces", label: "Contrôle d’accès" },
-      { href: "/services-solution/alarme-anti-intrusion", label: "Alarme anti-intrusion" },
     ],
   },
   {
