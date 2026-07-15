@@ -24,7 +24,7 @@ export function SolutionsReseauxSection() {
                   <Image
                     loading="lazy"
                     src={RESEAUX_PHOTO_SRC}
-                    alt=""
+                    alt="Baie technique et infrastructure réseau"
                     width={960}
                     height={960}
                     className="inline-block w-full h-full rounded-3xl"

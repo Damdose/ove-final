@@ -28,7 +28,7 @@ export function ItPageBanner() {
             width={182}
             height={48}
             loading="lazy"
-            alt=""
+            alt="Ovedex"
             src={IT_LOGO_SRC}
             className="h-9 w-auto sm:h-10"
           />

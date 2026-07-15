@@ -2,7 +2,7 @@ import { ItPolePageShell } from "@/components/it-landing/it-pole-page-shell";
 import { POLE_THEMES } from "@/lib/brand-design-system";
 import { getItBlogPosts } from "@/lib/blog-articles";
 import { BG_INK, PAGE_X, R_BTN, SECTION_PAD, TEXT_INK } from "@/lib/home-ui";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, DEFAULT_OG_IMAGE } from "@/lib/site";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   alternates: { canonical },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Newsroom — Pôle IT Ovedex",
     description: DESCRIPTION,
     type: "website",

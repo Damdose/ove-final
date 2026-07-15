@@ -1,3 +1,4 @@
+import { DEFAULT_OG_IMAGE } from "@/lib/site";
 import { DigitalServicesLandingPage } from "@/components/digital-services-landing/digital-services-landing-page";
 import type { Metadata } from "next";
 
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
     "Ovedex Digital : création de sites web, SEO, gestion des réseaux sociaux, Google Ads, Meta Ads et création de contenus pour accélérer votre croissance en ligne.",
   alternates: { canonical: "/digital" },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Pôle Digital — Création web, SEO & réseaux sociaux",
     description:
       "Ovedex Digital : création de sites web, SEO, gestion des réseaux sociaux, Google Ads, Meta Ads et création de contenus pour accélérer votre croissance en ligne.",

@@ -90,7 +90,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: "Ovedex",
               url: getSiteUrl(),
-              logo: `${getSiteUrl()}/logo.svg`,
+              logo: `${getSiteUrl()}/logo-ovedex.svg`,
               contactPoint: {
                 "@type": "ContactPoint",
                 telephone: "+33651758513",
@@ -105,7 +105,7 @@ export default function RootLayout({
                 addressCountry: "FR",
               },
               sameAs: [
-                "https://fr.linkedin.com/company/opensi-ecommerce",
+                "https://www.linkedin.com/company/ovedex",
                 "https://www.instagram.com/ovedex/",
               ],
             }).replace(/</g, "\\u003c"),

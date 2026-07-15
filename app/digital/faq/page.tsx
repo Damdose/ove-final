@@ -1,3 +1,4 @@
+import { DEFAULT_OG_IMAGE } from "@/lib/site";
 import { DigitalLandingFaqSection } from "@/components/digital-services-landing/digital-landing-faq-section";
 import { DigitalPolePageShell } from "@/components/digital-services-landing/digital-pole-page-shell";
 import { DIGITAL_FAQ_SECTIONS } from "@/components/digital-services-landing/digital-faq-sections-data";
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
   description:
     "FAQ complète : sites web, e-commerce, branding, Google & Meta Ads, réseaux sociaux, méthode projet, tarifs, maintenance, RGPD et accessibilité.",
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "FAQ — Pôle Digital Ovedex",
     description:
       "Plus de quarante réponses détaillées sur nos prestations digitales, nos modalités et notre façon de collaborer.",

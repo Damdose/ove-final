@@ -42,7 +42,7 @@ export function SiteBanner() {
             width={220}
             height={48}
             loading="lazy"
-            alt=""
+            alt="Ovedex"
             src="/logo-ovedex.svg"
             className="h-10 w-auto sm:h-11 lg:h-12"
           />

@@ -286,7 +286,7 @@ export function SolutionsTopNavigation() {
             width={182}
             height={48}
             loading="lazy"
-            alt=""
+            alt="Ovedex"
             src={SOLUTIONS_LOGO_SRC}
             className="h-auto w-[148px] sm:w-[182px]"
           />

@@ -295,7 +295,7 @@ export function DigitalTopNavigation() {
             width={182}
             height={48}
             loading="lazy"
-            alt=""
+            alt="Ovedex"
             src={DIGITAL_LOGO_SRC}
             className="h-auto w-[148px] sm:w-[182px]"
           />

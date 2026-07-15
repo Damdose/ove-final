@@ -1,3 +1,4 @@
+import { DEFAULT_OG_IMAGE } from "@/lib/site";
 import { MarketingSiteLayout } from "@/components/technology-group-home/marketing-site-layout";
 import { AboutPageContent } from "@/components/about/about-page-content";
 import type { Metadata } from "next";
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
     "Découvrez l'histoire d'Ovedex, notre ADN, nos expertises et notre vision : optimiser vos expériences avec des services exceptionnels.",
   alternates: { canonical: "/a-propos" },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "À propos — Ovedex",
     description:
       "Découvrez l'histoire d'Ovedex, notre ADN, nos expertises et notre vision : optimiser vos expériences avec des services exceptionnels.",

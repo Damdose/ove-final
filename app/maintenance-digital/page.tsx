@@ -1,5 +1,5 @@
 import { DigitalMaintenancePage } from "@/components/digital-services-landing/digital-maintenance-page";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, DEFAULT_OG_IMAGE } from "@/lib/site";
 import type { Metadata } from "next";
 
 const path = "/maintenance-digital";
@@ -58,6 +58,7 @@ export const metadata: Metadata = {
     "Packs Start, Flow et Care : mises à jour, sauvegardes, sécurité, performance et accompagnement. Contactez-nous pour une offre adaptée à votre site.",
   alternates: { canonical },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Maintenance Digital — offres & tarifs | Ovedex",
     description:
       "Maintenance web sur mesure : CMS, sauvegardes, monitoring, SEO technique, contenus et conformité. Demandez nos tarifs.",

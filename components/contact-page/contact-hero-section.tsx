@@ -81,7 +81,12 @@ export function ContactHeroSection() {
                       <Image
                         key={logo.id}
                         loading="lazy"
-                        alt=""
+                        alt={
+                          ({ ve: "Veolia", spie: "SPIE", bouygues: "Bouygues", engie: "Engie" } as Record<
+                            string,
+                            string
+                          >)[logo.id] ?? "Logo partenaire"
+                        }
                         src={logo.src}
                         width={logo.width}
                         height={logo.height}

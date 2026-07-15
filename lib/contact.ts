@@ -16,7 +16,7 @@ export const CONTACT = {
   hours: "Lundi — vendredi · 9h — 18h",
   whatsappHref:
     "https://api.whatsapp.com/send/?phone=33651758513&text&type=phone_number&app_absent=0",
-  linkedInHref: "https://fr.linkedin.com/company/opensi-ecommerce",
+  linkedInHref: "https://www.linkedin.com/company/ovedex",
   /** Mettre à jour avec le compte officiel si différent. */
   instagramHref: "https://www.instagram.com/ovedex/",
 } as const;

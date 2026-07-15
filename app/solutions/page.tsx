@@ -1,3 +1,4 @@
+import { DEFAULT_OG_IMAGE } from "@/lib/site";
 import { TechnicalSolutionsLandingPage } from "@/components/technical-solutions-landing/technical-solutions-landing-page";
 import type { Metadata } from "next";
 
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
     "Ovedex Solutions : vidéosurveillance, contrôle d’accès, alarme anti-intrusion, audiovisuel, fibre optique et infrastructure réseau pour sécuriser vos bâtiments.",
   alternates: { canonical: "/solutions" },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Pôle Solutions — Sûreté, audiovisuel & infrastructure réseau",
     description:
       "Ovedex Solutions : vidéosurveillance, contrôle d’accès, alarme anti-intrusion, audiovisuel, fibre optique et infrastructure réseau pour sécuriser vos bâtiments.",

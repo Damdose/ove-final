@@ -50,7 +50,7 @@ export async function SiteFooter({ pole }: SiteFooterProps = {}) {
                 width={220}
                 height={72}
                 loading="lazy"
-                alt=""
+                alt="Ovedex"
                 src="/logo-ovedex.svg"
                 className="h-auto w-[200px] max-w-full sm:w-[220px]"
               />

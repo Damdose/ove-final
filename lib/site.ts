@@ -12,6 +12,18 @@ export function getSiteUrl(): string {
   return FALLBACK_SITE_URL;
 }
 
+/**
+ * Image Open Graph par défaut (partages LinkedIn, etc.).
+ * Générée par app/opengraph-image.tsx — à référencer dans les
+ * blocs `openGraph` des pages, car Next remplace l'objet hérité.
+ */
+export const DEFAULT_OG_IMAGE = {
+  url: "/opengraph-image",
+  width: 1200,
+  height: 630,
+  alt: "Ovedex — Digital, IT & Solutions techniques",
+} as const;
+
 export function absoluteUrl(path: string): string {
   const base = getSiteUrl();
   if (!path || path === "/") return base;

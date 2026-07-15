@@ -69,7 +69,7 @@ export function SolutionsSureteSection() {
                 >
                   <Image
                     sizes="(max-width: 1024px) 100vw, 1024px"
-                    alt=""
+                    alt="Installation de sûreté et équipements de sécurité"
                     src={SURETE_IMAGE_SRC}
                     width={1024}
                     height={1024}

@@ -2,7 +2,7 @@ import { DigitalPolePageShell } from "@/components/digital-services-landing/digi
 import { BG_INK, PAGE_X, R_BTN, SECTION_PAD, TEXT_INK } from "@/lib/home-ui";
 import { getDigitalBlogPosts } from "@/lib/blog-articles";
 import { newsroomIndexJsonLd } from "@/lib/digital-newsroom-jsonld";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, DEFAULT_OG_IMAGE } from "@/lib/site";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: { canonical: newsroomCanonical },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Blog Digital B2B & webmarketing — Newsroom Ovedex",
     description: NEWSROOM_INDEX_DESCRIPTION,
     url: newsroomCanonical,

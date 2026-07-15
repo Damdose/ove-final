@@ -19,7 +19,7 @@ export function MobileStickyCta() {
         <Image
           width={28}
           height={28}
-          alt=""
+          alt="WhatsApp"
           src="https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/69305d25a750d6d9e5271492_whatsapp.svg"
           className="h-7 w-7"
         />
@@ -36,7 +36,7 @@ export function MobileStickyCta() {
         <Image
           width={32}
           height={32}
-          alt=""
+          alt="WhatsApp"
           src="https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/69305d25a750d6d9e5271492_whatsapp.svg"
           className="h-8 w-8"
         />

@@ -286,7 +286,7 @@ export function ItTopNavigation() {
             width={182}
             height={48}
             loading="lazy"
-            alt=""
+            alt="Ovedex"
             src={IT_LOGO_SRC}
             className="h-auto w-[148px] sm:w-[182px]"
           />

@@ -1,3 +1,4 @@
+import { DEFAULT_OG_IMAGE } from "@/lib/site";
 import { ItLandingFaqSection } from "@/components/it-landing/it-landing-faq-section";
 import { ItPolePageShell } from "@/components/it-landing/it-pole-page-shell";
 import { IT_FAQ_ITEMS } from "@/components/it-landing/it-landing-data";
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
   description:
     "Questions fréquentes : astreinte, environnements hybrides, accès administrateurs, conformité et démarrage d’une mission IT.",
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "FAQ — Pôle IT Ovedex",
     description: "Réponses sur nos prestations IT, infogérance et modalités de collaboration.",
     type: "website",

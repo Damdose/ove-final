@@ -1,3 +1,4 @@
+import { DEFAULT_OG_IMAGE } from "@/lib/site";
 import { ItLandingPage } from "@/components/it-landing/it-landing-page";
 import type { Metadata } from "next";
 
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
     "Ovedex IT : infogérance réactive, cybersécurité, cloud et réseaux pour sécuriser et faire évoluer votre système d’information.",
   alternates: { canonical: "/it" },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Pôle IT — Infogérance & cybersécurité",
     description:
       "Ovedex IT : infogérance réactive, cybersécurité, cloud et réseaux pour sécuriser et faire évoluer votre système d’information.",

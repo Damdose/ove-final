@@ -1,3 +1,4 @@
+import { DEFAULT_OG_IMAGE } from "@/lib/site";
 import { SolutionsLandingFaqSection } from "@/components/technical-solutions-landing/solutions-landing-faq-section";
 import { SolutionsPolePageShell } from "@/components/technical-solutions-landing/solutions-pole-page-shell";
 import { FAQ_ITEMS } from "@/components/technical-solutions-landing/data";
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
   description:
     "Questions fréquentes : types de bâtiments, marques et technologies, maintenance, reprise d’installations existantes et interventions multi-sites.",
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "FAQ — Pôle Solutions Ovedex",
     description: "Réponses sur nos prestations courants faibles, sûreté et modalités d’intervention.",
     type: "website",

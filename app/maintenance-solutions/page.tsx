@@ -1,5 +1,5 @@
 import { SolutionsMaintenancePage } from "@/components/technical-solutions-landing/solutions-maintenance-page";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, DEFAULT_OG_IMAGE } from "@/lib/site";
 import type { Metadata } from "next";
 
 const path = "/maintenance-solutions";
@@ -58,6 +58,7 @@ export const metadata: Metadata = {
     "Packs Start, Flow et Care pour la sûreté : préventif, supervision, GTR et conformité. Contactez-nous pour une offre adaptée à vos installations.",
   alternates: { canonical },
   openGraph: {
+    images: [DEFAULT_OG_IMAGE],
     title: "Maintenance Solutions — offres & tarifs | Ovedex",
     description:
       "Maintenance des équipements de sécurité : vidéo, contrôle d’accès, intrusion, supervision et pilotage. Demandez nos tarifs.",

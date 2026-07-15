@@ -80,7 +80,7 @@ export function SolutionsGtbSection() {
                 >
                   <Image
                     sizes="(max-width: 1024px) 100vw, 1024px"
-                    alt=""
+                    alt="Salle de contrôle et équipements GTB"
                     src={GTB_IMAGE_SRC}
                     width={1024}
                     height={1024}
