@@ -1,8 +1,20 @@
 "use client";
 
-import { CONTACT } from "@/lib/contact";
-import type { PoleId } from "@/lib/brand-design-system";
 import { POLE_ORDER, POLE_THEMES } from "@/lib/brand-design-system";
+import {
+  COMPANY_SIZE_LABELS,
+  COMPANY_SIZE_VALUES,
+  CONTACT_REASON_VALUES,
+  EMAIL_RE,
+  REASON_LABELS,
+  TIMELINE_LABELS,
+  TIMELINE_VALUES,
+  type CompanySizeValue,
+  type ContactFormResponse,
+  type ContactPoleChoice,
+  type ContactReasonValue,
+  type TimelineValue,
+} from "@/lib/contact-form";
 import { useCallback, useId, useState, useEffect, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 
@@ -12,52 +24,13 @@ const TEXTAREA =
   "block w-full max-w-60 align-middle border border-stone-300 bg-slate-800/5 px-3 pb-2 pt-3 text-[15px] font-light text-indigo-950 [border-style:#000] placeholder:text-indigo-950 focus:border-blue-500 focus:outline-0 sm:max-w-none sm:h-32 sm:text-base min-h-[6.5rem] h-28 mb-1.5 rounded-xl";
 const LABEL = "mb-0.5 block font-sans text-xs font-medium text-indigo-950";
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-export type ContactPoleChoice = PoleId | "multi" | "unknown";
-
-export const CONTACT_REASON_VALUES = [
-  "commercial",
-  "demo",
-  "project",
-  "support",
-  "partner",
-  "other",
-] as const;
-export type ContactReasonValue = (typeof CONTACT_REASON_VALUES)[number];
-
-const REASON_LABELS: Record<ContactReasonValue, string> = {
-  commercial: "Information commerciale / cadrage",
-  demo: "Demande de démonstration",
-  project: "Projet en cours ou appel d’offres",
-  support: "Support (client existant)",
-  partner: "Partenariat / intégration",
-  other: "Autre",
-};
-
 const POLE_EXTRA_LABELS: Record<"multi" | "unknown", string> = {
   multi: "Transversal / plusieurs pôles",
   unknown: "Je ne sais pas encore",
 };
 
-const COMPANY_SIZE_VALUES = ["", "1-10", "11-50", "51-200", "200+"] as const;
-const COMPANY_SIZE_LABELS: Record<string, string> = {
-  "": "—",
-  "1-10": "1 — 10",
-  "11-50": "11 — 50",
-  "51-200": "51 — 200",
-  "200+": "200+",
-};
-
-const TIMELINE_VALUES = ["", "urgent", "1m", "3m", "6m", "explore"] as const;
-const TIMELINE_LABELS: Record<string, string> = {
-  "": "—",
-  urgent: "Urgent (moins de 2 semaines)",
-  "1m": "Sous 1 mois",
-  "3m": "1 à 3 mois",
-  "6m": "3 à 6 mois",
-  explore: "Veille / exploration",
-};
+export type { ContactPoleChoice, ContactReasonValue };
+export { CONTACT_REASON_VALUES };
 
 export interface B2bContactFieldErrors {
   firstName?: string;
@@ -69,16 +42,6 @@ export interface B2bContactFieldErrors {
   pole?: string;
   reason?: string;
   message?: string;
-}
-
-function poleLabel(value: string): string {
-  if (value === "multi" || value === "unknown") return POLE_EXTRA_LABELS[value];
-  if (value === "digital" || value === "solutions" || value === "it") return POLE_THEMES[value].label;
-  return value;
-}
-
-function reasonLabel(value: string): string {
-  return REASON_LABELS[value as ContactReasonValue] ?? value;
 }
 
 export function B2bContactForm() {
@@ -102,13 +65,15 @@ export function B2bContactForm() {
     }
   }, [searchParams]);
   const [productScope, setProductScope] = useState("");
-  const [companySize, setCompanySize] = useState<(typeof COMPANY_SIZE_VALUES)[number]>("");
-  const [timeline, setTimeline] = useState<(typeof TIMELINE_VALUES)[number]>("");
+  const [companySize, setCompanySize] = useState<CompanySizeValue>("");
+  const [timeline, setTimeline] = useState<TimelineValue>("");
   const [message, setMessage] = useState("");
   const [honeypot, setHoneypot] = useState("");
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [submitted, setSubmitted] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
 
   const validate = useCallback((): B2bContactFieldErrors => {
     const e: B2bContactFieldErrors = {};
@@ -130,10 +95,11 @@ export function B2bContactForm() {
   const showErr = (k: keyof B2bContactFieldErrors) => Boolean(errors[k] && (touched[k as string] || submitted));
 
   const submit = useCallback(
-    (ev: FormEvent) => {
+    async (ev: FormEvent) => {
       ev.preventDefault();
       if (honeypot.trim()) return;
       setSubmitted(true);
+      setSendError(null);
       const e = validate();
       if (Object.keys(e).length > 0) {
         setSuccess(false);
@@ -166,25 +132,38 @@ export function B2bContactForm() {
         });
         return;
       }
-      const subject = encodeURIComponent(`Contact B2B site — ${company.trim()} — ${poleLabel(String(pole))}`);
-      const lines = [
-        `Identité : ${firstName.trim()} ${lastName.trim()}`,
-        `Société : ${company.trim()}`,
-        `Fonction : ${jobTitle.trim()}`,
-        `E-mail : ${email.trim()}`,
-        `Téléphone : ${phone.trim()}`,
-        `Pôle / périmètre : ${poleLabel(String(pole))}`,
-        `Motif : ${reasonLabel(String(reason))}`,
-        companySize ? `Effectif (fourchette) : ${COMPANY_SIZE_LABELS[companySize] ?? companySize}` : null,
-        timeline ? `Délai souhaité : ${TIMELINE_LABELS[timeline] ?? timeline}` : null,
-        productScope.trim() ? `Produit / périmètre : ${productScope.trim()}` : null,
-        "",
-        "Message :",
-        message.trim(),
-      ].filter(Boolean) as string[];
-      const body = encodeURIComponent(lines.join("\n"));
-      setSuccess(true);
-      window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`;
+      setSending(true);
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            form: "b2b",
+            firstName: firstName.trim(),
+            lastName: lastName.trim(),
+            company: company.trim(),
+            jobTitle: jobTitle.trim(),
+            email: email.trim(),
+            phone: phone.trim(),
+            pole,
+            reason,
+            companySize,
+            timeline,
+            productScope: productScope.trim(),
+            message: message.trim(),
+            honeypot,
+          }),
+        });
+        const data = (await res.json()) as ContactFormResponse;
+        if (!res.ok || !data.ok) throw new Error("send_failed");
+        setSuccess(true);
+      } catch {
+        setSendError(
+          "L’envoi a échoué. Réessayez dans un instant, ou écrivez-nous directement — nos coordonnées sont indiquées à côté du formulaire.",
+        );
+      } finally {
+        setSending(false);
+      }
     },
     [validate, honeypot, uid, firstName, lastName, company, jobTitle, email, phone, pole, reason, companySize, timeline, productScope, message],
   );
@@ -197,8 +176,8 @@ export function B2bContactForm() {
             <div className="flex-col justify-center items-center flex p-10">
               <div className="font-sans text-lg font-light">Merci ! Nous avons bien reçu votre message</div>
               <p className="mt-4 font-sans text-sm font-light text-indigo-950/90">
-                Votre messagerie devrait s’ouvrir avec le message prérempli. Si rien ne s’affiche, vérifiez qu’un
-                client mail est configuré ou utilisez les liens à gauche.
+                Notre équipe revient vers vous sous 24 à 48 heures ouvrées. Pour une demande urgente, joignez-nous
+                par téléphone ou WhatsApp.
               </p>
               <button
                 type="button"
@@ -529,10 +508,17 @@ export function B2bContactForm() {
               ) : null}
             </div>
 
+            {sendError ? (
+              <p className="text-sm text-red-600" role="alert">
+                {sendError}
+              </p>
+            ) : null}
+
             <input
               type="submit"
-              className="[appearance:auto] text-white cursor-pointer px-4 py-2.5 border-0 justify-center items-center h-12 text-lg font-light flex rounded-md bg-purple-400 w-full justify-self-center"
-              value="Envoyer"
+              className="[appearance:auto] text-white cursor-pointer px-4 py-2.5 border-0 justify-center items-center h-12 text-lg font-light flex rounded-md bg-purple-400 w-full justify-self-center disabled:cursor-not-allowed disabled:opacity-70"
+              value={sending ? "Envoi en cours…" : "Envoyer"}
+              disabled={sending}
             />
 
             <input
@@ -553,8 +539,8 @@ export function B2bContactForm() {
 
         {!success ? (
           <p className="mt-3 font-sans text-xs font-light text-indigo-950/80">
-            En cliquant sur « Envoyer », votre messagerie s’ouvre avec le message prérempli. Aucune copie n’est stockée
-            sur nos serveurs à cette étape.
+            Vos informations sont transmises à notre équipe pour traiter votre demande, et ne sont utilisées à aucune
+            autre fin.
           </p>
         ) : null}
       </div>

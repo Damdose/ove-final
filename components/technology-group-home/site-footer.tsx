@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { InstagramGlyph, LinkedInGlyph } from "@/components/brand-social-icons";
+import { FooterNewsletterForm } from "@/components/technology-group-home/footer-newsletter-form";
 import { CONTACT } from "@/lib/contact";
 import type { PoleId } from "@/lib/brand-design-system";
 import { POLE_THEMES } from "@/lib/brand-design-system";
-import type { PoleFooterServiceGroup } from "@/lib/pole-footer-service-groups";
-import { BG_INK, INK, PAGE_X, R_BTN, SHADOW_POP, TEXT_INK } from "@/lib/home-ui";
+import { BG_INK, INK, PAGE_X, R_BTN, SHADOW_POP } from "@/lib/home-ui";
 import { POLE_FOOTER_TAGLINE, poleFooterPrimaryNav } from "@/lib/pole-footer-nav";
 
 const domainLinks = [
@@ -128,29 +128,7 @@ export async function SiteFooter({ pole }: SiteFooterProps = {}) {
             <p className="mb-4 font-sans text-sm font-normal leading-relaxed text-neutral-600 sm:text-base">
               Inscrivez-vous à notre newsletter pour être tenu au courant des nouveautés.
             </p>
-            <form
-              id="footer-newsletter-form"
-              name="email-form"
-              method="get"
-              className={`mb-3 flex flex-col gap-3 ${R_BTN} bg-neutral-100 p-1.5 pl-4 sm:flex-row sm:items-stretch sm:gap-0 sm:pr-1.5`}
-              aria-label="Inscription newsletter"
-            >
-              <input
-                className={`min-h-11 min-w-0 flex-1 border-0 bg-transparent font-sans text-sm outline-none placeholder:text-neutral-400 ${TEXT_INK}`}
-                maxLength={256}
-                name="email-2"
-                placeholder="Votre mail"
-                type="email"
-                id="email-2"
-                required
-              />
-              <button
-                type="submit"
-                className={`shrink-0 ${R_BTN} ${BG_INK} px-5 py-2.5 font-sans text-sm font-semibold text-white transition-opacity hover:opacity-92 sm:my-0.5 sm:px-6`}
-              >
-                S&apos;inscrire
-              </button>
-            </form>
+            <FooterNewsletterForm />
             <p className="font-sans text-xs font-normal leading-relaxed text-neutral-500">
               En vous inscrivant, vous acceptez notre{" "}
               <Link href="/politique-de-confidentialite" className="underline underline-offset-2 hover:opacity-80">
