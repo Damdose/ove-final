@@ -53,6 +53,9 @@ export const metadata: Metadata = {
   creator: "Ovedex",
   publisher: "Ovedex",
   robots: { index: true, follow: true },
+  verification: {
+    google: "sPTHUx2JZQKmC_B91ws12TGmJOdL944mb4hDtBO4Ro0",
+  },
   alternates: { canonical: "/" },
   openGraph: {
     siteName: "Ovedex",
