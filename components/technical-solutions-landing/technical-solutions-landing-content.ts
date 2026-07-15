@@ -31,7 +31,7 @@ export const SOLUTIONS_HERO_ICON_SRC =
   "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/692c7570006b6004ba728e21_Icon%20(27).svg";
 
 export const SOLUTIONS_HERO_IMAGE_SRC =
-  "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/692e4617ef4052eb32f30eeb_unnamed%20(14).jpg";
+  "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=82";
 
 export const SOLUTIONS_BLUR_GRADIENT_SRC =
   "https://proxy.extractcss.dev/https://cdn.prod.website-files.com/691e5a2f4ad9018806391c30/691e5a2f4ad9018806391cc3_Blur%20Gradient%20(2).svg";
