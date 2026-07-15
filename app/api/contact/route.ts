@@ -18,14 +18,14 @@ import {
 } from "@/lib/contact-form";
 
 /**
- * Destinataire des notifications de formulaire.
+ * Expéditeur et destinataire des notifications de formulaire.
  *
- * ⚠️ Tant que le domaine n'est pas vérifié chez Resend, l'expéditeur est
- * forcément `onboarding@resend.dev`, et Resend n'autorise l'envoi QUE vers
- * l'adresse du propriétaire du compte Resend. CONTACT_FORM_TO doit donc être
- * exactement cette adresse, sinon l'API renvoie une erreur 403.
- * Après vérification du domaine, ces deux variables peuvent pointer vers
- * n'importe quelle adresse @ovedex.com.
+ * L'expéditeur doit appartenir à un domaine vérifié dans le compte Resend :
+ * c'est ce qui autorise l'envoi vers n'importe quel destinataire. À défaut,
+ * Resend ne délivre qu'à l'adresse du propriétaire du compte (erreur 403
+ * au-delà), ce qui rendrait le formulaire inutilisable.
+ *
+ * Les deux valeurs sont définies dans les variables d'environnement Vercel.
  */
 const TO = process.env.CONTACT_FORM_TO?.trim() || CONTACT.email;
 const FROM = process.env.CONTACT_FORM_FROM?.trim() || "Ovedex <onboarding@resend.dev>";
