@@ -42,9 +42,11 @@ export function SolutionsHero() {
                 <p
                   className={`mt-5 max-w-xl font-sans text-base font-normal leading-relaxed sm:mt-6 sm:text-lg lg:leading-8 ${TEXT_INK_MUTED}`}
                 >
-                  Conception, intégration et ingénierie en courants faibles : Ovedex Solutions accompagne les entreprises,
-                  collectivités et structures exigeantes dans la mise en place de systèmes techniques sûrs, fiables et
-                  pérennes.
+                  Vidéosurveillance, contrôle d’accès, alarme anti-intrusion, audiovisuel, fibre optique et infrastructure
+                  réseau : Ovedex Solutions conçoit, installe et maintient les systèmes techniques qui protègent vos
+                  bâtiments et fluidifient votre exploitation. Un interlocuteur unique, une expertise certifiée, des
+                  installations pensées pour durer — pour que votre sécurité ne soit plus une contrainte, mais un
+                  avantage.
                 </p>
                 <div className="mt-8 flex flex-wrap items-center gap-4 sm:mt-10">
                   <Link href="/contact" className={BTN_PRIMARY_INK}>
