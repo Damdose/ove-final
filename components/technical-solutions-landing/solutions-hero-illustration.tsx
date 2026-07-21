@@ -8,7 +8,7 @@ const ACCENT_LIGHT = "#60a5fa";
 const INK = "#0D0B4A";
 
 const PHOTO =
-  "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1200&q=85&auto=format&fit=crop";
+  "https://images.unsplash.com/photo-1585206031650-9e9a7c87dcfe?w=1200&q=85&auto=format&fit=crop";
 
 export function SolutionsHeroIllustration() {
   const [show, setShow] = useState(false);
