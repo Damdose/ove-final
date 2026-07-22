@@ -1,20 +1,52 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const ACCENT = "#3b82f6";
 const ACCENT_LIGHT = "#60a5fa";
 const INK = "#0D0B4A";
 
 const PHOTO =
-  "https://images.unsplash.com/photo-1585206031650-9e9a7c87dcfe?w=1200&q=85&auto=format&fit=crop";
+  "https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=1400&q=85&auto=format&fit=crop";
 
 export function SolutionsHeroIllustration() {
   const [show, setShow] = useState(false);
+  const frameRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
+
   useEffect(() => {
     const t = setTimeout(() => setShow(true), 120);
     return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    const el = frameRef.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Direct DOM writes in rAF — no React re-render on mousemove, no layout thrash.
+    function apply(x: number, y: number) {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        if (el) el.style.transform = `rotateX(${x}deg) rotateY(${y}deg)`;
+      });
+    }
+    function onMove(e: MouseEvent) {
+      const rect = el!.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width - 0.5;
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
+      apply(py * -10, px * 12);
+    }
+    function onLeave() {
+      apply(0, 0);
+    }
+    el.addEventListener("mousemove", onMove, { passive: true });
+    el.addEventListener("mouseleave", onLeave, { passive: true });
+    return () => {
+      el.removeEventListener("mousemove", onMove);
+      el.removeEventListener("mouseleave", onLeave);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   const vis = show
@@ -22,19 +54,22 @@ export function SolutionsHeroIllustration() {
     : "translate-y-6 opacity-0 scale-[0.96]";
 
   return (
-    <div className="relative mx-auto w-full max-w-[680px] select-none" aria-hidden>
+    <div className="relative mx-auto w-full max-w-[680px] select-none" aria-hidden style={{ perspective: "1400px" }}>
       {/* Glows */}
       <div className="absolute -inset-10 -z-10">
-        <div className="absolute left-[0%] top-[5%] h-[55%] w-[55%] rounded-full blur-[80px]" style={{ backgroundColor: ACCENT, opacity: 0.2 }} />
-        <div className="absolute right-[0%] top-[10%] h-[50%] w-[45%] rounded-full blur-[80px]" style={{ backgroundColor: ACCENT_LIGHT, opacity: 0.16 }} />
-        <div className="absolute bottom-[0%] left-[15%] h-[45%] w-[55%] rounded-full blur-[80px]" style={{ backgroundColor: "#2563eb", opacity: 0.13 }} />
+        <div className="absolute left-[0%] top-[5%] h-[55%] w-[55%] rounded-full blur-[80px] [animation:orbGlow_6s_ease-in-out_infinite]" style={{ backgroundColor: ACCENT, opacity: 0.2 }} />
+        <div className="absolute right-[0%] top-[10%] h-[50%] w-[45%] rounded-full blur-[80px] [animation:orbGlow_7s_ease-in-out_1s_infinite]" style={{ backgroundColor: ACCENT_LIGHT, opacity: 0.16 }} />
+        <div className="absolute bottom-[0%] left-[15%] h-[45%] w-[55%] rounded-full blur-[80px] [animation:orbGlow_8s_ease-in-out_2s_infinite]" style={{ backgroundColor: "#2563eb", opacity: 0.13 }} />
       </div>
 
       {/* Image */}
       <div
-        className={`relative overflow-hidden rounded-[1.5rem] transition-all duration-700 ease-out ${vis}`}
+        ref={frameRef}
+        className={`relative overflow-hidden rounded-[1.5rem] transition-all duration-700 ease-out will-change-transform ${vis}`}
         style={{
           transitionDelay: "100ms",
+          transformStyle: "preserve-3d",
+          transition: "transform 300ms ease-out",
           boxShadow: `0 30px 70px -20px rgba(13,11,74,0.25),
                       -16px 16px 50px -25px ${ACCENT}45,
                       16px 16px 50px -25px ${ACCENT_LIGHT}40`,
@@ -42,16 +77,28 @@ export function SolutionsHeroIllustration() {
       >
         <Image
           src={PHOTO}
-          alt="Caméra de vidéoprotection et sécurité"
-          width={1200}
-          height={800}
+          alt="Mur de caméras de vidéoprotection pour la sûreté des sites"
+          width={1400}
+          height={933}
           priority
           sizes="(max-width: 1024px) 100vw, 50vw"
           className="aspect-square w-full object-cover"
         />
 
         {/* Overlay gradient */}
-        <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${INK}cc 0%, ${INK}55 30%, transparent 60%)` }} />
+        <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${INK}cc 0%, ${INK}66 30%, ${INK}22 60%)` }} />
+
+        {/* Scanning light sweep */}
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-1/3 [animation:scanSweep_4.5s_ease-in-out_infinite] motion-reduce:hidden"
+          style={{ background: `linear-gradient(to bottom, transparent, ${ACCENT_LIGHT}55, ${ACCENT}33, transparent)` }}
+        />
+
+        {/* Radar ping — detection point */}
+        <div className="pointer-events-none absolute left-[62%] top-[38%] h-3 w-3 -ml-1.5 -mt-1.5 motion-reduce:hidden">
+          <span className="absolute inset-0 rounded-full" style={{ backgroundColor: ACCENT_LIGHT }} />
+          <span className="absolute inset-0 rounded-full [animation:pulse_2s_ease-out_infinite]" style={{ backgroundColor: ACCENT_LIGHT }} />
+        </div>
 
         {/* Accent bar */}
         <div className="absolute bottom-0 left-0 right-0 flex h-[3px]">
