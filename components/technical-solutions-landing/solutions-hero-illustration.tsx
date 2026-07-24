@@ -8,7 +8,7 @@ const ACCENT_LIGHT = "#60a5fa";
 const INK = "#0D0B4A";
 
 const PHOTO =
-  "https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=1400&q=85&auto=format&fit=crop";
+  "https://images.unsplash.com/photo-1495714096525-285e85481946?w=1400&q=85&auto=format&fit=crop";
 
 export function SolutionsHeroIllustration() {
   const [show, setShow] = useState(false);
@@ -77,7 +77,7 @@ export function SolutionsHeroIllustration() {
       >
         <Image
           src={PHOTO}
-          alt="Mur de caméras de vidéoprotection pour la sûreté des sites"
+          alt="Caméra de vidéoprotection discrète sur un bâtiment sécurisé"
           width={1400}
           height={933}
           priority
@@ -95,7 +95,7 @@ export function SolutionsHeroIllustration() {
         />
 
         {/* Radar ping — detection point */}
-        <div className="pointer-events-none absolute left-[62%] top-[38%] h-3 w-3 -ml-1.5 -mt-1.5 motion-reduce:hidden">
+        <div className="pointer-events-none absolute left-[40%] top-[47%] h-3 w-3 -ml-1.5 -mt-1.5 motion-reduce:hidden">
           <span className="absolute inset-0 rounded-full" style={{ backgroundColor: ACCENT_LIGHT }} />
           <span className="absolute inset-0 rounded-full [animation:pulse_2s_ease-out_infinite]" style={{ backgroundColor: ACCENT_LIGHT }} />
         </div>
